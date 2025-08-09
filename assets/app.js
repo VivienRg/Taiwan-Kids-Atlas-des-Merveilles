@@ -105,14 +105,21 @@ function applyFilters(data, state){
 async function main(){
   let data = [];
   try {
-    const basePath = window.location.hostname.includes('github.io') ? '/Activity-Map' : '';
+    // Use the current origin and pathname to build the correct base URL
+    const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
     const resp = await fetch(`${basePath}/data/activities.json`, { cache: 'no-store' });
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     data = await resp.json();
   } catch (e) {
     console.error('Failed to load activities.json', e);
     const count = document.getElementById('count');
-    count.textContent = "Couldn't load data. Check that /data/activities.json exists at this URL.";
+    const errorDetails = e.message || 'Unknown error';
+    const fullPath = `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}/data/activities.json`;
+    count.innerHTML = `Couldn't load data.<br>
+                      Error: ${errorDetails}<br>
+                      Trying to load from: <code>${fullPath}</code><br>
+                      Check that the file exists at this URL.`;
+    count.style.color = '#ff6b6b';
     return;
   }
 
