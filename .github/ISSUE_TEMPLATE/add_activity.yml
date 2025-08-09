@@ -1,0 +1,101 @@
+name: "➕ Add an activity"
+description: "Propose a new kid-friendly activity for the map"
+labels: ["add-activity"]
+body:
+  - type: input
+    id: name
+    attributes: { label: Activity name, placeholder: "Xpark Aquarium" }
+    validations: { required: true }
+
+  - type: input
+    id: city
+    attributes: { label: City, placeholder: "Taoyuan" }
+    validations: { required: true }
+
+  - type: input
+    id: district
+    attributes: { label: District, placeholder: "Zhongli" }
+    validations: { required: true }
+
+  - type: dropdown
+    id: indoor_outdoor
+    attributes:
+      label: Indoor / Outdoor
+      options: ["Indoor","Outdoor","Mixed"]
+    validations: { required: true }
+
+  - type: checkboxes
+    id: categories
+    attributes:
+      label: Categories (pick any)
+      options:
+        - label: Aquarium
+        - label: Museum
+        - label: Science
+        - label: Art
+        - label: Children
+        - label: Theme Park
+        - label: Play
+        - label: Trail
+        - label: Park
+        - label: Zoo
+        - label: Lake
+        - label: Waterfront
+        - label: Old Street
+        - label: Bike Path
+        - label: Beach
+        - label: Waterplay
+        - label: Farm/Ranch
+        - label: Animals
+        - label: Viewpoint
+        - label: Boat
+
+  - type: textarea
+    id: desc
+    attributes:
+      label: Short description
+      placeholder: "What makes it great for kids? Tips, highlights…"
+    validations: { required: true }
+
+  - type: input
+    id: cost_ntd
+    attributes: { label: Cost (NTD or range), placeholder: "Free / NT$600 adult / NT$270 child" }
+
+  - type: input
+    id: age_min
+    attributes: { label: Age min, placeholder: "3" }
+  - type: input
+    id: age_max
+    attributes: { label: Age max, placeholder: "12" }
+
+  - type: checkboxes
+    id: options
+    attributes:
+      label: Options
+      options:
+        - label: Dog friendly
+        - label: Food nearby
+        - label: Seasonal
+
+  - type: input
+    id: tags
+    attributes: { label: Tags (comma separated), placeholder: "playground, waterplay, AC, stroller" }
+
+  - type: dropdown
+    id: naturalOrHuman
+    attributes:
+      label: Natural or Human-made?
+      options: ["Human-made","Natural"]
+
+  - type: input
+    id: website
+    attributes: { label: Website (optional), placeholder: "https://..." }
+
+  - type: input
+    id: map_link
+    attributes: { label: Google Maps link, placeholder: "https://maps.google.com/..." }
+    validations: { required: true }
+
+  - type: input
+    id: drive_min
+    attributes: { label: Drive time (minutes from Zhongli), placeholder: "25" }

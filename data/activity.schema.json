@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Activity",
+    "type": "object",
+    "required": [
+      "name","indoor_outdoor","categories","desc","ageRange",
+      "dogFriendly","foodNearby","seasonal","tags","naturalOrHuman",
+      "map_link","district","city","drive_min"
+    ],
+    "properties": {
+      "name": { "type": "string", "minLength": 1 },
+      "indoor_outdoor": { "type": "string", "enum": ["Indoor","Outdoor","Mixed"] },
+      "categories": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+      "desc": { "type": "string", "minLength": 5 },
+      "cost_ntd": { "type": "string" },
+      "ageRange": {
+        "type": "array",
+        "items": { "type": "integer", "minimum": 0 },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "dogFriendly": { "type": "boolean" },
+      "foodNearby": { "type": "boolean" },
+      "seasonal": { "type": "boolean" },
+      "tags": { "type": "array", "items": { "type": "string" } },
+      "naturalOrHuman": { "type": "string", "enum": ["Natural","Human-made"] },
+      "website": { "type": "string" },
+      "map_link": { "type": "string" },
+      "district": { "type": "string" },
+      "city": { "type": "string" },
+      "drive_min": { "type": "integer", "minimum": 0 }
+    },
+    "additionalProperties": false
+  }
+  

@@ -1,1 +1,2270 @@
-[]
+[
+  {
+    "name": "Xpark Aquarium (Qingpu)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Aquarium",
+      "Science"
+    ],
+    "tags": [
+      "learning",
+      "nature",
+      "food",
+      "AC"
+    ],
+    "cost_range": "600+",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": false,
+    "desc": "Modern aquarium with immersive tanks, penguins, and shows—great A/C learning day.",
+    "website": "https://xpark.com.tw/",
+    "map_link": "https://maps.google.com/?q=Xpark+Taoyuan",
+    "drive_min": 15
+  },
+  {
+    "name": "Hutoushan Park (虎頭山)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Taoyuan District",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Trail",
+      "Viewpoint"
+    ],
+    "tags": [
+      "active",
+      "nature",
+      "dog friendly",
+      "shade"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Shady city mountain with easy paths and viewpoints.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Hutoushan+Park+Taoyuan",
+    "drive_min": 25
+  },
+  {
+    "name": "Dayou Terraced Ecological Park (大有梯田生態公園)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Taoyuan District",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Play",
+      "Scenic"
+    ],
+    "tags": [
+      "active",
+      "nature",
+      "dog friendly",
+      "photo"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      2,
+      12
+    ],
+    "natural": true,
+    "desc": "Terraced lawns with slides and kid areas; easy strolls and photos.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=大有梯田生態公園",
+    "drive_min": 25
+  },
+  {
+    "name": "Xinshi Park (新勢公園)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Play"
+    ],
+    "tags": [
+      "active",
+      "dog friendly",
+      "nature"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      2,
+      12
+    ],
+    "natural": true,
+    "desc": "Large playground and open lawns; bring scooters or a ball.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=新勢公園+中壢",
+    "drive_min": 10
+  },
+  {
+    "name": "Laojie River Greenway (老街溪)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Bike",
+      "Trail"
+    ],
+    "tags": [
+      "active",
+      "nature",
+      "stroller",
+      "dog friendly"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Flat riverside path with pocket parks—ideal for bikes and strollers.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=老街溪+中壢",
+    "drive_min": 10
+  },
+  {
+    "name": "Longtan Lake (龍潭大池)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Longtan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Lake",
+      "Boat"
+    ],
+    "tags": [
+      "nature",
+      "food",
+      "dog friendly",
+      "waterplay"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Lakeside strolls, bridge, and rental swan boats (extra).",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=龍潭大池",
+    "drive_min": 25
+  },
+  {
+    "name": "Shihmen Reservoir (石門水庫)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Daxi/Longtan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Reservoir",
+      "Viewpoint"
+    ],
+    "tags": [
+      "nature",
+      "picnic",
+      "dog friendly"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Scenic dam views, picnic lawns, and short walks; small entry/parking fee.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=石門水庫",
+    "drive_min": 35
+  },
+  {
+    "name": "Daxi Old Street & Bridge",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Daxi",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Old Street",
+      "Culture"
+    ],
+    "tags": [
+      "food",
+      "snacks",
+      "stroller",
+      "dog friendly"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Historic shopfronts, snacks, and riverside walk.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Daxi+Old+Street",
+    "drive_min": 35
+  },
+  {
+    "name": "Cihu Memorial Sculpture Park",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Daxi",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Culture",
+      "Scenic"
+    ],
+    "tags": [
+      "learning",
+      "nature",
+      "dog friendly"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": true,
+    "desc": "Open-air park with historic statues and lakeside paths.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Cihu+Memorial+Park",
+    "drive_min": 35
+  },
+  {
+    "name": "Yong’an Fishing Harbor (永安漁港)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Xinwu",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterfront",
+      "Promenade",
+      "Bike"
+    ],
+    "tags": [
+      "nature",
+      "food",
+      "dog friendly",
+      "active"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Sea-view boardwalk and seafood market; easy family cycling.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=永安漁港",
+    "drive_min": 45
+  },
+  {
+    "name": "Xiao Wulai Skywalk & Waterfall",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Fuxing",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Viewpoint",
+      "Waterfall"
+    ],
+    "tags": [
+      "nature",
+      "active",
+      "view"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": true,
+    "desc": "Glass skywalk over a waterfall; short nature trails.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=小烏來天空步道",
+    "drive_min": 70
+  },
+  {
+    "name": "Window on China Theme Park (小人國)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Longtan",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Theme Park",
+      "Rides",
+      "Waterplay"
+    ],
+    "tags": [
+      "rides",
+      "active",
+      "food",
+      "seasonal"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Rides and miniature landmarks; seasonal splash area.",
+    "website": "https://www.woc.com.tw/",
+    "map_link": "https://maps.google.com/?q=Window+on+China+Theme+Park",
+    "drive_min": 30
+  },
+  {
+    "name": "Leofoo Village Theme Park",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Guanxi",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Theme Park",
+      "Zoo",
+      "Rides"
+    ],
+    "tags": [
+      "rides",
+      "active",
+      "food",
+      "learning"
+    ],
+    "cost_range": "600+",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Big theme park with safari-style zoo zones.",
+    "website": "https://www.leofoovillage.com.tw/",
+    "map_link": "https://maps.google.com/?q=Leofoo+Village",
+    "drive_min": 40
+  },
+  {
+    "name": "Green World Ecological Farm (綠世界)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Beipu",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Eco Park",
+      "Animals"
+    ],
+    "tags": [
+      "learning",
+      "nature",
+      "active",
+      "food"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": true,
+    "desc": "Alpacas, macaws, lakes, and rainforest boardwalks.",
+    "website": "https://www.green-world.com.tw/",
+    "map_link": "https://maps.google.com/?q=綠世界生態農場",
+    "drive_min": 50
+  },
+  {
+    "name": "Little Ding-Dong Science Park (小叮噹)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Xinpu",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Science",
+      "Waterplay",
+      "Snow"
+    ],
+    "tags": [
+      "learning",
+      "active",
+      "seasonal",
+      "food"
+    ],
+    "cost_range": "600+",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Hands-on science play, outdoor splash zones, and indoor snow area.",
+    "website": "https://www.lxdd.com.tw/",
+    "map_link": "https://maps.google.com/?q=小叮噹科學主題樂園",
+    "drive_min": 45
+  },
+  {
+    "name": "Pushin (Puxin) Ranch (埔心牧場)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Yangmei",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Farm",
+      "Animals",
+      "Play"
+    ],
+    "tags": [
+      "nature",
+      "active",
+      "dog friendly",
+      "food",
+      "learning"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": true,
+    "desc": "Dairy ranch with animal feeding and lawns; mini train rides.",
+    "website": "https://www.pusin-ranch.com.tw/",
+    "map_link": "https://maps.google.com/?q=埔心牧場",
+    "drive_min": 25
+  },
+  {
+    "name": "Hsinchu Zoo (新竹市立動物園)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "East District",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Zoo"
+    ],
+    "tags": [
+      "learning",
+      "nature",
+      "food"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": false,
+    "desc": "Compact, kid-friendly zoo; pair with nearby parks and food.",
+    "website": "https://zoo.hccg.gov.tw/",
+    "map_link": "https://maps.google.com/?q=新竹市立動物園",
+    "drive_min": 45
+  },
+  {
+    "name": "Yingge Ceramics Museum & DIY",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Yingge",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Museum",
+      "DIY"
+    ],
+    "tags": [
+      "creative",
+      "learning",
+      "culture",
+      "food",
+      "AC"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Exhibits plus child-friendly pottery painting/throwing studios.",
+    "website": "https://www.ceramics.ntpc.gov.tw/",
+    "map_link": "https://maps.google.com/?q=Yingge+Ceramics+Museum",
+    "drive_min": 40
+  },
+  {
+    "name": "Taoyuan Children’s Art Center (青埔)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Art",
+      "Children"
+    ],
+    "tags": [
+      "creative",
+      "learning",
+      "AC"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": false,
+    "desc": "Hands-on art exhibits, story corners, and workshops.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Taoyuan+Children%27s+Art+Center",
+    "drive_min": 15
+  },
+  {
+    "name": "Taoyuan Main Library (青埔新總圖)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Library",
+      "Learning"
+    ],
+    "tags": [
+      "learning",
+      "creative",
+      "AC"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      0,
+      14
+    ],
+    "natural": false,
+    "desc": "Large children’s floor, events, and maker corners.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Taoyuan+Main+Library+Qingpu",
+    "drive_min": 15
+  },
+  {
+    "name": "TAI Snow Ice Rink (Taoyuan)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Taoyuan District",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Ice Rink",
+      "Active"
+    ],
+    "tags": [
+      "active",
+      "learning",
+      "AC"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Recreational ice skating sessions with rentals.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=TAI+Snow+Taoyuan",
+    "drive_min": 25
+  },
+  {
+    "name": "Taipei Children’s Amusement Park",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Shilin",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Rides"
+    ],
+    "tags": [
+      "rides",
+      "active",
+      "learning",
+      "food"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Kid-sized outdoor rides; pair with nearby museums.",
+    "website": "https://www.tcap.taipei/",
+    "map_link": "https://maps.google.com/?q=Taipei+Children%27s+Amusement+Park",
+    "drive_min": 60
+  },
+  {
+    "name": "National Taiwan Science Education Center",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Shilin",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Science",
+      "Museum"
+    ],
+    "tags": [
+      "learning",
+      "creative",
+      "AC"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Large interactive science museum with rotating exhibits.",
+    "website": "https://www.ntsec.gov.tw/",
+    "map_link": "https://maps.google.com/?q=National+Taiwan+Science+Education+Center",
+    "drive_min": 60
+  },
+  {
+    "name": "Taipei Astronomical Museum",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Shilin",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Science",
+      "Museum"
+    ],
+    "tags": [
+      "learning",
+      "creative",
+      "AC"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Space exhibits and planetarium dome shows.",
+    "website": "https://www.tam.gov.taipei/",
+    "map_link": "https://maps.google.com/?q=Taipei+Astronomical+Museum",
+    "drive_min": 60
+  },
+  {
+    "name": "Gloria Outlets (play zones)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Mall/Play"
+    ],
+    "tags": [
+      "food",
+      "active",
+      "creative",
+      "AC"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      0,
+      14
+    ],
+    "natural": false,
+    "desc": "Family-friendly mall stroll with pop-up play corners.",
+    "website": "https://www.gloriaoutlets.com/",
+    "map_link": "https://maps.google.com/?q=Gloria+Outlets",
+    "drive_min": 15
+  },
+  {
+    "name": "Shalun Beach (Tamsui)",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Tamsui",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Beach",
+      "Waterfront"
+    ],
+    "tags": [
+      "nature",
+      "waterplay",
+      "dog friendly",
+      "food",
+      "seasonal"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Wide sandy beach for sand play and sunsets; swim flags vary.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Shalun+Beach",
+    "drive_min": 70
+  },
+  {
+    "name": "Qianshuiwan (Qianshui Bay)",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Sanzhi",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Beach",
+      "Promenade"
+    ],
+    "tags": [
+      "nature",
+      "waterplay",
+      "dog friendly",
+      "food",
+      "seasonal"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Calm bay with seaside promenade and cafes.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Qianshuiwan",
+    "drive_min": 80
+  },
+  {
+    "name": "Baishawan Beach",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Shimen",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Beach"
+    ],
+    "tags": [
+      "nature",
+      "waterplay",
+      "dog friendly",
+      "food",
+      "seasonal"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Classic sandy beach; seasonal lifeguards.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Baishawan+Beach",
+    "drive_min": 85
+  },
+  {
+    "name": "Tamsui Fisherman’s Wharf & Lover’s Bridge",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Tamsui",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterfront",
+      "Old Street"
+    ],
+    "tags": [
+      "culture",
+      "nature",
+      "food",
+      "dog friendly"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": false,
+    "desc": "Boardwalks, bridge, and ferries; combine with Tamsui Old Street.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Tamsui+Fisherman%27s+Wharf",
+    "drive_min": 70
+  },
+  {
+    "name": "Wonderwood (Indoor Play)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Active",
+      "Play"
+    ],
+    "tags": [
+      "active",
+      "indoor",
+      "AC"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      2,
+      10
+    ],
+    "natural": false,
+    "desc": "Indoor adventure play with slides, climbing and soft zones.",
+    "website": "",
+    "map_link": "https://www.google.com/maps?q=Wonderwood+Taoyuan",
+    "drive_min": 15
+  },
+  {
+    "name": "Daxi Fruit Picking (Seasonal)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Daxi",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Farm",
+      "Seasonal",
+      "DIY"
+    ],
+    "tags": [
+      "seasonal",
+      "nature",
+      "learning",
+      "food",
+      "dog friendly"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": true,
+    "desc": "Seasonal fruit picking—check crop calendar before going.",
+    "website": "",
+    "map_link": "https://www.google.com/maps?q=Daxi+fruit+picking",
+    "drive_min": 35
+  },
+  {
+    "name": "Zhuwei Fishing Harbor (竹圍漁港)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Dayuan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterfront",
+      "Market"
+    ],
+    "tags": [
+      "food",
+      "stroll",
+      "dog friendly"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": false,
+    "desc": "Seafood market, sunset photos, and breezy promenade.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=竹圍漁港",
+    "drive_min": 35
+  },
+  {
+    "name": "Xinwu Tidal Park (新屋綠色隧道)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Xinwu",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterfront",
+      "Bike"
+    ],
+    "tags": [
+      "nature",
+      "bike",
+      "dog friendly"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Coastal bike path and windbreak forest views.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=新屋綠色隧道",
+    "drive_min": 45
+  },
+  {
+    "name": "Coca-Cola Museum (Taoyuan)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Yangmei",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Museum"
+    ],
+    "tags": [
+      "learning",
+      "tour",
+      "AC"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      6,
+      14
+    ],
+    "natural": false,
+    "desc": "Factory-style exhibition with brand history; reservation policy varies.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Coca+Cola+Museum+Taoyuan",
+    "drive_min": 25
+  },
+  {
+    "name": "Yongan Seaview Bike Path",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Xinwu",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Bike",
+      "Waterfront"
+    ],
+    "tags": [
+      "active",
+      "nature",
+      "dog friendly"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": true,
+    "desc": "Flat sections suitable for family cycling near the harbor.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=永安+自行車道",
+    "drive_min": 45
+  },
+  {
+    "name": "Lalashan (拉拉山) Forest Drive viewpoint",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Fuxing",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Mountain",
+      "Scenic"
+    ],
+    "tags": [
+      "nature",
+      "view"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": true,
+    "desc": "High-elevation views; plan for a longer, winding drive.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=拉拉山",
+    "drive_min": 95
+  },
+  {
+    "name": "Neiwan Old Street (內灣老街)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Hengshan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Old Street",
+      "Culture"
+    ],
+    "tags": [
+      "snacks",
+      "train",
+      "stroll"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": false,
+    "desc": "Classic railway town with snacks and river views.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=內灣老街",
+    "drive_min": 60
+  },
+  {
+    "name": "Beipu Old Street (北埔老街)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Beipu",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Old Street",
+      "Culture"
+    ],
+    "tags": [
+      "Hakka",
+      "snacks",
+      "stroll"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": false,
+    "desc": "Hakka culture street with lei cha DIY spots nearby.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=北埔老街",
+    "drive_min": 55
+  },
+  {
+    "name": "Hsinchu Nanliao Harbor (南寮) & 17km Coastline",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "North District",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterfront",
+      "Bike",
+      "Promenade"
+    ],
+    "tags": [
+      "bike",
+      "nature",
+      "food"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Seaside bike path and fish market snacks.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=南寮漁港",
+    "drive_min": 50
+  },
+  {
+    "name": "Green Grass Lake (青草湖)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "East District",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Lake",
+      "Scenic"
+    ],
+    "tags": [
+      "nature",
+      "stroll"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Quiet lakeside loop with bridges and greenery.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=青草湖",
+    "drive_min": 50
+  },
+  {
+    "name": "Eighteen Peaks Mountain (十八尖山)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "East District",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Trail"
+    ],
+    "tags": [
+      "nature",
+      "active",
+      "shade"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": true,
+    "desc": "Gentle city hiking loops—good shade and viewpoints.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=十八尖山",
+    "drive_min": 50
+  },
+  {
+    "name": "Little Ding-Dong Water Park (summer)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Xinpu",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterplay"
+    ],
+    "tags": [
+      "waterplay",
+      "seasonal",
+      "active"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Outdoor splash complex open in hot months.",
+    "website": "https://www.lxdd.com.tw/",
+    "map_link": "https://maps.google.com/?q=小叮噹+水上樂園",
+    "drive_min": 45
+  },
+  {
+    "name": "Leofoo Water Attractions (summer)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Guanxi",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Waterplay",
+      "Theme Park"
+    ],
+    "tags": [
+      "rides",
+      "seasonal",
+      "active"
+    ],
+    "cost_range": "600+",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Select seasonal water attractions inside the park.",
+    "website": "https://www.leofoovillage.com.tw/",
+    "map_link": "https://maps.google.com/?q=Leofoo+Village",
+    "drive_min": 40
+  },
+  {
+    "name": "Window on China Water Area (summer)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Longtan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterplay"
+    ],
+    "tags": [
+      "seasonal",
+      "active"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Seasonal splash area with slides for kids.",
+    "website": "https://www.woc.com.tw/",
+    "map_link": "https://maps.google.com/?q=Window+on+China",
+    "drive_min": 30
+  },
+  {
+    "name": "Xinwu Guava Farms (seasonal)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Xinwu",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Farm",
+      "Seasonal"
+    ],
+    "tags": [
+      "seasonal",
+      "nature",
+      "learning",
+      "food"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": true,
+    "desc": "Pick-your-own guava; call farms ahead for availability.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=新屋+採果",
+    "drive_min": 45
+  },
+  {
+    "name": "Longtan Strawberry Farms (winter)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Longtan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Farm",
+      "Seasonal"
+    ],
+    "tags": [
+      "seasonal",
+      "nature",
+      "learning",
+      "food"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": true,
+    "desc": "DIY strawberry picking—peak in winter/early spring.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=龍潭+採草莓",
+    "drive_min": 30
+  },
+  {
+    "name": "Flying Cow Ranch (飛牛牧場)",
+    "region": "Miaoli",
+    "city": "Miaoli",
+    "district": "Tongxiao",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Farm",
+      "Animals",
+      "DIY"
+    ],
+    "tags": [
+      "nature",
+      "learning",
+      "food"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": true,
+    "desc": "Well-known ranch with feedings and DIY dairy workshops.",
+    "website": "https://www.flyingcow.com.tw/",
+    "map_link": "https://maps.google.com/?q=飛牛牧場",
+    "drive_min": 80
+  },
+  {
+    "name": "Taihe Leisure Farm (泰和休閒農場)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Guanxi",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Farm",
+      "DIY"
+    ],
+    "tags": [
+      "nature",
+      "learning",
+      "seasonal"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      3,
+      12
+    ],
+    "natural": true,
+    "desc": "Hands-on farm experiences; seasonal fruit/veggie picking.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=泰和休閒農場",
+    "drive_min": 45
+  },
+  {
+    "name": "Neiwan Forest Theme Park (內灣森林遊樂區)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Hengshan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Forest",
+      "Play"
+    ],
+    "tags": [
+      "nature",
+      "active"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": true,
+    "desc": "Forest play elements and short trails near Neiwan.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=內灣+森林",
+    "drive_min": 65
+  },
+  {
+    "name": "Maokong Gondola + Tea Area",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Wenshan",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Gondola",
+      "Scenic",
+      "Culture"
+    ],
+    "tags": [
+      "view",
+      "food",
+      "stroller"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Glass-floor gondola, short walks, and teahouses.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=貓空纜車",
+    "drive_min": 70
+  },
+  {
+    "name": "Taipei Zoo (木柵動物園)",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Wenshan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Zoo"
+    ],
+    "tags": [
+      "learning",
+      "nature",
+      "food",
+      "stroller"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      0,
+      14
+    ],
+    "natural": false,
+    "desc": "Large, affordable zoo—plan half a day with the kids.",
+    "website": "https://www.zoo.gov.taipei/",
+    "map_link": "https://maps.google.com/?q=臺北市立動物園",
+    "drive_min": 70
+  },
+  {
+    "name": "Bitan Riverside (碧潭)",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Xindian",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterfront",
+      "Boat"
+    ],
+    "tags": [
+      "boat",
+      "food",
+      "stroll"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Pedal boats, bridge views, and riverside snacks.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=碧潭",
+    "drive_min": 65
+  },
+  {
+    "name": "Sanxia Old Street (三峽老街)",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Sanxia",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Old Street",
+      "Culture"
+    ],
+    "tags": [
+      "snacks",
+      "DIY",
+      "stroll"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": false,
+    "desc": "Red-brick arcades, craft shops, and snacks.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=三峽老街",
+    "drive_min": 55
+  },
+  {
+    "name": "Yingge Old Street (鶯歌老街)",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Yingge",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Old Street",
+      "DIY"
+    ],
+    "tags": [
+      "ceramics",
+      "creative",
+      "food"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": false,
+    "desc": "Pottery shops and DIY studios along the main street.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=鶯歌老街",
+    "drive_min": 40
+  },
+  {
+    "name": "KidsAwesome Children’s Museum",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Zhongshan",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Museum",
+      "Play"
+    ],
+    "tags": [
+      "learning",
+      "creative",
+      "AC"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      1,
+      10
+    ],
+    "natural": false,
+    "desc": "Hands-on exhibits and role-play zones for kids.",
+    "website": "https://www.kidsawesome.com.tw/",
+    "map_link": "https://maps.google.com/?q=KidsAwesome",
+    "drive_min": 60
+  },
+  {
+    "name": "i-Ride Taoyuan (motion cinema)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Experience",
+      "Ride"
+    ],
+    "tags": [
+      "indoor",
+      "AC"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      6,
+      14
+    ],
+    "natural": false,
+    "desc": "Immersive flying-theater style ride; height limits apply.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=i-Ride+Taoyuan",
+    "drive_min": 15
+  },
+  {
+    "name": "Fun Jungle (Indoor Playground)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Luzhu",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Play",
+      "Active"
+    ],
+    "tags": [
+      "indoor",
+      "AC",
+      "active"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      2,
+      10
+    ],
+    "natural": false,
+    "desc": "Soft-play structures, slides, and ball pits.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=Fun+Jungle+Luzhu",
+    "drive_min": 25
+  },
+  {
+    "name": "O’Climb Taoyuan (Climbing Gym)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Taoyuan District",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Climbing",
+      "Active"
+    ],
+    "tags": [
+      "active",
+      "indoor",
+      "AC"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      6,
+      14
+    ],
+    "natural": false,
+    "desc": "Beginner-friendly routes; rental gear available.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=O%27Climb+Taoyuan",
+    "drive_min": 25
+  },
+  {
+    "name": "IKEA Taoyuan Småland (play)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Luzhu",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Play",
+      "Mall/Play"
+    ],
+    "tags": [
+      "indoor",
+      "AC",
+      "free"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      10
+    ],
+    "natural": false,
+    "desc": "Short supervised play sessions; check height/age policy.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=IKEA+Taoyuan",
+    "drive_min": 25
+  },
+  {
+    "name": "Big City Mall Play Areas",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "East District",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Mall/Play"
+    ],
+    "tags": [
+      "indoor",
+      "AC",
+      "food"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      0,
+      12
+    ],
+    "natural": false,
+    "desc": "Large mall with kid zones and food courts.",
+    "website": "https://www.bigcity.com.tw/",
+    "map_link": "https://maps.google.com/?q=Big+City+Hsinchu",
+    "drive_min": 45
+  },
+  {
+    "name": "Hsinchu City Glass Museum",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "East District",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Museum",
+      "Craft"
+    ],
+    "tags": [
+      "learning",
+      "creative",
+      "AC"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      6,
+      14
+    ],
+    "natural": false,
+    "desc": "Glass art, history, and occasional DIY workshops.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=玻璃工藝博物館+新竹",
+    "drive_min": 50
+  },
+  {
+    "name": "Zhubei Riverbank Bike Path",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Zhubei",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Bike",
+      "Trail"
+    ],
+    "tags": [
+      "active",
+      "stroller",
+      "nature"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Flat riverside sections ideal for kids’ bikes.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=竹北+河濱+自行車道",
+    "drive_min": 40
+  },
+  {
+    "name": "Minshengtang Children’s Library (Hsinchu)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "East District",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Library"
+    ],
+    "tags": [
+      "learning",
+      "AC"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      0,
+      14
+    ],
+    "natural": false,
+    "desc": "Cozy children’s reading rooms and story time.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=新竹+兒童+圖書館",
+    "drive_min": 45
+  },
+  {
+    "name": "Yongkang Street Play Cafés (Taipei)",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Da’an",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Play Café"
+    ],
+    "tags": [
+      "food",
+      "indoor",
+      "AC"
+    ],
+    "cost_range": "200–600",
+    "age_range": [
+      1,
+      8
+    ],
+    "natural": false,
+    "desc": "Parent-friendly cafés with toddler play spaces.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=永康街+親子+咖啡",
+    "drive_min": 65
+  },
+  {
+    "name": "Miramar Ferris Wheel (Taipei)",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Zhongshan",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Ride",
+      "Scenic"
+    ],
+    "tags": [
+      "view",
+      "indoor/outdoor"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": false,
+    "desc": "Gentle ride with skyline views; mall downstairs.",
+    "website": "https://www.miramar.com.tw/",
+    "map_link": "https://maps.google.com/?q=美麗華+摩天輪",
+    "drive_min": 65
+  },
+  {
+    "name": "Elephant Mountain Short Hike",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Xinyi",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Trail",
+      "Viewpoint"
+    ],
+    "tags": [
+      "view",
+      "active"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      6,
+      14
+    ],
+    "natural": true,
+    "desc": "Stepped trail to classic Taipei 101 views.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=象山步道",
+    "drive_min": 70
+  },
+  {
+    "name": "Songshan Cultural & Creative Park",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Xinyi/Songshan",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Culture",
+      "Museum"
+    ],
+    "tags": [
+      "creative",
+      "stroll",
+      "indoor/outdoor"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Design exhibitions, bookstores, lawns and ponds.",
+    "website": "https://www.songshanculturalpark.org/",
+    "map_link": "https://maps.google.com/?q=松山文創園區",
+    "drive_min": 65
+  },
+  {
+    "name": "Huashan 1914 Creative Park",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Zhongzheng",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Culture",
+      "Events"
+    ],
+    "tags": [
+      "creative",
+      "markets",
+      "indoor/outdoor"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Family markets, exhibits, and grassy hangouts.",
+    "website": "https://www.huashan1914.com/",
+    "map_link": "https://maps.google.com/?q=華山1914文化創意產業園區",
+    "drive_min": 60
+  },
+  {
+    "name": "Taipei Water Park (Museum of Drinking Water)",
+    "region": "Taipei",
+    "city": "Taipei",
+    "district": "Zhongzheng",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Waterplay",
+      "Museum"
+    ],
+    "tags": [
+      "summer",
+      "learning"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      4,
+      12
+    ],
+    "natural": false,
+    "desc": "Historic water facility with summer splash areas.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=台北自來水園區",
+    "drive_min": 60
+  },
+  {
+    "name": "Shimen Cave (石門洞) Coast",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Shimen",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterfront",
+      "Scenic"
+    ],
+    "tags": [
+      "nature",
+      "photo",
+      "windy"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": true,
+    "desc": "Sea-eroded arch and rocky coastal scenery.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=石門洞",
+    "drive_min": 85
+  },
+  {
+    "name": "Shenkeng Old Street (深坑老街)",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Shenkeng",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Old Street",
+      "Food"
+    ],
+    "tags": [
+      "tofu",
+      "snacks",
+      "stroll"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": false,
+    "desc": "Famous tofu street with traditional shops.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=深坑老街",
+    "drive_min": 70
+  },
+  {
+    "name": "Wulai Old Street & Waterfall",
+    "region": "New Taipei",
+    "city": "New Taipei",
+    "district": "Wulai",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Old Street",
+      "Waterfall"
+    ],
+    "tags": [
+      "scenic",
+      "snacks",
+      "river"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": true,
+    "desc": "Riverside old street and tall waterfall nearby.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=烏來瀑布",
+    "drive_min": 75
+  },
+  {
+    "name": "Luodong Forestry Culture Park (bonus reach)",
+    "region": "Yilan",
+    "city": "Yilan",
+    "district": "Luodong",
+    "indoor_outdoor": "Mixed",
+    "categories": [
+      "Culture",
+      "Park"
+    ],
+    "tags": [
+      "learning",
+      "stroll"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": true,
+    "desc": "Wood industry heritage with ponds; borderline drive time.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=羅東林業文化園區",
+    "drive_min": 95
+  },
+  {
+    "name": "Zhongli Night Market (中壢觀光夜市)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Market",
+      "Food"
+    ],
+    "tags": [
+      "food",
+      "stroll",
+      "evening"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Classic night market snacks and games.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=中壢夜市",
+    "drive_min": 10
+  },
+  {
+    "name": "Taoyuan Arts Center (桃園展演中心)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Taoyuan District",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Culture",
+      "Performing Arts"
+    ],
+    "tags": [
+      "AC",
+      "events"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      14
+    ],
+    "natural": false,
+    "desc": "Occasional family shows/exhibitions; check schedule.",
+    "website": "https://www.tygcp.org.tw/",
+    "map_link": "https://maps.google.com/?q=桃園展演中心",
+    "drive_min": 25
+  },
+  {
+    "name": "Hakka Culture Hall (Longtan)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Longtan",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Museum",
+      "Culture"
+    ],
+    "tags": [
+      "learning",
+      "AC"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Small exhibits on local Hakka heritage.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=客家文化館+龍潭",
+    "drive_min": 30
+  },
+  {
+    "name": "Shimen Reservoir Bike Loop (sections)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Longtan/Daxi",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Bike",
+      "Scenic"
+    ],
+    "tags": [
+      "active",
+      "view",
+      "nature"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      6,
+      14
+    ],
+    "natural": true,
+    "desc": "Scenic segments around the reservoir suitable for kids.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=石門水庫+自行車",
+    "drive_min": 35
+  },
+  {
+    "name": "Luzhu Sports Center (public pool)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Luzhu",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Swim",
+      "Active"
+    ],
+    "tags": [
+      "pool",
+      "AC"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Public pools and kid lanes; check hours.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=蘆竹+運動中心",
+    "drive_min": 25
+  },
+  {
+    "name": "Dayuan Coastal Park Boardwalk",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Dayuan",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterfront",
+      "Boardwalk"
+    ],
+    "tags": [
+      "nature",
+      "stroller",
+      "dog friendly"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      0,
+      14
+    ],
+    "natural": true,
+    "desc": "Easy seaside boardwalk with constant breeze.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=大園+海濱+木棧道",
+    "drive_min": 35
+  },
+  {
+    "name": "Hsinchu Railway Museum (小)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "East District",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Museum",
+      "Railway"
+    ],
+    "tags": [
+      "learning",
+      "AC"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      4,
+      12
+    ],
+    "natural": false,
+    "desc": "Small heritage rail exhibits; check opening days.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=新竹+鐵道+博物館",
+    "drive_min": 50
+  },
+  {
+    "name": "Anhe Children’s Water Play (summer)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Waterplay"
+    ],
+    "tags": [
+      "seasonal",
+      "splash"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      10
+    ],
+    "natural": false,
+    "desc": "Pop-up community splash pads in hot months.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=中壢+兒童+戲水",
+    "drive_min": 10
+  },
+  {
+    "name": "Shimen Chocolate Factory (tour)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Daxi",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Factory Tour",
+      "DIY"
+    ],
+    "tags": [
+      "learning",
+      "creative",
+      "AC"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Chocolate making demo and DIY; reservation often required.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=巧克力+工廠+大溪",
+    "drive_min": 35
+  },
+  {
+    "name": "Zhulin (竹林) Bike/Greenway",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Bike",
+      "Trail"
+    ],
+    "tags": [
+      "active",
+      "stroller",
+      "nature"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Local greenway segments good for kid bikes and scooters.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=中壢+綠廊",
+    "drive_min": 10
+  },
+  {
+    "name": "Qingpu Sports Park (courts/track)",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Zhongli",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Active",
+      "Track"
+    ],
+    "tags": [
+      "active"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      5,
+      14
+    ],
+    "natural": false,
+    "desc": "Open tracks and courts for scooters and ball play.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=青埔+運動公園",
+    "drive_min": 15
+  },
+  {
+    "name": "Luzhu Coastal Wind Farm Viewpoint",
+    "region": "Taoyuan",
+    "city": "Taoyuan",
+    "district": "Luzhu",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Scenic",
+      "Waterfront"
+    ],
+    "tags": [
+      "view",
+      "photo",
+      "wind turbines"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Wind-turbine coastline vistas; breezy and open.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=桃園+海岸+風車",
+    "drive_min": 35
+  },
+  {
+    "name": "Zhubei Children’s Art Museum (small)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Zhubei",
+    "indoor_outdoor": "Indoor",
+    "categories": [
+      "Art",
+      "Children"
+    ],
+    "tags": [
+      "creative",
+      "AC"
+    ],
+    "cost_range": "1–200",
+    "age_range": [
+      4,
+      12
+    ],
+    "natural": false,
+    "desc": "Small exhibitions and craft times for kids.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=竹北+兒童+美術",
+    "drive_min": 40
+  },
+  {
+    "name": "Hakka Tung Blossom Viewing (春)",
+    "region": "Hsinchu",
+    "city": "Hsinchu",
+    "district": "Various",
+    "indoor_outdoor": "Outdoor",
+    "categories": [
+      "Seasonal",
+      "Scenic"
+    ],
+    "tags": [
+      "seasonal",
+      "nature",
+      "photo"
+    ],
+    "cost_range": "0",
+    "age_range": [
+      3,
+      14
+    ],
+    "natural": true,
+    "desc": "Tung blossoms in late spring; trails and festivals.",
+    "website": "",
+    "map_link": "https://maps.google.com/?q=桐花+步道+新竹",
+    "drive_min": 55
+  }
+]

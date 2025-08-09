@@ -1,0 +1,81 @@
+name: Issue Form → JSON PR
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  from-issue:
+    if: contains(github.event.issue.labels.*.name, 'add-activity')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps for schema validation
+        run: npm init -y && npm i ajv
+
+      - name: Convert Issue → activities_seed.json (with dedupe)
+        id: prepare
+        run: node scripts/issue_to_activity.js
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+
+      - name: Comment if duplicate/invalid/error
+        if: steps.prepare.outputs.result != 'created'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const result = core.getInput('result') || '${{ steps.prepare.outputs.result }}';
+            const msg = core.getInput('message') || '${{ steps.prepare.outputs.message }}';
+            let body = '';
+            if (result === 'duplicate') body = `Thanks for the suggestion! It looks like this activity is already in the database or is very similar.\n\n**Details:** ${msg}`;
+            else if (result === 'invalid') body = `Some fields were invalid. Please edit the issue and fix:\n\n\`\`\`\n${msg}\n\`\`\``;
+            else if (result === 'error') body = `Oops, something went wrong on our side:\n\n\`\`\`\n${msg}\n\`\`\``;
+            else body = `No changes needed. (Result: ${result})`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });
+
+      - name: Create PR with the JSON change
+        if: steps.prepare.outputs.result == 'created'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: "add/activity-${{ github.event.issue.number }}"
+          commit-message: "Add activity from issue #${{ github.event.issue.number }}"
+          title: "Add: ${{ github.event.issue.title }}"
+          body: |
+            Auto-generated from #${{ github.event.issue.number }}.
+            ${{ steps.prepare.outputs.message }}
+          labels: "data,automated"
+
+      - name: Comment with PR link
+        if: steps.prepare.outputs.result == 'created'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:add/activity-${{ github.event.issue.number }}`
+            });
+            const pr = prs.data[0];
+            if (pr) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `Thanks! I opened a PR with your activity: #${pr.number} → ${pr.html_url}`
+              });
+            }
