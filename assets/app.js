@@ -1,17 +1,41 @@
-// Kid Activities Taiwan — App (vanilla JS)
-// Loads /data/activities.json and renders a filterable card list
-
-function priceVal(p){ if(!p) return 1e9; const s = String(p).toLowerCase(); if(s.includes("free")) return 0; const m = s.match(/nt\$?\s*([\d]+)/i); return m? parseInt(m[1]) : 999999; }
+// Kid Activities Taiwan — App (v5)
+function priceValFromRange(r){
+  if(!r) return 1e9;
+  const t = String(r);
+  if(t === "0") return 0;
+  if(t.includes("1–200") || t.includes("1-200")) return 100;
+  if(t.includes("200–600") || t.includes("200-600")) return 400;
+  if(t.includes("600+")) return 800;
+  return 999999;
+}
 function overlap(aMin,aMax,bMin,bMax){ return !(aMax<bMin || bMax<aMin); }
 function byName(a,b){ return String(a.name).localeCompare(String(b.name),'en'); }
-function byDrive(a,b){ return (a.drive_min||999) - (b.drive_min||999); }
-function byPrice(a,b){ return priceVal(a.cost_ntd||a.price) - priceVal(b.cost_ntd||b.price); }
+function byDrive(a,b){ return (a.drive_min??999) - (b.drive_min??999); }
+function byPrice(a,b){ return priceValFromRange(a.cost_range) - priceValFromRange(b.cost_range); }
 
 function pill(text){
   const s = document.createElement('span');
   s.className = 'pill';
   s.textContent = text;
   return s;
+}
+
+
+function mapsEmbedURL(q){
+  const base = 'https://www.google.com/maps';
+  const qs = `?q=${encodeURIComponent(q)}&output=embed`;
+  return base + qs;
+}
+
+// Attempt Google Static Maps thumbnail (no key). Fallback to a simple SVG if it fails.
+function mapThumbURL(q){
+  const base = 'https://maps.googleapis.com/maps/api/staticmap';
+  const qs = `?center=${encodeURIComponent(q)}&zoom=14&size=640x360&maptype=roadmap&markers=color:red|${encodeURIComponent(q)}`;
+  return base + qs;
+}
+function fallbackThumb(name){
+  const svg = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='100%' height='100%' fill='#0f172a'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='#9fb1c7' font-family='Inter,Arial,sans-serif' font-size='20'>${(name||'Activity')}</text></svg>`);
+  return `data:image/svg+xml;charset=utf-8,${svg}`;
 }
 
 function renderList(list){
@@ -32,39 +56,73 @@ function renderList(list){
     const card = document.createElement('article');
     card.className = 'card';
 
+    // Thumbnail
+    const img = document.createElement('img');
+    img.className = 'thumb';
+    const q = it.map_link || it.name;
+    img.src = mapThumbURL(q);
+    img.alt = (it.name || '') + ' map';
+    img.loading = 'lazy';
+    img.referrerPolicy = 'no-referrer';
+    img.onerror = () => { img.src = fallbackThumb(it.name); };
+    img.style.cursor = 'pointer';
+    img.title = 'Click to preview map';
+    img.addEventListener('click', () => {
+      const wrap = document.createElement('div');
+      wrap.style.width = '100%'; wrap.style.height = '180px'; wrap.style.background = '#0f172a';
+      const iframe = document.createElement('iframe');
+      iframe.src = mapsEmbedURL(q);
+      iframe.width = '100%'; iframe.height = '180'; iframe.style.border = '0';
+      iframe.loading = 'lazy'; iframe.referrerPolicy = 'no-referrer';
+      wrap.appendChild(iframe);
+      card.replaceChild(wrap, img);
+    });
+    card.appendChild(img);
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+
     const h = document.createElement('h3');
     h.textContent = it.name || '';
-    card.appendChild(h);
+    body.appendChild(h);
 
     const meta = document.createElement('div');
     meta.className = 'meta';
-    meta.appendChild(pill(it.indoor_outdoor || it.indoorOutdoor || ''));
+    meta.appendChild(pill(it.indoor_outdoor || ''));
     meta.appendChild(pill((it.categories||[]).join(', ')));
     meta.appendChild(pill('Drive: ' + (it.drive_min!=null ? (it.drive_min + ' min') : '—')));
-    const age = (it.ageRange ? (it.ageRange[0]+'–'+it.ageRange[1]) : ((it.age_min||0)+'–'+(it.age_max||12)));
+    const age = (it.age_range ? (it.age_range[0]+'–'+it.age_range[1]) : '0–18');
     meta.appendChild(pill('Ages: ' + age));
-    meta.appendChild(pill('Price: ' + (it.cost_ntd || it.price || '—')));
-    meta.appendChild(pill((it.district||'') + ' ' + (it.city||'')));
-    card.appendChild(meta);
+    meta.appendChild(pill('Price: ' + (it.cost_range || '—')));
+    meta.appendChild(pill((it.district||'') + (it.city? (' • ' + it.city) : '')));
+    body.appendChild(meta);
 
-    if(it.desc || it.description){
+    if(it.desc){
       const p = document.createElement('p');
       p.className = 'desc';
-      p.textContent = it.desc || it.description;
-      card.appendChild(p);
+      p.textContent = it.desc;
+      body.appendChild(p);
     }
 
     if(it.tags && it.tags.length){
       const tagMeta = document.createElement('div');
       tagMeta.className = 'meta';
       it.tags.forEach(t => tagMeta.appendChild(pill('#' + t)));
-      card.appendChild(tagMeta);
+      body.appendChild(tagMeta);
+    }
+
+    // Address (English) line
+    if(it.address_en){
+      const addr = document.createElement('div');
+      addr.className = 'address';
+      addr.textContent = it.address_en;
+      body.appendChild(addr);
     }
 
     const links = document.createElement('div');
     links.className = 'links';
     const m = document.createElement('a');
-    m.href = it.map_link || it.gmap || ('https://www.google.com/maps?q=' + encodeURIComponent(it.name||''));
+    m.href = it.map_link || ('https://www.google.com/maps?q=' + encodeURIComponent(it.name||''));
     m.textContent = '🗺️ Open in Maps';
     m.target = '_blank'; m.rel = 'noopener';
     links.appendChild(m);
@@ -74,23 +132,27 @@ function renderList(list){
       w.target = '_blank'; w.rel = 'noopener';
       links.appendChild(w);
     }
-    card.appendChild(links);
+    body.appendChild(links);
 
+    card.appendChild(body);
     cards.appendChild(card);
   });
 }
 
+function priceValFromText(s){ return priceValFromRange(s); }
 function matchesFilters(it, state){
-  const blob = [it.name, it.desc||it.description||'', (it.tags||[]).join(' '), (it.categories||[]).join(' '), it.district||'', it.city||'', it.cost_ntd||it.price||''].join(' ').toLowerCase();
+  const blob = [it.name, it.desc||'', (it.tags||[]).join(' '), (it.categories||[]).join(' '), it.district||'', it.city||'', it.region||'', it.cost_range||''].join(' ').toLowerCase();
   if(state.q && blob.indexOf(state.q) === -1) return false;
-  const ioVal = it.indoor_outdoor || it.indoorOutdoor || '';
+  if(state.category && !(it.categories||[]).includes(state.category)) return false;
+  if(state.region && String(it.region||'') !== state.region) return false;
+  const ioVal = it.indoor_outdoor || '';
   if(state.io.size && !state.io.has(ioVal)) return false;
-  const r = it.ageRange || [it.age_min||0, it.age_max||12];
+  const r = it.age_range || [0,18];
   if(!overlap(state.minAge, state.maxAge, r[0], r[1])) return false;
-  if(state.onlyFree && String(it.cost_ntd||it.price||'').toLowerCase().indexOf('free')===-1) return false;
-  if(state.dogOnly && !(it.dogFriendly===true || (it.tags||[]).includes('dog friendly'))) return false;
-  if(state.foodOnly && !(it.foodNearby===true || (it.tags||[]).includes('food'))) return false;
-  if(state.seasonalOnly && !(it.seasonal===true || (it.tags||[]).includes('seasonal'))) return false;
+  if(state.onlyFree && (it.cost_range !== '0')) return false;
+  if(state.dogOnly && !(it.tags||[]).includes('dog friendly')) return false;
+  if(state.foodOnly && !(it.tags||[]).includes('food')) return false;
+  if(state.seasonalOnly && !(it.tags||[]).includes('seasonal')) return false;
   return true;
 }
 
@@ -102,37 +164,34 @@ function applyFilters(data, state){
   return list;
 }
 
+function uniqueRegions(data){
+  const set = new Set();
+  data.forEach(it => it.region && set.add(it.region));
+  return Array.from(set).sort((a,b)=>a.localeCompare(b,'en'));
+}
+
+function uniqueCategories(data){
+  const set = new Set();
+  data.forEach(it => (it.categories||[]).forEach(c => set.add(c)));
+  return Array.from(set).sort((a,b)=>a.localeCompare(b,'en'));
+}
+
 async function main(){
   let data = [];
   try {
-    // Use the current origin and pathname to build the correct base URL
-    const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
-    const resp = await fetch(`${basePath}/data/activities.json`, { cache: 'no-store' });
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const resp = await fetch('./data/activities.json', {cache:'no-store'});
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
     data = await resp.json();
   } catch (e) {
     console.error('Failed to load activities.json', e);
-    const count = document.getElementById('count');
-    const errorDetails = e.message || 'Unknown error';
-    const fullPath = `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}/data/activities.json`;
-    count.innerHTML = `Couldn't load data.<br>
-                      Error: ${errorDetails}<br>
-                      Trying to load from: <code>${fullPath}</code><br>
-                      Check that the file exists at this URL.`;
-    count.style.color = '#ff6b6b';
+    document.getElementById('count').textContent = "Couldn't load data. Check /data/activities.json.";
     return;
   }
 
-  const state = {
-    q: '',
-    io: new Set(),    // SHOW ALL by default
-    minAge: 0, maxAge: 12,
-    sort: 'name',
-    onlyFree: false, dogOnly: false, foodOnly: false, seasonalOnly: false
-  };
-
   // Elements
   const elQ = document.getElementById('q');
+  const elCategory = document.getElementById('category');
+  const elRegion = document.getElementById('region');
   const elIndoor = document.getElementById('indoor');
   const elOutdoor = document.getElementById('outdoor');
   const elMixed = document.getElementById('mixed');
@@ -146,24 +205,50 @@ async function main(){
   const elApply = document.getElementById('applyBtn');
   const elReset = document.getElementById('resetBtn');
 
+  // Populate category dropdown
+  uniqueCategories(data).forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c; opt.textContent = c;
+    elCategory.appendChild(opt);
+  });
+  // Populate region dropdown
+  uniqueRegions(data).forEach(r => {
+    const opt = document.createElement('option');
+    opt.value = r; opt.textContent = r;
+    elRegion.appendChild(opt);
+  });
+
+    const opt = document.createElement('option');
+    opt.value = c; opt.textContent = c;
+    elCategory.appendChild(opt);
+  });
+
+  const state = {
+    q: '',
+    category: '',
+    region: '',
+    region: '',
+    q: '',
+    category: '',
+    io: new Set(),      // show all by default
+    minAge: 0, maxAge: 18, // default 0–18
+    sort: 'name',
+    onlyFree: false, dogOnly: false, foodOnly: false, seasonalOnly: false
+  };
+
   function highlight(){
-    const setActive = (el, on)=>{ if(!el) return; if(on) el.classList.add('active'); else el.classList.remove('active'); };
+    const setActive = (el, on)=>{ if(!el) return; el.classList.toggle('active', !!on); };
     const chipIndoor = document.querySelector('label.chip [id="indoor"]')?.parentElement;
     const chipOutdoor = document.querySelector('label.chip [id="outdoor"]')?.parentElement;
     const chipMixed = document.querySelector('label.chip [id="mixed"]')?.parentElement;
     setActive(chipIndoor, elIndoor.checked);
     setActive(chipOutdoor, elOutdoor.checked);
     setActive(chipMixed, elMixed.checked);
-    const fSearch = document.getElementById('q').closest('.field');
-    const fAgeMin = document.getElementById('ageMin').closest('.field');
-    const fAgeMax = document.getElementById('ageMax').closest('.field');
-    const fSort = document.getElementById('sort').closest('.field');
-    setActive(fSearch, elQ.value.trim() !== '');
-    setActive(fAgeMin, (parseInt(elAgeMin.value)||0) !== 0);
-    setActive(fAgeMax, (parseInt(elAgeMax.value)||18) !== 12);
-    setActive(fSort, elSort.value !== 'name');
-    const quickField = document.getElementById('seasonalOnly').closest('.field');
-    const anyQuick = elOnlyFree.checked || elDogOnly.checked || elFoodOnly.checked || elSeasonalOnly.checked;
+    const fSearch = elQ.closest('.field'); setActive(fSearch, elQ.value.trim() !== '' || elCategory.value !== '' || elRegion.value !== '');
+    const fAgeMin = elAgeMin.closest('.field'); setActive(fAgeMin, (parseInt(elAgeMin.value)||0) !== 0);
+    const fAgeMax = elAgeMax.closest('.field'); setActive(fAgeMax, (parseInt(elAgeMax.value)||18) !== 18);
+    const fSort = elSort.closest('.field'); setActive(fSort, elSort.value !== 'name');
+    const quickField = elSeasonalOnly.closest('.field'); const anyQuick = elOnlyFree.checked || elDogOnly.checked || elFoodOnly.checked || elSeasonalOnly.checked;
     setActive(quickField, anyQuick);
   }
 
@@ -175,6 +260,8 @@ async function main(){
 
   // Listeners
   elQ.addEventListener('input', () => { state.q = elQ.value.trim().toLowerCase(); syncAndRender(); });
+  elCategory.addEventListener('change', () => { state.category = elCategory.value || ''; syncAndRender(); });
+  elRegion.addEventListener('change', () => { state.region = elRegion.value || ''; syncAndRender(); });
   elIndoor.addEventListener('change', () => { elIndoor.checked ? state.io.add('Indoor') : state.io.delete('Indoor'); syncAndRender(); });
   elOutdoor.addEventListener('change', () => { elOutdoor.checked ? state.io.add('Outdoor') : state.io.delete('Outdoor'); syncAndRender(); });
   elMixed.addEventListener('change', () => { elMixed.checked ? state.io.add('Mixed') : state.io.delete('Mixed'); syncAndRender(); });
@@ -188,15 +275,15 @@ async function main(){
 
   if(elApply) elApply.addEventListener('click', syncAndRender);
   if(elReset) elReset.addEventListener('click', () => {
-    state.q=''; state.io=new Set(); state.minAge=0; state.maxAge=12;
+    state.q=''; state.category=''; state.region=''; state.io=new Set(); state.minAge=0; state.maxAge=18;
     state.sort='name'; state.onlyFree=false; state.dogOnly=false; state.foodOnly=false; state.seasonalOnly=false;
-    elQ.value=''; elIndoor.checked=false; elOutdoor.checked=false; elMixed.checked=false;
-    elAgeMin.value=0; elAgeMax.value=12; elSort.value='name';
+    elQ.value=''; elCategory.value=''; elRegion.value=''; elIndoor.checked=false; elOutdoor.checked=false; elMixed.checked=false;
+    elAgeMin.value=0; elAgeMax.value=18; elSort.value='name';
     elOnlyFree.checked=false; elDogOnly.checked=false; elFoodOnly.checked=false; elSeasonalOnly.checked=false;
     syncAndRender();
   });
 
-  // First render (show all)
+  // First render
   syncAndRender();
 }
 
