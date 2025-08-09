@@ -64,30 +64,38 @@ try{
 
   const body = issue.body || "";
 
-  const ageMin = parseInt(getField(body,"Age min"),10);
-  const ageMax = parseInt(getField(body,"Age max"),10);
-  const categories = parseChecked(body,"Categories (pick any)");
-  const options = parseChecked(body,"Options");
-  const tags = (getField(body,"Tags (comma separated)")||"")
-    .split(",").map(s=>s.trim()).filter(Boolean);
+  // Parse form fields
+  const ageMin = parseInt(getField(body, "Minimum Recommended Age"), 10) || 0;
+  const ageMax = parseInt(getField(body, "Maximum Recommended Age"), 10) || 14;
+  const categories = parseChecked(body, "Categories (select at least one)");
+  const features = parseChecked(body, "Features");
+  const tags = (getField(body, "Tags (comma separated)") || "")
+    .split(",").map(s => s.trim()).filter(Boolean);
+  const costRange = getField(body, "Cost Range (NTD)");
+  
+  // Generate URL-friendly ID from name and city
+  const name = getField(body, "Activity name");
+  const city = getField(body, "City");
+  const id = `${norm(name).replace(/\s+/g, '-')}-${norm(city)}`;
 
   const entry = {
-    name: getField(body, "Activity name"),
+    name,
+    region: getField(body, "Region/County"),
+    city,
+    district: getField(body, "District/Area"),
     indoor_outdoor: getField(body, "Indoor / Outdoor"),
     categories,
-    desc: getField(body, "Short description"),
-    cost_ntd: getField(body, "Cost (NTD or range)"),
-    ageRange: (Number.isFinite(ageMin) && Number.isFinite(ageMax)) ? [ageMin,ageMax] : [0,14],
-    dogFriendly: options.some(o=>o.toLowerCase()==="dog friendly"),
-    foodNearby: options.some(o=>o.toLowerCase()==="food nearby"),
-    seasonal: options.some(o=>o.toLowerCase()==="seasonal"),
     tags,
-    naturalOrHuman: getField(body, "Natural or Human-made?") || "Human-made",
-    website: getField(body, "Website (optional)"),
-    map_link: getField(body, "Google Maps link"),
-    district: getField(body, "District"),
-    city: getField(body, "City"),
-    drive_min: parseInt(getField(body, "Drive time (minutes from Zhongli)"), 10) || 0
+    cost_range: costRange,
+    age_range: [ageMin, ageMax],
+    natural: features.some(f => f.toLowerCase().includes("natural")),
+    desc: getField(body, "Description"),
+    website: getField(body, "Official Website (optional)"),
+    map_link: getField(body, "Google Maps Link"),
+    drive_min: parseInt(getField(body, "Drive Time (minutes from Zhongli)"), 10) || 0,
+    address_en: getField(body, "Full Address (English)"),
+    id,
+    address_query: getField(body, "Map Search Query")
   };
 
   // Validate schema
