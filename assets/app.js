@@ -105,7 +105,7 @@ function applyFilters(data, state){
 async function main(){
   let data = [];
   try {
-    const resp = await fetch('./data/activities.json', {cache:'no-store'});
+    const resp = await fetch('../data/activities.json', { cache: 'no-store' });
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     data = await resp.json();
   } catch (e) {
