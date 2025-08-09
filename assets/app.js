@@ -103,8 +103,17 @@ function applyFilters(data, state){
 }
 
 async function main(){
-  const resp = await fetch('./data/activities.json', {cache:'no-store'});
-  const data = await resp.json();
+  let data = [];
+  try {
+    const resp = await fetch('./data/activities.json', {cache:'no-store'});
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    data = await resp.json();
+  } catch (e) {
+    console.error('Failed to load activities.json', e);
+    const count = document.getElementById('count');
+    count.textContent = "Couldn't load data. Check that /data/activities.json exists at this URL.";
+    return;
+  }
 
   const state = {
     q: '',
