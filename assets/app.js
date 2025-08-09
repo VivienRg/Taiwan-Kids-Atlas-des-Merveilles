@@ -218,17 +218,12 @@ async function main(){
     elRegion.appendChild(opt);
   });
 
-    const opt = document.createElement('option');
-    opt.value = c; opt.textContent = c;
-    elCategory.appendChild(opt);
   });
 
   const state = {
     q: '',
     category: '',
     region: '',
-    region: '',
-    q: '',
     category: '',
     io: new Set(),      // show all by default
     minAge: 0, maxAge: 18, // default 0–18
