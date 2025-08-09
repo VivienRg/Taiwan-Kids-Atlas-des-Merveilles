@@ -1,0 +1,40 @@
+name: Generate Thumbnails
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-thumbnails:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # allow committing files back
+    env:
+      GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: npm ci
+        continue-on-error: true
+
+      - name: Run ID backfill
+        run: node scripts/add_ids.mjs
+
+      - name: Fetch missing thumbnails
+        run: node scripts/fetch_thumbnails.mjs
+
+      - name: Auto-commit changed files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: fetch thumbnails & update activities.json"
+          file_pattern: |
+            data/activities.json
+            thumbnails/*.png

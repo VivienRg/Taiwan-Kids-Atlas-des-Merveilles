@@ -1,101 +1,174 @@
-name: "➕ Add an activity"
-description: "Propose a new kid-friendly activity for the map"
+name: "🛂 Add an activity"
+description: |
+  Propose a new kid-friendly activity for the map.
+  
+  **Note:** All fields are required unless marked as optional.
+  
+  **Tip:** Check existing activities to maintain consistency in formatting.
 labels: ["add-activity"]
 body:
+  # Basic Information
   - type: input
     id: name
-    attributes: { label: Activity name, placeholder: "Xpark Aquarium" }
+    attributes: 
+      label: "Activity name"
+      description: "The official name of the location or activity"
+      placeholder: "Xpark Aquarium (Qingpu)"
+    validations: { required: true }
+
+  - type: input
+    id: region
+    attributes: 
+      label: "Region/County"
+      description: "Taiwan county/region (e.g., Taoyuan, Taipei, Hsinchu, Yilan)"
+      placeholder: "Taoyuan"
     validations: { required: true }
 
   - type: input
     id: city
-    attributes: { label: City, placeholder: "Taoyuan" }
+    attributes: 
+      label: "City"
+      description: "City where the activity is located"
+      placeholder: "Taoyuan"
     validations: { required: true }
 
   - type: input
     id: district
-    attributes: { label: District, placeholder: "Zhongli" }
+    attributes: 
+      label: "District/Area"
+      description: "District or area within the city"
+      placeholder: "Zhongli"
     validations: { required: true }
 
+  # Activity Details
   - type: dropdown
     id: indoor_outdoor
     attributes:
-      label: Indoor / Outdoor
-      options: ["Indoor","Outdoor","Mixed"]
+      label: "Indoor / Outdoor"
+      description: "Is this activity primarily indoor, outdoor, or mixed?"
+      options: ["Indoor", "Outdoor", "Mixed"]
     validations: { required: true }
 
   - type: checkboxes
     id: categories
     attributes:
-      label: Categories (pick any)
+      label: "Categories (select at least one)"
+      description: "Main categories that best describe this activity"
       options:
-        - label: Aquarium
-        - label: Museum
-        - label: Science
-        - label: Art
-        - label: Children
-        - label: Theme Park
-        - label: Play
-        - label: Trail
-        - label: Park
-        - label: Zoo
-        - label: Lake
-        - label: Waterfront
-        - label: Old Street
-        - label: Bike Path
-        - label: Beach
-        - label: Waterplay
-        - label: Farm/Ranch
-        - label: Animals
-        - label: Viewpoint
-        - label: Boat
+        - label: "Aquarium"
+        - label: "Museum"
+        - label: "Science"
+        - label: "Art"
+        - label: "Children"
+        - label: "Theme Park"
+        - label: "Play"
+        - label: "Trail"
+        - label: "Park"
+        - label: "Zoo"
+        - label: "Lake"
+        - label: "Waterfront"
+        - label: "Old Street"
+        - label: "Bike Path"
+        - label: "Beach"
+        - label: "Waterplay"
+        - label: "Farm/Ranch"
+        - label: "Animals"
+        - label: "Viewpoint"
+        - label: "Boat"
+    validations: { required: true }
 
   - type: textarea
     id: desc
     attributes:
-      label: Short description
-      placeholder: "What makes it great for kids? Tips, highlights…"
+      label: "Description"
+      description: "A brief description of the activity (minimum 5 characters)"
+      placeholder: |
+        What makes this place great for kids? Include any highlights, special features, 
+        or tips for families visiting with children.
+        
+        Example: "Modern aquarium with immersive tanks, penguins, and shows—great A/C learning day."
+    validations: { required: true, minLength: 5 }
+
+  # Cost and Age Information
+  - type: input
+    id: cost_range
+    attributes: 
+      label: "Cost Range (NTD)"
+      description: "Use '0' for free, or a range like '100-300' or '600+'"
+      placeholder: "0", "100-300", "600+"
     validations: { required: true }
 
   - type: input
-    id: cost_ntd
-    attributes: { label: Cost (NTD or range), placeholder: "Free / NT$600 adult / NT$270 child" }
+    id: age_range_min
+    attributes: 
+      label: "Minimum Recommended Age"
+      description: "Youngest appropriate age (0-18)"
+      placeholder: "3"
+    validations: { required: true, minimum: 0, maximum: 18 }
 
   - type: input
-    id: age_min
-    attributes: { label: Age min, placeholder: "3" }
-  - type: input
-    id: age_max
-    attributes: { label: Age max, placeholder: "12" }
+    id: age_range_max
+    attributes: 
+      label: "Maximum Recommended Age"
+      description: "Oldest appropriate age (1-99)"
+      placeholder: "12"
+    validations: { required: true, minimum: 1, maximum: 99 }
 
+  # Features and Tags
   - type: checkboxes
-    id: options
+    id: features
     attributes:
-      label: Options
+      label: "Features"
+      description: "Select all that apply"
       options:
-        - label: Dog friendly
-        - label: Food nearby
-        - label: Seasonal
+        - label: "Dog friendly"
+        - label: "Food nearby"
+        - label: "Seasonal"
+        - label: "Natural attraction (not human-made)"
 
   - type: input
     id: tags
-    attributes: { label: Tags (comma separated), placeholder: "playground, waterplay, AC, stroller" }
+    attributes: 
+      label: "Tags (comma separated)"
+      description: "Additional descriptive tags (e.g., 'learning, nature, food, AC, stroller')"
+      placeholder: "learning, nature, food, AC, stroller"
 
-  - type: dropdown
-    id: naturalOrHuman
-    attributes:
-      label: Natural or Human-made?
-      options: ["Human-made","Natural"]
-
+  # Location Information
   - type: input
     id: website
-    attributes: { label: Website (optional), placeholder: "https://..." }
+    attributes: 
+      label: "Official Website (optional)"
+      description: "Full URL to the official website"
+      placeholder: "https://example.com"
 
   - type: input
     id: map_link
-    attributes: { label: Google Maps link, placeholder: "https://maps.google.com/..." }
+    attributes: 
+      label: "Google Maps Link"
+      description: "Full Google Maps URL to the exact location"
+      placeholder: "https://maps.google.com/?q=..."
+    validations: { required: true }
+
+  - type: input
+    id: address_en
+    attributes: 
+      label: "Full Address (English)"
+      description: "Complete address in English"
+      placeholder: "No. 105, Chunde Rd, Zhongli District, Taoyuan City, Taiwan 320"
+    validations: { required: true }
+
+  - type: input
+    id: address_query
+    attributes: 
+      label: "Map Search Query"
+      description: "Search query that best finds this location on maps (e.g., 'Xpark Aquarium, Zhongli, Taoyuan, Taiwan')"
+      placeholder: "Activity Name, District, City, Taiwan"
     validations: { required: true }
 
   - type: input
     id: drive_min
-    attributes: { label: Drive time (minutes from Zhongli), placeholder: "25" }
+    attributes: 
+      label: "Drive Time (minutes from Zhongli)"
+      description: "Estimated driving time in minutes from Zhongli"
+      placeholder: "25"
+    validations: { required: true, minimum: 0 }

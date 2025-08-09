@@ -1,35 +1,108 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Activity",
-    "type": "object",
-    "required": [
-      "name","indoor_outdoor","categories","desc","ageRange",
-      "dogFriendly","foodNearby","seasonal","tags","naturalOrHuman",
-      "map_link","district","city","drive_min"
-    ],
-    "properties": {
-      "name": { "type": "string", "minLength": 1 },
-      "indoor_outdoor": { "type": "string", "enum": ["Indoor","Outdoor","Mixed"] },
-      "categories": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-      "desc": { "type": "string", "minLength": 5 },
-      "cost_ntd": { "type": "string" },
-      "ageRange": {
-        "type": "array",
-        "items": { "type": "integer", "minimum": 0 },
-        "minItems": 2,
-        "maxItems": 2
-      },
-      "dogFriendly": { "type": "boolean" },
-      "foodNearby": { "type": "boolean" },
-      "seasonal": { "type": "boolean" },
-      "tags": { "type": "array", "items": { "type": "string" } },
-      "naturalOrHuman": { "type": "string", "enum": ["Natural","Human-made"] },
-      "website": { "type": "string" },
-      "map_link": { "type": "string" },
-      "district": { "type": "string" },
-      "city": { "type": "string" },
-      "drive_min": { "type": "integer", "minimum": 0 }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Activity",
+  "type": "object",
+  "required": [
+    "name",
+    "region",
+    "city",
+    "district",
+    "indoor_outdoor",
+    "categories",
+    "tags",
+    "cost_range",
+    "age_range",
+    "natural",
+    "desc",
+    "map_link",
+    "drive_min",
+    "address_en",
+    "id",
+    "address_query"
+  ],
+  "properties": {
+    "name": { 
+      "type": "string",
+      "minLength": 1,
+      "description": "Name of the activity/location"
     },
-    "additionalProperties": false
-  }
+    "region": {
+      "type": "string",
+      "description": "Region/Taiwan county where the activity is located"
+    },
+    "city": {
+      "type": "string",
+      "description": "City where the activity is located"
+    },
+    "district": {
+      "type": "string",
+      "description": "District/area within the city"
+    },
+    "indoor_outdoor": {
+      "type": "string",
+      "enum": ["Indoor", "Outdoor", "Mixed"],
+      "description": "Whether the activity is primarily indoor, outdoor, or mixed"
+    },
+    "categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Main categories the activity belongs to"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Descriptive tags about the activity"
+    },
+    "cost_range": {
+      "type": "string",
+      "description": "Price range in NTD (e.g., '0', '100-300', '600+', etc.)"
+    },
+    "age_range": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 0 },
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Minimum and maximum recommended age"
+    },
+    "natural": {
+      "type": "boolean",
+      "description": "Whether the attraction is natural (true) or human-made (false)"
+    },
+    "desc": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Description of the activity"
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Official website URL (optional)"
+    },
+    "map_link": {
+      "type": "string",
+      "format": "uri",
+      "description": "Google Maps link to the location"
+    },
+    "drive_min": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Estimated driving time in minutes from a reference point"
+    },
+    "address_en": {
+      "type": "string",
+      "description": "Full address in English"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "URL-friendly ID for the activity (lowercase, hyphens, no spaces)"
+    },
+    "address_query": {
+      "type": "string",
+      "description": "Search query string for maps/location services"
+    }
+  },
+  "additionalProperties": false
+}
   

@@ -1,0 +1,28 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Node / tooling
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Env & local overrides
+.env
+.env.*
+*.local
+
+# Builds / caches
+dist/
+.cache/
+.tmp/
+
+# Optional: uncomment if you decide NOT to track generated thumbnails
+# thumbnails/
+
+# Logs
+*.log
+

@@ -23,9 +23,11 @@
     "natural": false,
     "desc": "Modern aquarium with immersive tanks, penguins, and shows—great A/C learning day.",
     "website": "https://xpark.com.tw/",
-    "map_link": "https://maps.google.com/?q=Xpark+Taoyuan",
+    "map_link": "https://maps.google.com/?q=No.+105,+Chunde+Rd,+Zhongli+District,+Taoyuan+City",
     "drive_min": 15,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "No. 105, Chunde Rd, Zhongli District, Taoyuan City, Taiwan 320",
+    "id": "xpark-aquarium-qingpu",
+    "address_query": "Xpark Aquarium (Qingpu), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Hutoushan Park (虎頭山)",
@@ -51,9 +53,11 @@
     "natural": true,
     "desc": "Shady city mountain with easy paths and viewpoints.",
     "website": "",
-    "map_link": "https://maps.google.com/?q=Hutoushan+Park+Taoyuan",
+    "map_link": "https://maps.google.com/?q=No.+42,+Gongyuan+Rd.,+Taoyuan+Dist.,+Taoyuan+City+330023",
     "drive_min": 25,
-    "address_en": "Taoyuan District, Taoyuan, Taoyuan"
+    "address_en": "No. 42, Gongyuan Rd., Taoyuan Dist., Taoyuan City 330023, Taiwan",
+    "id": "hutoushan-park",
+    "address_query": "Hutoushan Park (虎頭山), Taoyuan District, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Dayou Terraced Ecological Park (大有梯田生態公園)",
@@ -81,7 +85,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=大有梯田生態公園",
     "drive_min": 25,
-    "address_en": "Taoyuan District, Taoyuan, Taoyuan"
+    "address_en": "Taoyuan District, Taoyuan, Taoyuan",
+    "id": "dayou-terraced-ecological-park",
+    "address_query": "Dayou Terraced Ecological Park (大有梯田生態公園), Taoyuan District, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Xinshi Park (新勢公園)",
@@ -107,7 +113,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=新勢公園+中壢",
     "drive_min": 10,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "xinshi-park",
+    "address_query": "Xinshi Park (新勢公園), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Laojie River Greenway (老街溪)",
@@ -135,7 +143,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=老街溪+中壢",
     "drive_min": 10,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "laojie-river-greenway",
+    "address_query": "Laojie River Greenway (老街溪), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Longtan Lake (龍潭大池)",
@@ -163,7 +173,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=龍潭大池",
     "drive_min": 25,
-    "address_en": "Longtan, Taoyuan, Taoyuan"
+    "address_en": "Longtan, Taoyuan, Taoyuan",
+    "id": "longtan-lake",
+    "address_query": "Longtan Lake (龍潭大池), Longtan, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Shihmen Reservoir (石門水庫)",
@@ -190,7 +202,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=石門水庫",
     "drive_min": 35,
-    "address_en": "Daxi/Longtan, Taoyuan, Taoyuan"
+    "address_en": "Daxi/Longtan, Taoyuan, Taoyuan",
+    "id": "shihmen-reservoir",
+    "address_query": "Shihmen Reservoir (石門水庫), Daxi/Longtan, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Daxi Old Street & Bridge",
@@ -218,7 +232,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Daxi+Old+Street",
     "drive_min": 35,
-    "address_en": "Daxi, Taoyuan, Taoyuan"
+    "address_en": "Daxi, Taoyuan, Taoyuan",
+    "id": "daxi-old-street-bridge",
+    "address_query": "Daxi Old Street & Bridge, Daxi, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Cihu Memorial Sculpture Park",
@@ -245,7 +261,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Cihu+Memorial+Park",
     "drive_min": 35,
-    "address_en": "Daxi, Taoyuan, Taoyuan"
+    "address_en": "Daxi, Taoyuan, Taoyuan",
+    "id": "cihu-memorial-sculpture-park",
+    "address_query": "Cihu Memorial Sculpture Park, Daxi, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Yong’an Fishing Harbor (永安漁港)",
@@ -274,7 +292,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=永安漁港",
     "drive_min": 45,
-    "address_en": "Xinwu, Taoyuan, Taoyuan"
+    "address_en": "Xinwu, Taoyuan, Taoyuan",
+    "id": "yongan-fishing-harbor",
+    "address_query": "Yong’an Fishing Harbor (永安漁港), Xinwu, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Xiao Wulai Skywalk & Waterfall",
@@ -301,7 +321,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=小烏來天空步道",
     "drive_min": 70,
-    "address_en": "Fuxing, Taoyuan, Taoyuan"
+    "address_en": "Fuxing, Taoyuan, Taoyuan",
+    "id": "xiao-wulai-skywalk-waterfall",
+    "address_query": "Xiao Wulai Skywalk & Waterfall, Fuxing, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Window on China Theme Park (小人國)",
@@ -330,7 +352,9 @@
     "website": "https://www.woc.com.tw/",
     "map_link": "https://maps.google.com/?q=Window+on+China+Theme+Park",
     "drive_min": 30,
-    "address_en": "Longtan, Taoyuan, Taoyuan"
+    "address_en": "Longtan, Taoyuan, Taoyuan",
+    "id": "window-on-china-theme-park",
+    "address_query": "Window on China Theme Park (小人國), Longtan, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Leofoo Village Theme Park",
@@ -359,7 +383,9 @@
     "website": "https://www.leofoovillage.com.tw/",
     "map_link": "https://maps.google.com/?q=Leofoo+Village",
     "drive_min": 40,
-    "address_en": "Guanxi, Hsinchu, Hsinchu"
+    "address_en": "Guanxi, Hsinchu, Hsinchu",
+    "id": "leofoo-village-theme-park",
+    "address_query": "Leofoo Village Theme Park, Guanxi, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Green World Ecological Farm (綠世界)",
@@ -387,7 +413,9 @@
     "website": "https://www.green-world.com.tw/",
     "map_link": "https://maps.google.com/?q=綠世界生態農場",
     "drive_min": 50,
-    "address_en": "Beipu, Hsinchu, Hsinchu"
+    "address_en": "Beipu, Hsinchu, Hsinchu",
+    "id": "green-world-ecological-farm",
+    "address_query": "Green World Ecological Farm (綠世界), Beipu, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Little Ding-Dong Science Park (小叮噹)",
@@ -416,7 +444,9 @@
     "website": "https://www.lxdd.com.tw/",
     "map_link": "https://maps.google.com/?q=小叮噹科學主題樂園",
     "drive_min": 45,
-    "address_en": "Xinpu, Hsinchu, Hsinchu"
+    "address_en": "Xinpu, Hsinchu, Hsinchu",
+    "id": "little-ding-dong-science-park",
+    "address_query": "Little Ding-Dong Science Park (小叮噹), Xinpu, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Pushin (Puxin) Ranch (埔心牧場)",
@@ -446,7 +476,9 @@
     "website": "https://www.pusin-ranch.com.tw/",
     "map_link": "https://maps.google.com/?q=埔心牧場",
     "drive_min": 25,
-    "address_en": "Yangmei, Taoyuan, Taoyuan"
+    "address_en": "Yangmei, Taoyuan, Taoyuan",
+    "id": "pushin-puxin-ranch",
+    "address_query": "Pushin (Puxin) Ranch (埔心牧場), Yangmei, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Hsinchu Zoo (新竹市立動物園)",
@@ -472,7 +504,9 @@
     "website": "https://zoo.hccg.gov.tw/",
     "map_link": "https://maps.google.com/?q=新竹市立動物園",
     "drive_min": 45,
-    "address_en": "East District, Hsinchu, Hsinchu"
+    "address_en": "East District, Hsinchu, Hsinchu",
+    "id": "hsinchu-zoo",
+    "address_query": "Hsinchu Zoo (新竹市立動物園), East District, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Yingge Ceramics Museum & DIY",
@@ -501,7 +535,9 @@
     "website": "https://www.ceramics.ntpc.gov.tw/",
     "map_link": "https://maps.google.com/?q=Yingge+Ceramics+Museum",
     "drive_min": 40,
-    "address_en": "Yingge, New Taipei, New Taipei"
+    "address_en": "Yingge, New Taipei, New Taipei",
+    "id": "yingge-ceramics-museum-diy",
+    "address_query": "Yingge Ceramics Museum & DIY, Yingge, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Taoyuan Children’s Art Center (青埔)",
@@ -528,7 +564,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Taoyuan+Children%27s+Art+Center",
     "drive_min": 15,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "taoyuan-childrens-art-center",
+    "address_query": "Taoyuan Children’s Art Center (青埔), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Taoyuan Main Library (青埔新總圖)",
@@ -555,7 +593,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Taoyuan+Main+Library+Qingpu",
     "drive_min": 15,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "taoyuan-main-library",
+    "address_query": "Taoyuan Main Library (青埔新總圖), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "TAI Snow Ice Rink (Taoyuan)",
@@ -582,7 +622,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=TAI+Snow+Taoyuan",
     "drive_min": 25,
-    "address_en": "Taoyuan District, Taoyuan, Taoyuan"
+    "address_en": "Taoyuan District, Taoyuan, Taoyuan",
+    "id": "tai-snow-ice-rink-taoyuan",
+    "address_query": "TAI Snow Ice Rink (Taoyuan), Taoyuan District, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Taipei Children’s Amusement Park",
@@ -609,7 +651,9 @@
     "website": "https://www.tcap.taipei/",
     "map_link": "https://maps.google.com/?q=Taipei+Children%27s+Amusement+Park",
     "drive_min": 60,
-    "address_en": "Shilin, Taipei, Taipei"
+    "address_en": "Shilin, Taipei, Taipei",
+    "id": "taipei-childrens-amusement-park",
+    "address_query": "Taipei Children’s Amusement Park, Shilin, Taipei, Taipei, Taiwan"
   },
   {
     "name": "National Taiwan Science Education Center",
@@ -636,7 +680,9 @@
     "website": "https://www.ntsec.gov.tw/",
     "map_link": "https://maps.google.com/?q=National+Taiwan+Science+Education+Center",
     "drive_min": 60,
-    "address_en": "Shilin, Taipei, Taipei"
+    "address_en": "Shilin, Taipei, Taipei",
+    "id": "national-taiwan-science-education-center",
+    "address_query": "National Taiwan Science Education Center, Shilin, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Taipei Astronomical Museum",
@@ -663,7 +709,9 @@
     "website": "https://www.tam.gov.taipei/",
     "map_link": "https://maps.google.com/?q=Taipei+Astronomical+Museum",
     "drive_min": 60,
-    "address_en": "Shilin, Taipei, Taipei"
+    "address_en": "Shilin, Taipei, Taipei",
+    "id": "taipei-astronomical-museum",
+    "address_query": "Taipei Astronomical Museum, Shilin, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Gloria Outlets (play zones)",
@@ -690,7 +738,9 @@
     "website": "https://www.gloriaoutlets.com/",
     "map_link": "https://maps.google.com/?q=Gloria+Outlets",
     "drive_min": 15,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "gloria-outlets-play-zones",
+    "address_query": "Gloria Outlets (play zones), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Shalun Beach (Tamsui)",
@@ -719,7 +769,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Shalun+Beach",
     "drive_min": 70,
-    "address_en": "Tamsui, New Taipei, New Taipei"
+    "address_en": "Tamsui, New Taipei, New Taipei",
+    "id": "shalun-beach-tamsui",
+    "address_query": "Shalun Beach (Tamsui), Tamsui, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Qianshuiwan (Qianshui Bay)",
@@ -748,7 +800,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Qianshuiwan",
     "drive_min": 80,
-    "address_en": "Sanzhi, New Taipei, New Taipei"
+    "address_en": "Sanzhi, New Taipei, New Taipei",
+    "id": "qianshuiwan-qianshui-bay",
+    "address_query": "Qianshuiwan (Qianshui Bay), Sanzhi, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Baishawan Beach",
@@ -776,7 +830,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Baishawan+Beach",
     "drive_min": 85,
-    "address_en": "Shimen, New Taipei, New Taipei"
+    "address_en": "Shimen, New Taipei, New Taipei",
+    "id": "baishawan-beach",
+    "address_query": "Baishawan Beach, Shimen, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Tamsui Fisherman’s Wharf & Lover’s Bridge",
@@ -804,7 +860,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Tamsui+Fisherman%27s+Wharf",
     "drive_min": 70,
-    "address_en": "Tamsui, New Taipei, New Taipei"
+    "address_en": "Tamsui, New Taipei, New Taipei",
+    "id": "tamsui-fishermans-wharf-lovers-bridge",
+    "address_query": "Tamsui Fisherman’s Wharf & Lover’s Bridge, Tamsui, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Wonderwood (Indoor Play)",
@@ -831,7 +889,9 @@
     "website": "",
     "map_link": "https://www.google.com/maps?q=Wonderwood+Taoyuan",
     "drive_min": 15,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "wonderwood-indoor-play",
+    "address_query": "Wonderwood (Indoor Play), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Daxi Fruit Picking (Seasonal)",
@@ -861,7 +921,9 @@
     "website": "",
     "map_link": "https://www.google.com/maps?q=Daxi+fruit+picking",
     "drive_min": 35,
-    "address_en": "Daxi, Taoyuan, Taoyuan"
+    "address_en": "Daxi, Taoyuan, Taoyuan",
+    "id": "daxi-fruit-picking-seasonal",
+    "address_query": "Daxi Fruit Picking (Seasonal), Daxi, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Zhuwei Fishing Harbor (竹圍漁港)",
@@ -888,7 +950,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=竹圍漁港",
     "drive_min": 35,
-    "address_en": "Dayuan, Taoyuan, Taoyuan"
+    "address_en": "Dayuan, Taoyuan, Taoyuan",
+    "id": "zhuwei-fishing-harbor",
+    "address_query": "Zhuwei Fishing Harbor (竹圍漁港), Dayuan, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Xinwu Tidal Park (新屋綠色隧道)",
@@ -915,7 +979,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=新屋綠色隧道",
     "drive_min": 45,
-    "address_en": "Xinwu, Taoyuan, Taoyuan"
+    "address_en": "Xinwu, Taoyuan, Taoyuan",
+    "id": "xinwu-tidal-park",
+    "address_query": "Xinwu Tidal Park (新屋綠色隧道), Xinwu, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Coca-Cola Museum (Taoyuan)",
@@ -941,7 +1007,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Coca+Cola+Museum+Taoyuan",
     "drive_min": 25,
-    "address_en": "Yangmei, Taoyuan, Taoyuan"
+    "address_en": "Yangmei, Taoyuan, Taoyuan",
+    "id": "coca-cola-museum-taoyuan",
+    "address_query": "Coca-Cola Museum (Taoyuan), Yangmei, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Yongan Seaview Bike Path",
@@ -968,7 +1036,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=永安+自行車道",
     "drive_min": 45,
-    "address_en": "Xinwu, Taoyuan, Taoyuan"
+    "address_en": "Xinwu, Taoyuan, Taoyuan",
+    "id": "yongan-seaview-bike-path",
+    "address_query": "Yongan Seaview Bike Path, Xinwu, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Lalashan (拉拉山) Forest Drive viewpoint",
@@ -994,7 +1064,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=拉拉山",
     "drive_min": 95,
-    "address_en": "Fuxing, Taoyuan, Taoyuan"
+    "address_en": "Fuxing, Taoyuan, Taoyuan",
+    "id": "lalashan-forest-drive-viewpoint",
+    "address_query": "Lalashan (拉拉山) Forest Drive viewpoint, Fuxing, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Neiwan Old Street (內灣老街)",
@@ -1021,7 +1093,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=內灣老街",
     "drive_min": 60,
-    "address_en": "Hengshan, Hsinchu, Hsinchu"
+    "address_en": "Hengshan, Hsinchu, Hsinchu",
+    "id": "neiwan-old-street",
+    "address_query": "Neiwan Old Street (內灣老街), Hengshan, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Beipu Old Street (北埔老街)",
@@ -1048,7 +1122,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=北埔老街",
     "drive_min": 55,
-    "address_en": "Beipu, Hsinchu, Hsinchu"
+    "address_en": "Beipu, Hsinchu, Hsinchu",
+    "id": "beipu-old-street",
+    "address_query": "Beipu Old Street (北埔老街), Beipu, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Hsinchu Nanliao Harbor (南寮) & 17km Coastline",
@@ -1076,7 +1152,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=南寮漁港",
     "drive_min": 50,
-    "address_en": "North District, Hsinchu, Hsinchu"
+    "address_en": "North District, Hsinchu, Hsinchu",
+    "id": "hsinchu-nanliao-harbor-17km-coastline",
+    "address_query": "Hsinchu Nanliao Harbor (南寮) & 17km Coastline, North District, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Green Grass Lake (青草湖)",
@@ -1102,7 +1180,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=青草湖",
     "drive_min": 50,
-    "address_en": "East District, Hsinchu, Hsinchu"
+    "address_en": "East District, Hsinchu, Hsinchu",
+    "id": "green-grass-lake",
+    "address_query": "Green Grass Lake (青草湖), East District, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Eighteen Peaks Mountain (十八尖山)",
@@ -1128,7 +1208,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=十八尖山",
     "drive_min": 50,
-    "address_en": "East District, Hsinchu, Hsinchu"
+    "address_en": "East District, Hsinchu, Hsinchu",
+    "id": "eighteen-peaks-mountain",
+    "address_query": "Eighteen Peaks Mountain (十八尖山), East District, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Little Ding-Dong Water Park (summer)",
@@ -1154,7 +1236,9 @@
     "website": "https://www.lxdd.com.tw/",
     "map_link": "https://maps.google.com/?q=小叮噹+水上樂園",
     "drive_min": 45,
-    "address_en": "Xinpu, Hsinchu, Hsinchu"
+    "address_en": "Xinpu, Hsinchu, Hsinchu",
+    "id": "little-ding-dong-water-park-summer",
+    "address_query": "Little Ding-Dong Water Park (summer), Xinpu, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Leofoo Water Attractions (summer)",
@@ -1181,7 +1265,9 @@
     "website": "https://www.leofoovillage.com.tw/",
     "map_link": "https://maps.google.com/?q=Leofoo+Village",
     "drive_min": 40,
-    "address_en": "Guanxi, Hsinchu, Hsinchu"
+    "address_en": "Guanxi, Hsinchu, Hsinchu",
+    "id": "leofoo-water-attractions-summer",
+    "address_query": "Leofoo Water Attractions (summer), Guanxi, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Window on China Water Area (summer)",
@@ -1206,7 +1292,9 @@
     "website": "https://www.woc.com.tw/",
     "map_link": "https://maps.google.com/?q=Window+on+China",
     "drive_min": 30,
-    "address_en": "Longtan, Taoyuan, Taoyuan"
+    "address_en": "Longtan, Taoyuan, Taoyuan",
+    "id": "window-on-china-water-area-summer",
+    "address_query": "Window on China Water Area (summer), Longtan, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Xinwu Guava Farms (seasonal)",
@@ -1234,7 +1322,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=新屋+採果",
     "drive_min": 45,
-    "address_en": "Xinwu, Taoyuan, Taoyuan"
+    "address_en": "Xinwu, Taoyuan, Taoyuan",
+    "id": "xinwu-guava-farms-seasonal",
+    "address_query": "Xinwu Guava Farms (seasonal), Xinwu, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Longtan Strawberry Farms (winter)",
@@ -1262,7 +1352,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=龍潭+採草莓",
     "drive_min": 30,
-    "address_en": "Longtan, Taoyuan, Taoyuan"
+    "address_en": "Longtan, Taoyuan, Taoyuan",
+    "id": "longtan-strawberry-farms-winter",
+    "address_query": "Longtan Strawberry Farms (winter), Longtan, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Flying Cow Ranch (飛牛牧場)",
@@ -1290,7 +1382,9 @@
     "website": "https://www.flyingcow.com.tw/",
     "map_link": "https://maps.google.com/?q=飛牛牧場",
     "drive_min": 80,
-    "address_en": "Tongxiao, Miaoli, Miaoli"
+    "address_en": "Tongxiao, Miaoli, Miaoli",
+    "id": "flying-cow-ranch",
+    "address_query": "Flying Cow Ranch (飛牛牧場), Tongxiao, Miaoli, Miaoli, Taiwan"
   },
   {
     "name": "Taihe Leisure Farm (泰和休閒農場)",
@@ -1317,7 +1411,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=泰和休閒農場",
     "drive_min": 45,
-    "address_en": "Guanxi, Hsinchu, Hsinchu"
+    "address_en": "Guanxi, Hsinchu, Hsinchu",
+    "id": "taihe-leisure-farm",
+    "address_query": "Taihe Leisure Farm (泰和休閒農場), Guanxi, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Neiwan Forest Theme Park (內灣森林遊樂區)",
@@ -1343,7 +1439,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=內灣+森林",
     "drive_min": 65,
-    "address_en": "Hengshan, Hsinchu, Hsinchu"
+    "address_en": "Hengshan, Hsinchu, Hsinchu",
+    "id": "neiwan-forest-theme-park",
+    "address_query": "Neiwan Forest Theme Park (內灣森林遊樂區), Hengshan, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Maokong Gondola + Tea Area",
@@ -1371,7 +1469,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=貓空纜車",
     "drive_min": 70,
-    "address_en": "Wenshan, Taipei, Taipei"
+    "address_en": "Wenshan, Taipei, Taipei",
+    "id": "maokong-gondola-tea-area",
+    "address_query": "Maokong Gondola + Tea Area, Wenshan, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Taipei Zoo (木柵動物園)",
@@ -1398,7 +1498,9 @@
     "website": "https://www.zoo.gov.taipei/",
     "map_link": "https://maps.google.com/?q=臺北市立動物園",
     "drive_min": 70,
-    "address_en": "Wenshan, Taipei, Taipei"
+    "address_en": "Wenshan, Taipei, Taipei",
+    "id": "taipei-zoo",
+    "address_query": "Taipei Zoo (木柵動物園), Wenshan, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Bitan Riverside (碧潭)",
@@ -1425,7 +1527,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=碧潭",
     "drive_min": 65,
-    "address_en": "Xindian, New Taipei, New Taipei"
+    "address_en": "Xindian, New Taipei, New Taipei",
+    "id": "bitan-riverside",
+    "address_query": "Bitan Riverside (碧潭), Xindian, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Sanxia Old Street (三峽老街)",
@@ -1452,7 +1556,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=三峽老街",
     "drive_min": 55,
-    "address_en": "Sanxia, New Taipei, New Taipei"
+    "address_en": "Sanxia, New Taipei, New Taipei",
+    "id": "sanxia-old-street",
+    "address_query": "Sanxia Old Street (三峽老街), Sanxia, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Yingge Old Street (鶯歌老街)",
@@ -1479,7 +1585,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=鶯歌老街",
     "drive_min": 40,
-    "address_en": "Yingge, New Taipei, New Taipei"
+    "address_en": "Yingge, New Taipei, New Taipei",
+    "id": "yingge-old-street",
+    "address_query": "Yingge Old Street (鶯歌老街), Yingge, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "KidsAwesome Children’s Museum",
@@ -1506,7 +1614,9 @@
     "website": "https://www.kidsawesome.com.tw/",
     "map_link": "https://maps.google.com/?q=KidsAwesome",
     "drive_min": 60,
-    "address_en": "Zhongshan, Taipei, Taipei"
+    "address_en": "Zhongshan, Taipei, Taipei",
+    "id": "kidsawesome-childrens-museum",
+    "address_query": "KidsAwesome Children’s Museum, Zhongshan, Taipei, Taipei, Taiwan"
   },
   {
     "name": "i-Ride Taoyuan (motion cinema)",
@@ -1532,7 +1642,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=i-Ride+Taoyuan",
     "drive_min": 15,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "i-ride-taoyuan-motion-cinema",
+    "address_query": "i-Ride Taoyuan (motion cinema), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Fun Jungle (Indoor Playground)",
@@ -1559,7 +1671,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=Fun+Jungle+Luzhu",
     "drive_min": 25,
-    "address_en": "Luzhu, Taoyuan, Taoyuan"
+    "address_en": "Luzhu, Taoyuan, Taoyuan",
+    "id": "fun-jungle-indoor-playground",
+    "address_query": "Fun Jungle (Indoor Playground), Luzhu, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "O’Climb Taoyuan (Climbing Gym)",
@@ -1586,7 +1700,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=O%27Climb+Taoyuan",
     "drive_min": 25,
-    "address_en": "Taoyuan District, Taoyuan, Taoyuan"
+    "address_en": "Taoyuan District, Taoyuan, Taoyuan",
+    "id": "oclimb-taoyuan-climbing-gym",
+    "address_query": "O’Climb Taoyuan (Climbing Gym), Taoyuan District, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "IKEA Taoyuan Småland (play)",
@@ -1613,7 +1729,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=IKEA+Taoyuan",
     "drive_min": 25,
-    "address_en": "Luzhu, Taoyuan, Taoyuan"
+    "address_en": "Luzhu, Taoyuan, Taoyuan",
+    "id": "ikea-taoyuan-smaland-play",
+    "address_query": "IKEA Taoyuan Småland (play), Luzhu, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Big City Mall Play Areas",
@@ -1639,7 +1757,9 @@
     "website": "https://www.bigcity.com.tw/",
     "map_link": "https://maps.google.com/?q=Big+City+Hsinchu",
     "drive_min": 45,
-    "address_en": "East District, Hsinchu, Hsinchu"
+    "address_en": "East District, Hsinchu, Hsinchu",
+    "id": "big-city-mall-play-areas",
+    "address_query": "Big City Mall Play Areas, East District, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Hsinchu City Glass Museum",
@@ -1666,7 +1786,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=玻璃工藝博物館+新竹",
     "drive_min": 50,
-    "address_en": "East District, Hsinchu, Hsinchu"
+    "address_en": "East District, Hsinchu, Hsinchu",
+    "id": "hsinchu-city-glass-museum",
+    "address_query": "Hsinchu City Glass Museum, East District, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Zhubei Riverbank Bike Path",
@@ -1693,7 +1815,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=竹北+河濱+自行車道",
     "drive_min": 40,
-    "address_en": "Zhubei, Hsinchu, Hsinchu"
+    "address_en": "Zhubei, Hsinchu, Hsinchu",
+    "id": "zhubei-riverbank-bike-path",
+    "address_query": "Zhubei Riverbank Bike Path, Zhubei, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Minshengtang Children’s Library (Hsinchu)",
@@ -1718,7 +1842,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=新竹+兒童+圖書館",
     "drive_min": 45,
-    "address_en": "East District, Hsinchu, Hsinchu"
+    "address_en": "East District, Hsinchu, Hsinchu",
+    "id": "minshengtang-childrens-library-hsinchu",
+    "address_query": "Minshengtang Children’s Library (Hsinchu), East District, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Yongkang Street Play Cafés (Taipei)",
@@ -1744,7 +1870,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=永康街+親子+咖啡",
     "drive_min": 65,
-    "address_en": "Da’an, Taipei, Taipei"
+    "address_en": "Da’an, Taipei, Taipei",
+    "id": "yongkang-street-play-cafes-taipei",
+    "address_query": "Yongkang Street Play Cafés (Taipei), Da’an, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Miramar Ferris Wheel (Taipei)",
@@ -1770,7 +1898,9 @@
     "website": "https://www.miramar.com.tw/",
     "map_link": "https://maps.google.com/?q=美麗華+摩天輪",
     "drive_min": 65,
-    "address_en": "Zhongshan, Taipei, Taipei"
+    "address_en": "Zhongshan, Taipei, Taipei",
+    "id": "miramar-ferris-wheel-taipei",
+    "address_query": "Miramar Ferris Wheel (Taipei), Zhongshan, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Elephant Mountain Short Hike",
@@ -1796,7 +1926,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=象山步道",
     "drive_min": 70,
-    "address_en": "Xinyi, Taipei, Taipei"
+    "address_en": "Xinyi, Taipei, Taipei",
+    "id": "elephant-mountain-short-hike",
+    "address_query": "Elephant Mountain Short Hike, Xinyi, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Songshan Cultural & Creative Park",
@@ -1823,7 +1955,9 @@
     "website": "https://www.songshanculturalpark.org/",
     "map_link": "https://maps.google.com/?q=松山文創園區",
     "drive_min": 65,
-    "address_en": "Xinyi/Songshan, Taipei, Taipei"
+    "address_en": "Xinyi/Songshan, Taipei, Taipei",
+    "id": "songshan-cultural-creative-park",
+    "address_query": "Songshan Cultural & Creative Park, Xinyi/Songshan, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Huashan 1914 Creative Park",
@@ -1850,7 +1984,9 @@
     "website": "https://www.huashan1914.com/",
     "map_link": "https://maps.google.com/?q=華山1914文化創意產業園區",
     "drive_min": 60,
-    "address_en": "Zhongzheng, Taipei, Taipei"
+    "address_en": "Zhongzheng, Taipei, Taipei",
+    "id": "huashan-1914-creative-park",
+    "address_query": "Huashan 1914 Creative Park, Zhongzheng, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Taipei Water Park (Museum of Drinking Water)",
@@ -1876,7 +2012,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=台北自來水園區",
     "drive_min": 60,
-    "address_en": "Zhongzheng, Taipei, Taipei"
+    "address_en": "Zhongzheng, Taipei, Taipei",
+    "id": "taipei-water-park-museum-of-drinking-water",
+    "address_query": "Taipei Water Park (Museum of Drinking Water), Zhongzheng, Taipei, Taipei, Taiwan"
   },
   {
     "name": "Shimen Cave (石門洞) Coast",
@@ -1903,7 +2041,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=石門洞",
     "drive_min": 85,
-    "address_en": "Shimen, New Taipei, New Taipei"
+    "address_en": "Shimen, New Taipei, New Taipei",
+    "id": "shimen-cave-coast",
+    "address_query": "Shimen Cave (石門洞) Coast, Shimen, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Shenkeng Old Street (深坑老街)",
@@ -1930,7 +2070,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=深坑老街",
     "drive_min": 70,
-    "address_en": "Shenkeng, New Taipei, New Taipei"
+    "address_en": "Shenkeng, New Taipei, New Taipei",
+    "id": "shenkeng-old-street",
+    "address_query": "Shenkeng Old Street (深坑老街), Shenkeng, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Wulai Old Street & Waterfall",
@@ -1957,7 +2099,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=烏來瀑布",
     "drive_min": 75,
-    "address_en": "Wulai, New Taipei, New Taipei"
+    "address_en": "Wulai, New Taipei, New Taipei",
+    "id": "wulai-old-street-waterfall",
+    "address_query": "Wulai Old Street & Waterfall, Wulai, New Taipei, New Taipei, Taiwan"
   },
   {
     "name": "Luodong Forestry Culture Park (bonus reach)",
@@ -1983,7 +2127,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=羅東林業文化園區",
     "drive_min": 95,
-    "address_en": "Luodong, Yilan, Yilan"
+    "address_en": "Luodong, Yilan, Yilan",
+    "id": "luodong-forestry-culture-park-bonus-reach",
+    "address_query": "Luodong Forestry Culture Park (bonus reach), Luodong, Yilan, Yilan, Taiwan"
   },
   {
     "name": "Zhongli Night Market (中壢觀光夜市)",
@@ -2010,7 +2156,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=中壢夜市",
     "drive_min": 10,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "zhongli-night-market",
+    "address_query": "Zhongli Night Market (中壢觀光夜市), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Taoyuan Arts Center (桃園展演中心)",
@@ -2036,7 +2184,9 @@
     "website": "https://www.tygcp.org.tw/",
     "map_link": "https://maps.google.com/?q=桃園展演中心",
     "drive_min": 25,
-    "address_en": "Taoyuan District, Taoyuan, Taoyuan"
+    "address_en": "Taoyuan District, Taoyuan, Taoyuan",
+    "id": "taoyuan-arts-center",
+    "address_query": "Taoyuan Arts Center (桃園展演中心), Taoyuan District, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Hakka Culture Hall (Longtan)",
@@ -2062,7 +2212,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=客家文化館+龍潭",
     "drive_min": 30,
-    "address_en": "Longtan, Taoyuan, Taoyuan"
+    "address_en": "Longtan, Taoyuan, Taoyuan",
+    "id": "hakka-culture-hall-longtan",
+    "address_query": "Hakka Culture Hall (Longtan), Longtan, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Shimen Reservoir Bike Loop (sections)",
@@ -2089,7 +2241,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=石門水庫+自行車",
     "drive_min": 35,
-    "address_en": "Longtan/Daxi, Taoyuan, Taoyuan"
+    "address_en": "Longtan/Daxi, Taoyuan, Taoyuan",
+    "id": "shimen-reservoir-bike-loop-sections",
+    "address_query": "Shimen Reservoir Bike Loop (sections), Longtan/Daxi, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Luzhu Sports Center (public pool)",
@@ -2115,7 +2269,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=蘆竹+運動中心",
     "drive_min": 25,
-    "address_en": "Luzhu, Taoyuan, Taoyuan"
+    "address_en": "Luzhu, Taoyuan, Taoyuan",
+    "id": "luzhu-sports-center-public-pool",
+    "address_query": "Luzhu Sports Center (public pool), Luzhu, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Dayuan Coastal Park Boardwalk",
@@ -2142,7 +2298,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=大園+海濱+木棧道",
     "drive_min": 35,
-    "address_en": "Dayuan, Taoyuan, Taoyuan"
+    "address_en": "Dayuan, Taoyuan, Taoyuan",
+    "id": "dayuan-coastal-park-boardwalk",
+    "address_query": "Dayuan Coastal Park Boardwalk, Dayuan, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Hsinchu Railway Museum (小)",
@@ -2168,7 +2326,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=新竹+鐵道+博物館",
     "drive_min": 50,
-    "address_en": "East District, Hsinchu, Hsinchu"
+    "address_en": "East District, Hsinchu, Hsinchu",
+    "id": "hsinchu-railway-museum",
+    "address_query": "Hsinchu Railway Museum (小), East District, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Anhe Children’s Water Play (summer)",
@@ -2193,7 +2353,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=中壢+兒童+戲水",
     "drive_min": 10,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "anhe-childrens-water-play-summer",
+    "address_query": "Anhe Children’s Water Play (summer), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Shimen Chocolate Factory (tour)",
@@ -2220,7 +2382,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=巧克力+工廠+大溪",
     "drive_min": 35,
-    "address_en": "Daxi, Taoyuan, Taoyuan"
+    "address_en": "Daxi, Taoyuan, Taoyuan",
+    "id": "shimen-chocolate-factory-tour",
+    "address_query": "Shimen Chocolate Factory (tour), Daxi, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Zhulin (竹林) Bike/Greenway",
@@ -2247,7 +2411,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=中壢+綠廊",
     "drive_min": 10,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "zhulin-bikegreenway",
+    "address_query": "Zhulin (竹林) Bike/Greenway, Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Qingpu Sports Park (courts/track)",
@@ -2272,7 +2438,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=青埔+運動公園",
     "drive_min": 15,
-    "address_en": "Zhongli, Taoyuan, Taoyuan"
+    "address_en": "Zhongli, Taoyuan, Taoyuan",
+    "id": "qingpu-sports-park-courtstrack",
+    "address_query": "Qingpu Sports Park (courts/track), Zhongli, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Luzhu Coastal Wind Farm Viewpoint",
@@ -2299,7 +2467,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=桃園+海岸+風車",
     "drive_min": 35,
-    "address_en": "Luzhu, Taoyuan, Taoyuan"
+    "address_en": "Luzhu, Taoyuan, Taoyuan",
+    "id": "luzhu-coastal-wind-farm-viewpoint",
+    "address_query": "Luzhu Coastal Wind Farm Viewpoint, Luzhu, Taoyuan, Taoyuan, Taiwan"
   },
   {
     "name": "Zhubei Children’s Art Museum (small)",
@@ -2325,7 +2495,9 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=竹北+兒童+美術",
     "drive_min": 40,
-    "address_en": "Zhubei, Hsinchu, Hsinchu"
+    "address_en": "Zhubei, Hsinchu, Hsinchu",
+    "id": "zhubei-childrens-art-museum-small",
+    "address_query": "Zhubei Children’s Art Museum (small), Zhubei, Hsinchu, Hsinchu, Taiwan"
   },
   {
     "name": "Hakka Tung Blossom Viewing (春)",
@@ -2352,6 +2524,8 @@
     "website": "",
     "map_link": "https://maps.google.com/?q=桐花+步道+新竹",
     "drive_min": 55,
-    "address_en": "Various, Hsinchu, Hsinchu"
+    "address_en": "Various, Hsinchu, Hsinchu",
+    "id": "hakka-tung-blossom-viewing",
+    "address_query": "Hakka Tung Blossom Viewing (春), Various, Hsinchu, Hsinchu, Taiwan"
   }
 ]
