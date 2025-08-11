@@ -1,0 +1,1449 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Taiwan Kids Atlas des Merveilles</title>
+
+  <!-- Type (swap to the family in your Figma file if needed) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==============================
+       DESIGN TOKENS (map these to Figma)
+       ============================== */
+    :root{
+      /* Palette */
+      --bg:#F6F9FC; --surface:#FFFFFF; --elev-1:#F2F6FB; --elev-2:#EEF3F9;
+        --text:#0F172A; --muted:#5D6B82; --border:#E2E8F0; --chip:#F2F6FB;
+      --primary: #5D6B82;     /* Gradient A */
+      --primary-2:#5D6B82;    /* Gradient B */
+      --success:#2ECC71;
+      --danger:#FF6B6B;
+      --warning:#FFB020;
+
+      /* Radii */
+      --r-lg: 24px;
+      --r-md: 16px;
+      --r-sm: 12px;
+      --r-xs: 8px;
+
+      /* Shadows */
+      --shadow-1: 0 8px 24px rgba(0,0,0,.35);
+
+      /* Spacing scale */
+      --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#F6F9FC; --surface:#FFFFFF; --elev-1:#F2F6FB; --elev-2:#EEF3F9;
+        --text:#0F172A; --muted:#5D6B82; --border:#E2E8F0; --chip:#F2F6FB;
+      }
+    }
+
+    *{ box-sizing:border-box }
+    html,body{ height:100%; background: var(--body-bg); }
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at -10% -20%, rgba(124,92,255,.15), transparent 40%),
+        radial-gradient(900px 600px at 120% 0%, rgba(94,227,255,.12), transparent 40%),
+        var(--bg);
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      -webkit-font-smoothing: antialiased;
+      line-height:1.5;
+    }
+
+    /* ------- Phone shell (preview) ------- */
+    .phone{
+      max-width:420px;
+      margin: var(--s-4) auto calc(96px + env(safe-area-inset-bottom));
+      border:1px solid var(--border);
+      border-radius: 28px;
+      background: rgba(255,255,255,.02);
+      overflow:hidden;
+      box-shadow: var(--shadow-1);
+      position:relative;
+    }
+
+    /* ------- Top bar ------- */
+    .topbar{
+      position: sticky; top:0; z-index: 30;
+      backdrop-filter: blur(10px) saturate(160%);
+      border-bottom:1px solid var(--border);
+      margin-bottom: var(--s-4);
+    }
+    .status{
+      padding: 10px var(--s-4);
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:12px; color:var(--muted);
+    }
+    .header{
+      display:grid; grid-template-columns:44px 1fr 44px; gap: var(--s-3);
+      align-items:center; padding: var(--s-3) var(--s-3) var(--s-4);
+    }
+    .logo{
+      width:44px; height:44px; border-radius:50%;
+      background-image: url(assets/logo.png);
+      background-size: cover;
+      border:2px solid rgba(255,255,255,.14);
+    }
+    .search{
+      display:flex; align-items:center; gap: var(--s-3);
+      background: var(--surface); border:1px solid var(--border);
+      border-radius: 999px; padding: 10px var(--s-4);
+    }
+    .search input{ flex:1; background:transparent; border:none; outline:none; color:var(--text); font-size:14px }
+    .icon-btn{
+      width:44px; height:44px; display:grid; place-items:center;
+      border-radius: var(--r-sm); background: var(--surface);
+      border:1px solid var(--border); color:var(--text); cursor:pointer;
+    }
+
+    /* ------- Category chips row (Explore feel) ------- */
+    .chips{
+      padding: 0 var(--s-3) var(--s-3);
+      display:flex; gap: var(--s-2); overflow:auto;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+    }
+    .chips::-webkit-scrollbar{ display:none }
+    .chip{
+      white-space:nowrap;
+      border:1px solid var(--border);
+      background: var(--chip);
+      color:var(--muted);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight:600; font-size: 13px;
+    }
+    .chip-arrow{
+      color: var(--elev-1);
+    border-color: rgba(255, 255, 255, 1);
+    background: #26292f;
+    position: absolute;
+
+    }
+    .chip-arrow.left{
+    left: 0;
+    margin-top: -2px;
+    }
+    .chip-arrow.right{
+    right: 0;
+    margin-top: -46px;
+    }
+    #categoryChips{
+margin-left: 46px;
+    }
+    .chip.is-primary {
+    color: var(--elev-1);
+    border-color: rgba(255, 255, 255, 1);
+    background: #26292f;
+}
+
+    /* ------- Stories row ------- */
+    .stories{
+      display:flex; gap: var(--s-3);
+      overflow:auto; padding: 0 var(--s-3) var(--s-3);
+      scrollbar-width: none;
+    }
+    .stories::-webkit-scrollbar{ display:none }
+    .story{
+      width:72px; flex: 0 0 auto; text-align:center;
+    }
+    .story .ring{
+      width:64px; height:64px; border-radius:50%;
+      margin:0 auto var(--s-2);
+      padding:2px;
+      background: conic-gradient(from 180deg, var(--primary), var(--primary-2));
+    }
+    .story .ring > .img{
+      width:100%; height:100%; border-radius:50%;
+      background: var(--surface);
+      display:block;
+      border: 2px solid var(--bg);
+    }
+    .story .name{ font-size:12px; color:var(--muted) }
+
+    /* ------- Sections (tabs) ------- */
+    .tabs{
+      display:grid; grid-auto-flow: column; gap: var(--s-2);
+      padding: 0 var(--s-3) var(--s-3);
+    }
+    .tab{
+      padding: 8px 12px; text-align:center; border-radius:999px;
+      border:1px solid var(--border); color:var(--muted);
+      background: rgba(255,255,255,.02); font-weight:600; font-size:13px; cursor:pointer;
+    }
+    .tab.active{ color:var(--text); background: linear-gradient(90deg, rgba(124,92,255,.18), rgba(94,227,255,.18)); border-color: rgba(255,255,255,.18); }
+
+    .screen{ display:none; padding-bottom: var(--s-4) }
+    .screen.active{ display:block }
+
+    /* ------- Cards ------- */
+    .card{
+      margin: var(--s-3);
+      background: var(--surface);
+      border:1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--s-4);
+    }
+    .row{ display:flex; align-items:center; gap: var(--s-3) }
+    .grow{ flex:1 }
+    .title{ font-weight:700 }
+    .sub{ font-size:12px; color:var(--muted) }
+
+    .media{
+      margin-top: var(--s-3);
+      border-radius: var(--r-sm);
+      height: 180px;
+      background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(94,227,255,.25));
+      border:1px solid var(--border);
+      display:grid; place-items:center; color:var(--muted); font-weight:600;
+    }
+
+    .actions{ display:flex; gap: var(--s-2); margin-top: var(--s-3) }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 12px;
+      border-radius: var(--r-xs); border:1px solid var(--border);
+      background: var(--elev-1); color:var(--text); cursor:pointer; font-weight:600; font-size:14px;
+    }
+    .btn.primary{ background: linear-gradient(135deg, var(--primary), var(--primary-2)); border-color: transparent; color:#0b0f1a }
+
+    /* ------- Event list ------- */
+    .event{ display:flex; gap: var(--s-3); align-items:center; padding: var(--s-3); border:1px solid var(--border); border-radius: var(--r-sm); background: rgba(255,255,255,.02) }
+    .badge-date{
+      width:52px; flex:0 0 52px; text-align:center;
+      border-radius: var(--r-xs); background: var(--chip); border:1px solid var(--border);
+      padding: 8px 6px;
+    }
+    .badge-date .d{ font-size:18px; font-weight:800 }
+    .badge-date .m{ font-size:11px; color:var(--muted) }
+
+    /* ------- Composer ------- */
+    .composer{ display:flex; gap: var(--s-3) }
+    .composer input{
+      flex:1; background: var(--elev-1); border:1px solid var(--border);
+      color:var(--text); border-radius: var(--r-xs); padding: 10px 12px; outline:none;
+    }
+
+    /* ------- Bottom nav & FAB ------- */
+    .bottom {
+    position: sticky;
+    left: 50%;
+    bottom: env(safe-area-inset-bottom, 0);
+    z-index: 1000;
+    display: grid
+;
+    place-items: center;
+    padding: 12px;
+    width: 100%;
+    pointer-events: auto;
+    color: white;
+}
+    .nav{
+      width:min(320px,100%);
+      display:grid; grid-template-columns:repeat(3, 1fr); gap: var(--s-2);
+      background: #ededed;
+      border:1px solid var(--border);
+      border-radius: 20px;
+      padding: 8px;
+    }
+    .nav button{
+      height:44px; border:none; background:transparent; color:var(--muted);
+      border-radius: 12px; display:grid; place-items:center; cursor:pointer; font-weight:600;
+    }
+    .nav button.active {
+    color: var(--surface);
+    background: #2996d1;
+    border: 1px solid rgba(255, 255, 255, .2);
+    box-shadow: #1c1e5b 0px 1px 3px;
+}
+    /* Activity grid & cards (Apple HIG-style) */
+    .activity-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--s-4);
+      padding: 0 var(--s-3) var(--s-4);
+    }
+    .activity-card{
+      background: var(--surface);
+      border:1px solid var(--border);
+      border-radius: var(--r-md);
+      overflow:hidden;
+      box-shadow: var(--shadow-1);
+      display:flex; flex-direction:column;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .activity-card:hover{ transform: translateY(-2px) }
+    .card-image{
+      position:relative; width:100%; aspect-ratio:16/5; background-size:cover; background-position:center; overflow:hidden;
+    }
+    .card-image::after{
+      content:''; position:absolute; inset:auto 0 0 0; height:40%;
+      background: linear-gradient(to top, rgba(0,0,0,.45), transparent);
+    }
+    /* Top-right icon actions over the image */
+    .card-actions{
+      position:absolute; top:8px; left:8px; display:flex; gap:8px; z-index:2;
+    }
+    .icon-btn{
+      width:32px; height:32px; display:grid; place-items:center;
+      color:#fff; border-radius:10px;
+      background:rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.2);
+      backdrop-filter:saturate(180%) blur(10px);
+      -webkit-backdrop-filter:saturate(180%) blur(10px);
+    }
+    .icon-btn:hover{ background:rgba(0,0,0,.6) }
+    .icon-btn svg{ width:18px; height:18px; display:block }
+    .card-badge{
+      position:absolute; top:8px; right:8px; z-index:1;
+      background: rgba(0,0,0,.65); color:white; font-size:12px; font-weight:600;
+      padding:4px 10px; border-radius:999px; backdrop-filter: blur(4px);
+    }
+    .card-content{ padding:10px 12px 12px }
+    .card-title{ font:600 15px/1.3 var(--font); color:var(--fg); margin:2px 0 6px; letter-spacing:.2px }
+    .card-title{ margin:0; margin-left: 10px; font-size:16px; font-weight:700; line-height:1.25; color:var(--text) }
+    .card-location{ display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted);margin-top: 6px;
+      margin-bottom: 6px; }
+    .location-icon{ width:16px; height:16px; color:var(--muted) }
+    .card-meta{
+      margin-top:auto; padding-top:10px; border-top:1px solid var(--border);
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .meta-item{
+      font:500 11px/1 var(--font); color:var(--muted); background:var(--card-chip);
+      border:1px solid var(--card-chip-border); padding:6px 8px; border-radius:999px
+    }
+    .meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px }
+    .pill {
+    font-size: 12px;
+    border: 1px solid var(--border);
+    background: var(--pill);
+    padding: 4px 8px;
+    border-radius: 999px;
+    color: var(--muted);
+    cursor: pointer;
+}
+    .desc{
+      font:400 12px/1.45 var(--font); color:var(--muted); margin:6px 0 0;
+      display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden
+    }
+    /* Home dashboard stat tiles */
+    .stats{ display:grid; gap:12px }
+    .stat{ background: var(--card-bg, rgba(255,255,255,0.03)); border:1px solid var(--border); border-radius:14px; padding:12px; text-align:center }
+    .stat-num{ font:700 22px/1.2 var(--font); color:var(--fg) }
+    .stat-label{ font:500 12px/1.2 var(--font); color:var(--muted); margin-top:4px }
+    /* Simple horizontal bar chart */
+    .chart-bars{ display:grid; gap:8px; margin-top:12px }
+    .bar{ display:flex; align-items:center; gap:10px }
+    .bar-label{ width:110px; font:500 12px/1.2 var(--font); color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+    .bar-track{ flex:1; height:10px; background: rgba(255,255,255,0.06); border:1px solid var(--border); border-radius:999px; overflow:hidden }
+    .bar-fill{ height:100%; background: var(--primary, #4f7cff); border-radius:999px; }
+    .fab{
+      position: fixed; right: calc(50% - 210px); bottom: 96px;
+      width:56px; height:56px; border-radius: 50%; display:grid; place-items:center;
+      border:none; cursor:pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color:#0b0f1a; box-shadow: var(--shadow-1);
+    }
+    @media (max-width:480px){ .fab{ right: 16px } .phone{ border-radius: 22px } }
+    /* Compact search + filter toolbar */
+    .search-row{ display:flex; align-items:center; gap:10px; margin-bottom: 10px; width: 100% }
+    .search.narrow{ flex:1; min-width: 0 }
+    .search-row .btn{ white-space: nowrap }
+    /* Topbar layout for logo + search + button */
+    .topbar .header{ display:flex; align-items:center; gap:10px }
+    .topbar .header .search{ flex:1; min-width:0 }
+    .hidden{ display:none !important }
+    /* Filters overlay */
+    .overlay{ position: fixed; inset: 0; display:none; z-index: 1000 }
+    .overlay.open{ display:block }
+    .overlay .backdrop{ position:absolute; inset:0; background: rgba(0,0,0,0.5) }
+    .overlay .panel{
+      position:absolute; right:0; top:0; height:100%; width:min(420px, 100%);
+      background: var(--bg); border-left:1px solid var(--border);
+      box-shadow: var(--shadow-2); display:flex; flex-direction:column;
+    }
+    .overlay .panel header{ display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--border) }
+    .overlay .panel .content{ padding:14px; overflow:auto; display:grid; gap:14px }
+    .overlay .section-title{ font:600 14px/1.2 var(--font); color:var(--fg) }
+    .overlay .row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap }
+    .overlay .actions{ padding:12px 14px; border-top:1px solid var(--border); display:flex; gap:10px; justify-content:flex-end }
+    /* Enhanced fields to match page design */
+    .overlay .field{ background: var(--surface); border:1px solid var(--border); border-radius: var(--r-sm); padding: 10px; }
+    .overlay .field label{ display:block; font:600 12px/1.2 var(--font); color: var(--muted); margin-bottom:6px }
+    .overlay .select, .overlay .number, .overlay .text{ width:100%; background:transparent; border:1px solid var(--border); color:var(--text); border-radius: 10px; padding:10px }
+    .overlay .checkbox-group{ display:flex; flex-wrap:wrap; gap:10px }
+    .overlay .chipbox{ display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--border); background: var(--chip); border-radius:999px; font:500 12px/1 var(--font); color:var(--muted) }
+    .overlay .chipbox input{ width:16px; height:16px }
+    /* Tags input (chip style) */
+    .overlay .tags-field{ width:100%; background: var(--surface); border:1px solid var(--border); border-radius: var(--r-sm); padding: 6px; display:flex; flex-wrap:wrap; gap:6px; min-height:42px }
+    .overlay .tags-chips{ display:flex; flex-wrap:wrap; gap:6px; align-items:center }
+    .overlay .tag-input{ appearance:none; border:0; outline:0; background:transparent; color:var(--text); font:500 14px/1 var(--font); padding:6px; min-width:120px; flex:1 1 140px }
+    .overlay .tag-chip{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid var(--border); background: var(--chip); border-radius: 999px; font:500 12px/1 var(--font); color:var(--muted) }
+    .overlay .tag-chip button{ appearance:none; border:0; background:transparent; color:var(--muted); display:inline-grid; place-items:center; cursor:pointer }
+    .spacing-bottom{ margin-bottom: 70px; }
+  </style>
+</head>
+
+<body>
+    <div class="topbar">
+      <div class="header">
+        <div class="logo"></div> <!-- Logo -->
+        <div id="brandTitle" class="brand-title hidden" style="font-weight:600">Taiwan Kids Atlas des Merveilles</div>
+        <label id="searchWrap" class="search" aria-label="Search activities">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M10 4a6 6 0 1 1-3.998 10.392l-2.955 2.955l-1.414-1.414l2.955-2.955A6 6 0 0 1 10 4m0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8"/>
+          </svg>
+          <input id="searchInput" placeholder="Search activities by names, location, tags, categories…" autocomplete="on"/>
+        </label>
+        <button class="btn" id="btnFilter" title="Open filters">Filter</button>
+      </div>
+
+      <!-- category chips removed from top bar; shown per section -->
+      <!-- Filters Overlay -->
+      <div class="overlay" id="filtersOverlay" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="backdrop" data-close></div>
+        <div class="panel" role="document">
+          <header>
+            <div class="title">Filters</div>
+            <button class="icon-btn" title="Close" aria-label="Close" data-close>
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"/></svg>
+            </button>
+          </header>
+          <div class="content">
+            <!-- Category -->
+            <div class="field">
+              <label for="fltCategory">Category</label>
+              <select id="fltCategory" class="select">
+                <option value="">All Categories</option>
+              </select>
+            </div>
+
+            <!-- Region -->
+            <div class="field">
+              <label for="fltRegion">Region</label>
+              <select id="fltRegion" class="select">
+                <option value="">All Regions</option>
+              </select>
+            </div>
+
+            <!-- Age Range -->
+            <div class="field">
+              <label>Age Range</label>
+              <div class="row">
+                <input type="number" id="fltAgeMin" class="number" placeholder="Min" min="0" max="18" style="max-width:120px">
+                <span>to</span>
+                <input type="number" id="fltAgeMax" class="number" placeholder="Max" min="0" max="18" style="max-width:120px">
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div class="field">
+              <label>Features</label>
+              <div class="checkbox-group">
+                <label class="chipbox"><input type="checkbox" id="fltDog"> Dog-friendly</label>
+                <label class="chipbox"><input type="checkbox" id="fltFood"> Food nearby</label>
+                <label class="chipbox"><input type="checkbox" id="fltStroller"> Stroller-friendly</label>
+                <label class="chipbox"><input type="checkbox" id="fltSeasonal"> Seasonal</label>
+              </div>
+            </div>
+
+            <!-- Environment -->
+            <div class="field">
+              <label>Environment</label>
+              <div class="checkbox-group" role="radiogroup" aria-label="Environment">
+                <label class="chipbox"><input type="radio" name="env" value="" checked> Any</label>
+                <label class="chipbox"><input type="radio" name="env" value="indoor"> Indoor</label>
+                <label class="chipbox"><input type="radio" name="env" value="outdoor"> Outdoor</label>
+              </div>
+            </div>
+
+            <!-- Price Range -->
+            <div class="field">
+              <label>Price Range</label>
+              <div class="checkbox-group">
+                <label class="chipbox"><input type="checkbox" id="fltPriceFree"> Free</label>
+                <label class="chipbox"><input type="checkbox" id="fltPriceLow"> $</label>
+                <label class="chipbox"><input type="checkbox" id="fltPriceMed"> $$</label>
+                <label class="chipbox"><input type="checkbox" id="fltPriceHigh"> $$$</label>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="field">
+              <label for="fltTagsInput">Tags</label>
+              <div class="tags-field">
+                <div class="tags-chips" id="fltTagsChips"></div>
+                <input type="text" id="fltTagsInput" class="tag-input" placeholder="Add a tag and press Enter">
+                <input type="hidden" id="fltTagsHidden" value="">
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" id="btnClearFilters">Clear</button>
+            <button class="btn primary" id="btnApplyFilters">Apply</button>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function(){
+          // Combined filtering state
+          let activeCategory = '';
+          let activeSearch = '';
+          const filterState = { tokens: [] };
+
+          function getChipsEl(){ return document.getElementById('categoryChips'); }
+          function getSearchInput(){ return document.getElementById('searchInput'); }
+
+          // Expose for other scripts if needed
+          function priceValFromRange(range){
+            if (!range) return -1;
+            const r = String(range).trim();
+            if (r === '0' || /^free$/i.test(r)) return 0;
+            const m = r.match(/(\d+)(?:\s*[-–]\s*(\d+))?/);
+            if (m){
+              const a = parseInt(m[1],10);
+              const b = m[2] ? parseInt(m[2],10) : a;
+              return Math.round((a+b)/2);
+            }
+
+          // Re-render dashboard once when activity cards appear (for builds that don't dispatch activities:loaded)
+          function observeActivityGridForDashboard(){
+            const grid = document.getElementById('activityGrid');
+            if (!grid || grid.__dashObserved) return;
+            grid.__dashObserved = true;
+            const mo = new MutationObserver((muts, obs)=>{
+              if (grid.querySelector('.activity-card')){
+                renderDashboard();
+                obs.disconnect();
+              }
+            });
+            mo.observe(grid, {childList:true, subtree:false});
+          }
+            if (/\$\$\$/.test(r)) return 800;
+            if (/\$\$/.test(r)) return 400;
+            if (/\$/.test(r)) return 100;
+            return -1;
+          }
+
+          function applyFilters(){
+            const grid = document.getElementById('activityGrid');
+            if(!grid) return;
+            const cards = grid.querySelectorAll('.activity-card');
+            const cat = (activeCategory||'').toLowerCase();
+            const q = (activeSearch||'').toLowerCase().trim();
+            const userTokens = q ? q.split(/[+\s]+/).filter(Boolean) : [];
+            const tokens = [...userTokens, ...(filterState.tokens||[])].filter(Boolean);
+            const state = {
+              category: (document.getElementById('fltCategory')?.value||'').toLowerCase(),
+              region: (document.getElementById('fltRegion')?.value||'').toLowerCase(),
+              ageMin: parseInt(document.getElementById('fltAgeMin')?.value||'',10),
+              ageMax: parseInt(document.getElementById('fltAgeMax')?.value||'',10),
+              env: (document.querySelector('input[name="env"]:checked')||{}).value||'',
+              price: new Set([
+                document.getElementById('fltPriceFree')?.checked ? 'free' : null,
+                document.getElementById('fltPriceLow')?.checked ? 'low' : null,
+                document.getElementById('fltPriceMed')?.checked ? 'medium' : null,
+                document.getElementById('fltPriceHigh')?.checked ? 'high' : null,
+              ].filter(Boolean)),
+              features: new Set([
+                document.getElementById('fltDog')?.checked ? 'dog' : null,
+                document.getElementById('fltFood')?.checked ? 'food' : null,
+                document.getElementById('fltStroller')?.checked ? 'stroller' : null,
+                document.getElementById('fltSeasonal')?.checked ? 'seasonal' : null,
+              ].filter(Boolean)),
+              tokens
+            };
+
+            function ageOverlap(card){
+              const cmin = parseInt(card.dataset.ageMin||'',10);
+              const cmax = parseInt(card.dataset.ageMax||'',10);
+              if (isNaN(state.ageMin) && isNaN(state.ageMax)) return true;
+              if (isNaN(cmin) && isNaN(cmax)) return true;
+              const min = isNaN(state.ageMin) ? cmin : state.ageMin;
+              const max = isNaN(state.ageMax) ? cmax : state.ageMax;
+              if (isNaN(min) || isNaN(max)) return true;
+              return (min <= (cmax||Infinity)) && (max >= (cmin||0));
+            }
+
+            cards.forEach(card => {
+              // Category: either top chips activeCategory or dropdown
+              let catOk = true;
+              const cdata = (card.dataset.categories||'');
+              if (cat) catOk = cdata.split('|').includes(cat);
+              if (catOk && state.category) catOk = cdata.split('|').includes(state.category);
+
+              // Region
+              let regionOk = true;
+              if (state.region){
+                const r = (card.dataset.region||'');
+                regionOk = r === state.region;
+              }
+
+              // Env
+              let envOk = true;
+              if (state.env){
+                envOk = (card.dataset.env||'') === state.env;
+              }
+
+              // Price ranges
+              let priceOk = true;
+              if (state.price.size){
+                const pv = parseInt(card.dataset.priceVal||'-1',10);
+                let match = false;
+                state.price.forEach(r => {
+                  if (r==='free' && pv===0) match = true;
+                  if (r==='low' && pv>0 && pv<=200) match = true;
+                  if (r==='medium' && pv>200 && pv<=600) match = true;
+                  if (r==='high' && pv>600) match = true;
+                });
+                priceOk = match;
+              }
+
+              // Features via tokens in search blob
+              let featsOk = true;
+              if (state.features.size){
+                const hay = (card.dataset.search||'').toLowerCase();
+                featsOk = Array.from(state.features).every(f => hay.includes(f));
+              }
+
+              // Text tokens
+              let textOk = true;
+              if (tokens.length){
+                const hay = (card.dataset.search||'').toLowerCase();
+                textOk = tokens.every(t => hay.includes(t));
+              }
+
+              // Ages
+              const ageOk = ageOverlap(card);
+
+              card.style.display = (catOk && regionOk && envOk && priceOk && featsOk && textOk && ageOk) ? '' : 'none';
+            });
+          }
+          window.applyActivityFilters = applyFilters;
+
+          function renderChips(cats){
+            const chipsEl = getChipsEl();
+            if(!chipsEl) return;
+            const items = ['All', ...cats];
+            chipsEl.innerHTML = items.map((c)=>{
+              const label = String(c);
+              const val = label === 'All' ? '' : label;
+              const isActive = (val.toLowerCase() === (activeCategory||''));
+              return `<button class="chip ${isActive ? 'is-primary' : ''}" data-cat="${val}">${label}</button>`;
+            }).join('');
+            chipsEl.querySelectorAll('.chip').forEach(btn => {
+              btn.addEventListener('click', () => {
+                activeCategory = (btn.dataset.cat||'').toLowerCase();
+                chipsEl.querySelectorAll('.chip').forEach(x=>x.classList.remove('is-primary'));
+                btn.classList.add('is-primary');
+                applyFilters();
+              });
+            });
+            // Wire chip arrows after rendering
+            wireChipArrows();
+          }
+
+          function wireChipArrows(){
+            const chipsEl = getChipsEl(); if(!chipsEl) return;
+            const wrap = chipsEl.parentElement;
+            const left = wrap?.querySelector('.chip.chip-arrow.left');
+            const right = wrap?.querySelector('.chip.chip-arrow.right');
+            if (left && !left.__wired){
+              left.__wired = true;
+              left.addEventListener('click', ()=> chipsEl.scrollBy({left: -Math.max(120, chipsEl.clientWidth*0.6), behavior:'smooth'}));
+            }
+            if (right && !right.__wired){
+              right.__wired = true;
+              right.addEventListener('click', ()=> chipsEl.scrollBy({left: Math.max(120, chipsEl.clientWidth*0.6), behavior:'smooth'}));
+            }
+          }
+
+          function buildChipsFromActivities(){
+            const acts = Array.isArray(window.__activities) ? window.__activities : [];
+            if(!acts.length) return;
+            const set = new Set();
+            acts.forEach(a => (a.categories||[]).forEach(c => set.add(String(c))));
+            const cats = Array.from(set).sort((a,b)=>a.localeCompare(b));
+            renderChips(cats);
+          }
+
+          function initSearchHook(){
+            const input = getSearchInput();
+            if(!input) return;
+            if(input.__hooked) return; // avoid double-binding
+            input.__hooked = true;
+            let h;
+            input.addEventListener('input', () => {
+              activeSearch = input.value || '';
+              clearTimeout(h);
+              h = setTimeout(applyFilters, 150);
+            });
+          }
+
+          // Helpers for syncing tokens with the search bar using '+' separator
+          function parseSearchTokens(str){
+            return (str||'')
+              .toLowerCase()
+              .split(/[+\s]+/)
+              .map(t=>t.trim())
+              .filter(Boolean);
+          }
+          function setSearchValueFromTokens(tokens){
+            const input = getSearchInput();
+            if(!input) return;
+            input.value = (tokens||[]).join('+');
+            activeSearch = input.value;
+          }
+          function addSearchTokens(tokens){
+            const input = getSearchInput(); if(!input) return;
+            const cur = parseSearchTokens(input.value);
+            (tokens||[]).forEach(t=>{ const v = String(t||'').toLowerCase().trim(); if(v && !cur.includes(v)) cur.push(v); });
+            setSearchValueFromTokens(cur);
+            applyFilters();
+          }
+          function removeSearchToken(token){
+            const input = getSearchInput(); if(!input) return;
+            const cur = parseSearchTokens(input.value);
+            const v = String(token||'').toLowerCase().trim();
+            const next = cur.filter(t=>t !== v);
+            setSearchValueFromTokens(next);
+            applyFilters();
+          }
+
+          // Initialize after DOM ready and after activities load
+          window.addEventListener('DOMContentLoaded', () => {
+            initSearchHook();
+            buildChipsFromActivities();
+            wireChipArrows();
+            // Try to render dashboard if activities are already present
+            renderDashboard();
+            observeActivityGridForDashboard();
+            applyTopbarMode();
+          });
+          window.addEventListener('activities:loaded', () => {
+            initSearchHook();
+            buildChipsFromActivities();
+            wireChipArrows();
+            renderDashboard();
+            observeActivityGridForDashboard();
+            applyTopbarMode();
+          });
+          // Ensure dashboard runs after all resources load as a final fallback
+          window.addEventListener('load', () => {
+            renderDashboard();
+            observeActivityGridForDashboard();
+            // Re-run once more shortly after paint in case async content appended late
+            setTimeout(renderDashboard, 800);
+            applyTopbarMode();
+          });
+          window.addEventListener('hashchange', applyTopbarMode);
+          if (document.readyState !== 'loading') {
+            initSearchHook();
+            buildChipsFromActivities();
+            wireChipArrows();
+            renderDashboard();
+            observeActivityGridForDashboard();
+            applyTopbarMode();
+          }
+
+          // Filters overlay wiring
+          const overlay = document.getElementById('filtersOverlay');
+          const btnFilter = document.getElementById('btnFilter');
+          function openOverlay(){ overlay?.classList.add('open'); overlay?.setAttribute('aria-hidden','false'); }
+          function closeOverlay(){ overlay?.classList.remove('open'); overlay?.setAttribute('aria-hidden','true'); }
+          btnFilter?.addEventListener('click', openOverlay);
+          // Close when clicking on elements marked with data-close (button or backdrop)
+          overlay?.addEventListener('click', (e)=>{
+            const el = e.target;
+            if (!el) return;
+            if (el.hasAttribute && el.hasAttribute('data-close')) return closeOverlay();
+            if (el.closest && el.closest('[data-close]')) return closeOverlay();
+          });
+
+          // Populate Category and Region selects from activities
+          function populateSelects(){
+            const acts = Array.isArray(window.__activities) ? window.__activities : [];
+            if(!acts.length) return;
+            const cats = new Set();
+            const regions = new Set();
+            acts.forEach(a => {
+              (a.categories||[]).forEach(c => cats.add(String(c)));
+              [a.region].filter(Boolean).forEach(r => regions.add(String(r)));
+            });
+            const selCat = document.getElementById('fltCategory');
+            const selReg = document.getElementById('fltRegion');
+            if (selCat && selCat.children.length <= 1){
+              Array.from(cats).sort((a,b)=>a.localeCompare(b)).forEach(c=>{
+                const o = document.createElement('option'); o.value = String(c).toLowerCase(); o.textContent = c; selCat.appendChild(o);
+              });
+            }
+            if (selReg && selReg.children.length <= 1){
+              Array.from(regions).sort((a,b)=>a.localeCompare(b)).forEach(r=>{
+                const o = document.createElement('option'); o.value = String(r).toLowerCase(); o.textContent = r; selReg.appendChild(o);
+              });
+            }
+          }
+          window.addEventListener('activities:loaded', populateSelects);
+          if (document.readyState !== 'loading') setTimeout(populateSelects, 0);
+
+          // Tags chip input helpers
+          const tagsHidden = document.getElementById('fltTagsHidden');
+          const tagsInput = document.getElementById('fltTagsInput');
+          const tagsChips = document.getElementById('fltTagsChips');
+          function parseTags(){
+            return (tagsHidden?.value||'').split(',').map(t=>t.trim()).filter(Boolean);
+          }
+          function renderTags(){
+            if (!tagsChips) return;
+            const tags = parseTags();
+            tagsChips.innerHTML = tags.map((t,i)=>
+              `<span class="tag-chip" data-i="${i}">${t}<button aria-label="Remove" data-remove>&times;</button></span>`
+            ).join('');
+            tagsChips.querySelectorAll('[data-remove]').forEach(btn=>{
+              btn.addEventListener('click', ()=>{
+                const i = parseInt(btn.parentElement.dataset.i,10);
+                const arr = parseTags();
+                arr.splice(i,1);
+                tagsHidden.value = arr.join(',');
+                renderTags();
+              });
+            });
+          }
+          function addTag(t){
+            const v = t.trim(); if(!v) return;
+            const arr = parseTags();
+            if (!arr.includes(v)) arr.push(v);
+            tagsHidden.value = arr.join(',');
+            renderTags();
+          }
+          tagsInput?.addEventListener('keydown', (e)=>{
+            if (e.key === 'Enter' || e.key === ','){
+              e.preventDefault();
+              addTag(tagsInput.value);
+              tagsInput.value = '';
+            }
+          });
+          // Initial render
+          renderTags();
+
+          document.getElementById('btnClearFilters')?.addEventListener('click', ()=>{
+            document.getElementById('fltCategory').value = '';
+            document.getElementById('fltRegion').value = '';
+            document.getElementById('fltAgeMin').value = '';
+            document.getElementById('fltAgeMax').value = '';
+            ['fltDog','fltFood','fltStroller','fltSeasonal'].forEach(id=>{ const el = document.getElementById(id); if(el) el.checked = false; });
+            const envs = document.querySelectorAll('input[name="env"]'); envs.forEach((r,i)=> r.checked = (i===0));
+            ['fltPriceFree','fltPriceLow','fltPriceMed','fltPriceHigh'].forEach(id=>{ const el = document.getElementById(id); if(el) el.checked = false; });
+            if (tagsHidden) tagsHidden.value = '';
+            renderTags();
+            filterState.tokens = [];
+            // Reset active category and chip highlight to All
+            activeCategory = '';
+            const chipsEl = getChipsEl();
+            if (chipsEl){ chipsEl.querySelectorAll('.chip').forEach(x=>x.classList.remove('is-primary')); chipsEl.querySelector('.chip[data-cat=""]')?.classList.add('is-primary'); }
+            applyFilters();
+          });
+          document.getElementById('btnApplyFilters')?.addEventListener('click', ()=>{
+            const tags = parseTags();
+            // Pull selected category from overlay select if any; do NOT touch search bar
+            const selCat = (document.getElementById('fltCategory')?.value||'').toLowerCase().trim();
+            if (selCat){
+              activeCategory = selCat;
+              // highlight category chip
+              const chipsEl = getChipsEl();
+              if (chipsEl){
+                chipsEl.querySelectorAll('.chip').forEach(x=>x.classList.remove('is-primary'));
+                const match = Array.from(chipsEl.querySelectorAll('.chip')).find(b => (b.dataset.cat||'').toLowerCase() === selCat);
+                match?.classList.add('is-primary');
+              }
+            }
+            // Keep overlay tags separate from search bar; use filterState.tokens for overlay tag filters
+            filterState.tokens = tags;
+            applyFilters();
+            closeOverlay();
+          });
+
+          // Meta/tag chips no longer modify filters on click (requested)
+
+          // -------------------------
+          // Dashboard rendering
+          // -------------------------
+          function renderDashboard(){
+            try {
+              // Stats
+              const cards = document.querySelectorAll('#activityGrid .activity-card');
+              const events = document.querySelectorAll('#eventsGrid .event-card');
+              const actEl = document.getElementById('statActivities');
+              const evEl = document.getElementById('statEvents');
+              if (actEl) actEl.textContent = String(cards.length);
+              if (evEl) evEl.textContent = String(events ? events.length : 0);
+
+              const lastEl = document.getElementById('aboutLastUpdate');
+              const verEl = document.getElementById('versionSha');
+              const verLink = document.getElementById('versionLink');
+              if (lastEl || verEl || verLink){
+                // Set visible placeholders immediately
+                if (lastEl) lastEl.textContent = 'Last update: fetching…';
+                if (verEl) verEl.textContent = '…';
+                let settled = false;
+                // Fallback timeout in case the request stalls
+                const to = setTimeout(()=>{
+                  if (!settled) {
+                    if (lastEl) lastEl.textContent = 'Last update: unknown';
+                  }
+                }, 6000);
+                fetch(`https://api.github.com/repos/vivienRg/Taiwan-Kids-Atlas-des-Merveilles/commits?per_page=1`, {
+                  headers: { 'Accept': 'application/vnd.github+json' }
+                })
+                  .then(r=>{
+                    if (!r.ok) throw new Error(`GitHub status ${r.status}`);
+                    return r.json();
+                  })
+                  .then(d=>{
+                    settled = true; clearTimeout(to);
+                    const arr = Array.isArray(d) ? d : [];
+                    const item = arr[0];
+                    if (!item){
+                      if (lastEl) lastEl.textContent = 'Last update: unknown';
+                      return;
+                    }
+                    const iso = item?.commit?.committer?.date || item?.commit?.author?.date;
+                    const sha = item?.sha;
+                    const html = item?.html_url;
+                    const dt = iso ? new Date(iso) : null;
+                    if (lastEl) lastEl.textContent = dt && !isNaN(dt) ? `Last update: ${dt.toLocaleString()}` : 'Last update: unknown';
+                    if (verEl && sha) verEl.textContent = sha.substring(0,7);
+                    if (verLink && html) verLink.href = html;
+                  })
+                  .catch(err=>{
+                    settled = true; clearTimeout(to);
+                    console.warn('GitHub commit fetch failed', err);
+                    if (lastEl) lastEl.textContent = 'Last update: unknown';
+                  });
+              }
+
+              // Aggregate categories
+              const catMap = new Map();
+              cards.forEach(card => {
+                const cats = (card.dataset.categories||'').split('|').filter(Boolean);
+                cats.forEach(c => catMap.set(c, (catMap.get(c)||0)+1));
+              });
+              renderTopCategories(catMap);
+
+              // Aggregate tags (from #tag pills inside cards)
+              const tagMap = new Map();
+              cards.forEach(card => {
+                const pills = card.querySelectorAll('.pill');
+                pills.forEach(p => {
+                  const t = (p.textContent||'').trim();
+                  if (t.startsWith('#')){
+                    const tag = t.slice(1).toLowerCase();
+                    if (tag) tagMap.set(tag, (tagMap.get(tag)||0)+1);
+                  }
+                });
+              });
+              renderTagCloud(tagMap);
+            } catch(e) {
+              // no-op
+            }
+          }
+
+          function renderTopCategories(catMap){
+            const el = document.getElementById('topCategories');
+            if (!el) return;
+            el.innerHTML = '';
+            const items = Array.from(catMap.entries()).sort((a,b)=>b[1]-a[1]).slice(0,8);
+            const max = items[0]?.[1] || 1;
+            items.forEach(([name,count])=>{
+              const row = document.createElement('div');
+              row.style.display='flex'; row.style.alignItems='center'; row.style.gap='8px'; row.style.margin='6px 0';
+              const label = document.createElement('div');
+              label.textContent = name; label.style.flex='0 0 140px'; label.style.color='var(--muted)'; label.style.overflow='hidden'; label.style.textOverflow='ellipsis';
+              const barWrap = document.createElement('div'); barWrap.style.flex='1';
+              const barBg = document.createElement('div'); barBg.style.height='10px'; barBg.style.borderRadius='6px'; barBg.style.background='var(--elev-2)';
+              const fill = document.createElement('div'); fill.style.height='100%'; fill.style.width = `${Math.max(6, Math.round((count/max)*100))}%`; fill.style.background='var(--primary)'; fill.style.borderRadius='6px';
+              barBg.appendChild(fill); barWrap.appendChild(barBg);
+              const val = document.createElement('div'); val.textContent = String(count); val.style.minWidth='24px'; val.style.textAlign='right';
+              row.appendChild(label); row.appendChild(barWrap); row.appendChild(val);
+              el.appendChild(row);
+            });
+          }
+
+          function renderTagCloud(tagMap){
+            const el = document.getElementById('tagCloud');
+            if (!el) return;
+            el.innerHTML = '';
+            const items = Array.from(tagMap.entries()).sort((a,b)=>b[1]-a[1]).slice(0,40);
+            if (!items.length) return;
+            const max = items[0][1];
+            const min = items[items.length-1][1];
+            const span = max - min || 1;
+            items.forEach(([tag,count])=>{
+              const s = 0.85 + ((count - min)/span) * 0.9; // 0.85rem -> 1.75rem
+              const a = document.createElement('span');
+              a.textContent = `#${tag}`;
+              a.className = 'pill';
+              a.style.fontSize = `${s.toFixed(2)}rem`;
+              a.style.background = 'var(--chip)';
+              a.style.color = 'var(--text)';
+              el.appendChild(a);
+            });
+          }
+
+
+
+          // Observe class changes on screens to re-apply topbar mode automatically
+          (function observeScreens(){
+            const obs = new MutationObserver(() => applyTopbarMode());
+            document.querySelectorAll('.screen').forEach(sec => {
+              obs.observe(sec, {attributes:true, attributeFilter:['class']});
+            });
+          })();
+        })();
+      </script>
+      <style>
+        /* Ensure pages have at least full screen height and at least 100em */
+        :root { --min-page-size: max(100vh, 100em); }
+        html, body { min-height: 100vh; }
+        /* Apply to screen sections so each view fills the page */
+        .screen { min-height: var(--min-page-size); }
+
+        /* Filter overlay font sizes aligned with page */
+        #filtersOverlay, #filterOverlay, .filters-overlay {
+          font-size: 1rem; /* match page base */
+          line-height: 1.35;
+        }
+        #filtersOverlay label,
+        #filtersOverlay input,
+        #filtersOverlay select,
+        #filtersOverlay textarea,
+        #filtersOverlay button,
+        #filterOverlay label,
+        #filterOverlay input,
+        #filterOverlay select,
+        #filterOverlay textarea,
+        #filterOverlay button,
+        .filters-overlay label,
+        .filters-overlay input,
+        .filters-overlay select,
+        .filters-overlay textarea,
+        .filters-overlay button {
+          font-size: inherit;
+        }
+        /* Optional: titles slightly larger but still within page scale */
+        #filtersOverlay .title, #filterOverlay .title, .filters-overlay .title {
+          font-size: 1.1rem;
+          font-weight: 600;
+        }
+        /* Compact helper text and chips inside overlay */
+        #filtersOverlay .hint, #filterOverlay .hint, .filters-overlay .hint,
+        #filtersOverlay .pill, #filterOverlay .pill, .filters-overlay .pill {
+          font-size: 0.95rem;
+        }
+      </style>
+      
+      <!-- HOME (Dashboard) -->
+    <section id="home" class="screen active" role="tabpanel" aria-label="Home dashboard">
+      <div class="card" id="disclaimerCard" style="margin-bottom:12px">
+        <div class="title" style="margin-bottom: var(--s-2)">Disclaimer</div>
+        <p class="desc" style="margin:0">This atlas is community-maintained. Information can change and may contain errors. Please verify details with organizers or venues. Use at your own discretion.Driving times are approximations measured from Zhongli city center and may vary due to traffic and route changes.</p>
+      </div>
+      <div class="card">
+        <div class="title" style="margin-bottom: var(--s-3)">Overview</div>
+        <div class="stats" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+          <div class="stat">
+            <div class="stat-num" id="statActivities">0</div>
+            <div class="stat-label">Activities</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="statEvents">0</div>
+            <div class="stat-label">Events</div>
+          </div>
+          <!-- Regions stat removed per request -->
+        </div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="title" style="margin-bottom: var(--s-3)">Top categories</div>
+        <div id="topCategories" aria-label="Top categories chart"></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="title" style="margin-bottom: var(--s-3)">Top tags</div>
+        <div id="tagCloud" class="tag-cloud" aria-label="Top tags cloud" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+      </div>
+      <div class="card">
+        <div class="title" style="margin-bottom: var(--s-2)">How to contribute</div>
+        <p class="desc" style="margin:0">Spotted a new activity or an error? You can propose additions or fixes via GitHub.</p>
+        <div class="meta" style="margin-top: var(--s-3)">
+          <a class="pill" href="https://github.com/VivienRg/Taiwan-Kids-Atlas-des-Merveilles/issues/new?assignees=&labels=activity&projects=&template=add_activity.yml&title=Add+Activity%3A+" target="_blank" rel="noopener">Open Add Activity form</a>
+          <a class="pill" href="https://github.com/VivienRg/Taiwan-Kids-Atlas-des-Merveilles" target="_blank" rel="noopener">Repository</a>
+        </div>
+      </div>
+      <div class="card" id="aboutCard" style="margin-top:12px">
+        <div class="title" style="margin-bottom: var(--s-2)">About</div>
+        <div class="meta" style="display:flex;gap:12px;flex-wrap:wrap">
+          <span class="pill">Copyright © <span id="copyrightYear">—</span> Vivien Roggero</span>
+          <span class="pill" id="aboutLastUpdate">Last update: …</span>
+          <span class="pill">Version: <a id="versionLink" href="#" target="_blank" rel="noopener"><code id="versionSha">—</code></a></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity FEED -->
+    <section id="activities" class="screen" role="tabpanel">
+      <div class="chips-wrap">
+        <button class="chip-arrow chip left" type="button" aria-label="Scroll left">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6l6 6l1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="chips" id="categoryChips"></div>
+        <button class="chip-arrow chip right" type="button" aria-label="Scroll right">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.59 16.59L10 18l6-6l-6-6l-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+      <div class="activity-grid" id="activityGrid"></div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" class="screen" role="tabpanel">
+      <!-- optional: event-specific search can be added later -->
+      <div class="chips" id="eventChips"></div>
+      <div class="title" style="margin-bottom: var(--s-3); margin-left: var(--s-6)">Upcoming Feature Not Available Yet</div>
+      
+      <!-- Event Card Template -->
+      <div class="card event-card" data-categories="festival|family" data-tags="free|outdoor|summer" data-age-min="2" data-age-max="12">
+        <!-- Event Image -->
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+
+        </div>
+        
+        <!-- Event Details -->
+        <div class="card-body">
+          <div class="meta" style="margin-bottom: 8px;">
+            <span class="pill">Aug 12-14</span>
+            <span class="pill">10:00 AM - 6:00 PM</span>
+            <span class="pill">
+              Free Entry
+            </span>
+            <span class="pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="margin-right: 4px; vertical-align: middle;">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              Daan Park, Taipei
+            </span>
+          </div>
+          
+          <h3>Summer Kids Festival 2023</h3>
+          
+          <p class="desc">A fun-filled weekend of activities for kids including face painting, balloon animals, and interactive games. Perfect for children ages 2-12.</p>
+          
+          <div class="meta" style="margin-top: auto; padding-top: 8px; border-top: 1px solid var(--border);">
+            <span class="pill">#family</span>
+            <span class="pill">#outdoor</span>
+            <span class="pill">#summer</span>
+          </div>
+          
+          <!-- Google Maps Button -->
+          <a href="https://www.google.com/maps?q=Daan+Park,+Taipei" target="_blank" class="btn" style="display: inline-flex; align-items: center; gap: 4px; margin-top: 12px; background: #4285F4; color: white; width: 100%; justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white" style="margin-right: 4px;">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+            </svg>
+            View on Google Maps
+          </a>
+          
+          <!-- Thumbnail at bottom -->
+          <div style="margin-top: 16px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Thumbnail" style="width: 100%; display: block;">
+          </div>
+        </div>
+      </div>
+          </div>
+          <button class="btn primary">RSVP</button>
+        </div>
+        <div class="event" style="margin-top: var(--s-3)">
+          <div class="badge-date"><div class="d">24</div><div class="m">AUG</div></div>
+          <div class="grow">
+            <div class="title">Parents Picnic — Central Park</div>
+            <div class="sub">10:00 • Taoyuan • Family friendly</div>
+          </div>
+          <button class="btn">Save</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GROUPS -->
+    <section id="groups" class="screen" role="tabpanel">
+      <div class="card">
+        <div class="title" style="margin-bottom: var(--s-3)">Discover Groups</div>
+        <div class="event">
+          <div class="avatar" style="width:52px;height:52px;border-radius:14px"></div>
+          <div class="grow">
+            <div class="title">Indie Hackers TW</div>
+            <div class="sub">3.2k members • Tech & Startups</div>
+          </div>
+          <button class="btn">Join</button>
+        </div>
+        <div class="event" style="margin-top: var(--s-3)">
+          <div class="avatar" style="width:52px;height:52px;border-radius:14px"></div>
+          <div class="grow">
+            <div class="title">K8s Taipei</div>
+            <div class="sub">780 members • DevOps</div>
+          </div>
+          <button class="btn">Join</button>
+        </div>
+      </div>
+    </section>
+<div  class="spacing-bottom"></div>
+  <!-- FAB and Bottom Nav -->
+  <div class="bottom">
+    <nav class="nav" aria-label="Primary">
+      <button class="active" data-tab-target="home" title="Home">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5.7L5 12h2v7h4v-5h2v5h4v-7h2z"/></svg>
+      </button>
+      <button data-tab-target="events" title="Events">
+        <span>Events</span>
+        <svg width="22" height="22" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V9h14v9z"/>
+        </svg>
+      </button>
+      <button data-tab-target="activities" title="Activities">
+        <span>Activities</span>
+        <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10a3 3 0 1 1 3-3a3 3 0 0 1-3 3m10 0a3 3 0 1 1 3-3a3 3 0 0 1-3 3M7 20H3v-1a4 4 0 0 1 4-4h4.67A6.52 6.52 0 0 0 7 20m10 0a6.5 6.5 0 0 0-6.5-6.5H11A6.5 6.5 0 0 1 17.5 20z"/></svg>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Lightweight loader to render activities into #activityGrid on this page only -->
+  <script>
+    (function(){
+      function mapThumbURL(activity) {
+        if (activity && activity.id) return `./thumbnails/${activity.id}.png`;
+        const name = activity.name || 'Activity';
+        const svg = encodeURIComponent(
+          `<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'>\n`+
+          `  <rect width='100%' height='100%' fill='#0f172a'/>\n`+
+          `  <text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle'`+
+          `    fill='#9fb1c7' font-family='Inter,Arial,sans-serif' font-size='20'>${name}</text>\n`+
+          `</svg>`
+        );
+        return `data:image/svg+xml;charset=utf-8,${svg}`;
+      }
+
+      function mapsURL(activity){
+        const q = activity.address_query || [activity.name, activity.district, activity.city, activity.region, 'Taiwan'].filter(Boolean).join(', ');
+        return `https://maps.google.com/?q=${encodeURIComponent(q)}`;
+      }
+
+      function fmtAges(range){
+        if (!Array.isArray(range) || range.length < 2) return '';
+        return `${range[0]}–${range[1]}`;
+      }
+
+      function fmtLocation(a){
+        const left = [a.district, a.city].filter(Boolean).join(', ');
+        const right = a.region || '';
+        return left && right ? `${left} • ${right}` : (left || right);
+      }
+
+      function priceValFrom(range){
+        if (!range) return -1;
+        const r = String(range).trim();
+        if (r === '0' || /^free$/i.test(r)) return 0;
+        const m = r.match(/(\d+)(?:\s*[-–]\s*(\d+))?/);
+        if (m){
+          const a = parseInt(m[1],10);
+          const b = m[2] ? parseInt(m[2],10) : a;
+          return Math.round((a+b)/2);
+        }
+        if (/\$\$\$/.test(r)) return 800;
+        if (/\$\$/.test(r)) return 400;
+        if (/\$/.test(r)) return 100;
+        return -1;
+      }
+
+      function createCard(activity){
+  const cat = (activity.indoor_outdoor || (activity.categories||[])[0] || '').toString();
+  const cats = (activity.categories || []).join(', ');
+  const locationNice = fmtLocation(activity);
+  const drive = activity.drive_min != null ? `Drive: ${activity.drive_min} min` : '';
+  const price = activity.cost_range || '';
+  const ages = fmtAges(activity.age_range);
+  const desc = activity.desc || '';
+  const tags = activity.tags || [];
+  const address = activity.address_en || [activity.district, activity.city, activity.region].filter(Boolean).join(', ');
+  const website = activity.website || '';
+  const img = mapThumbURL(activity);
+
+  const article = document.createElement('article');
+  article.className = 'activity-card';
+  // Build searchable blob and categories for filtering
+  try{
+    const searchBlob = [
+      activity.name,
+      address,
+      activity.district,
+      activity.city,
+      activity.region,
+      (activity.categories||[]).join(' '),
+      (activity.tags||[]).join(' '),
+      activity.cost_range,
+      activity.indoor_outdoor,
+      desc
+    ].filter(Boolean).join(' ').toLowerCase();
+    article.dataset.search = searchBlob;
+    article.dataset.categories = (activity.categories||[]).map(c=>String(c).toLowerCase()).join('|');
+    article.dataset.region = String(activity.region||'').toLowerCase();
+    article.dataset.env = String(activity.indoor_outdoor||'').toLowerCase();
+    const ar = Array.isArray(activity.age_range) ? activity.age_range : [];
+    article.dataset.ageMin = (ar[0] != null ? parseInt(ar[0],10) : '');
+    article.dataset.ageMax = (ar[1] != null ? parseInt(ar[1],10) : '');
+    article.dataset.priceVal = String(priceValFrom(activity.cost_range));
+  }catch(e){ /* no-op */ }
+  article.innerHTML = `
+      <div class="card-image" style="background-image: url('${img}');">
+        ${cat ? `<span class="card-badge">${cat}</span>` : ''}
+        <div class="card-actions">
+          <a class="icon-btn" href="${mapsURL(activity)}" target="_blank" rel="noopener" title="Open in Maps" aria-label="Open in Maps">
+            <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7m0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5"/></svg>
+          </a>
+          ${website ? `<a class="icon-btn" href="${website}" target="_blank" rel="noopener" title="Open Website" aria-label="Open Website">\n                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2c1.93 0 3.68.78 4.95 2.05A6.98 6.98 0 0 0 12 9a6.98 6.98 0 0 0-4.95-2.95A7.98 7.98 0 0 1 12 4Zm0 16a8 8 0 0 1-7.95-7A8.98 8.98 0 0 1 12 11a8.98 8.98 0 0 1 7.95 2 8 8 0 0 1-7.95 7Z" fill="currentColor"/></svg>\n              </a>` : ''}
+        </div>
+      </div>
+    <div class="card-content">
+        <h3 class="card-title">${activity.name || 'Untitled'}</h3>
+        ${locationNice ? `
+        <div class="card-location">
+          <svg class="location-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.613 3.948 5.324 5.636 3.636C7.324 1.948 9.613 1 12 1C14.387 1 16.676 1.948 18.364 3.636C20.052 5.324 21 7.613 21 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>${locationNice}</span>
+        </div>` : ''}
+
+            <div class="card-meta chips">
+              ${cat ? `<span class="meta-item pill">${cat}</span>` : ''}
+              ${cats ? `<span class="meta-item pill">${cats}</span>` : ''}
+              ${drive ? `<span class="meta-item pill">${drive}</span>` : ''}
+              ${ages ? `<span class="meta-item pill">Ages: ${ages}</span>` : ''}
+              ${price ? `<span class="meta-item pill">Price: ${price}</span>` : ''}
+            </div>
+
+            ${desc ? `<p class="desc">${desc}</p>` : ''}
+
+            ${(() => { const shown = tags.slice(0,30); const extra = tags.length - shown.length; return shown.length ? `
+            <div class="meta">
+              ${shown.map(t=>`<span class="pill">#${t}</span>`).join('')}${extra>0?`<span class="pill">+${extra}</span>`:''}
+            </div>` : '' })()}
+          </div>`;
+        return article;
+      }
+
+      async function loadActivities(){
+        const grid = document.getElementById('activityGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        try{
+          const resp = await fetch('./data/activities.json', { cache: 'no-store' });
+          if(!resp.ok) throw new Error('HTTP '+resp.status);
+          const data = await resp.json();
+          // Expose globally so Home dashboard stats/graphs can consume it
+          window.__activities = Array.isArray(data) ? data : [];
+          if(!window.__events) window.__events = [];
+          if (!Array.isArray(data) || data.length === 0){
+            grid.innerHTML = '<div class="no-results">No activities found.</div>';
+            return;
+          }
+          const frag = document.createDocumentFragment();
+          data.forEach(a => frag.appendChild(createCard(a)));
+          grid.appendChild(frag);
+          // Update Home dashboard stats
+          try{
+            const acts = window.__activities;
+            const statActivities = document.getElementById('statActivities');
+            const statEvents = document.getElementById('statEvents');
+            const statCategories = document.getElementById('statCategories');
+            const statRegions = document.getElementById('statRegions');
+            const statTopTags = document.getElementById('statTopTags');
+            if (statActivities) statActivities.textContent = String(acts.length);
+            if (statEvents) statEvents.textContent = String((window.__events||[]).length);
+            if (statCategories){
+              const cats = new Set();
+              acts.forEach(a => (a.categories||[]).forEach(c => cats.add(String(c))));
+              statCategories.textContent = String(cats.size);
+            }
+            if (statRegions){
+              const regions = new Set();
+              acts.forEach(a => [a.district, a.city, a.region].filter(Boolean).forEach(x=>regions.add(String(x))));
+              statRegions.textContent = String(regions.size);
+            }
+            if (statTopTags){
+              const m = new Map();
+              acts.forEach(a => (a.tags||[]).forEach(t => m.set(t, (m.get(t)||0)+1)));
+              const top = Array.from(m.entries()).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([t])=>`#${t}`).join(' ');
+              statTopTags.textContent = top || '—';
+            }
+            const btnViewAll = document.getElementById('btnViewAll');
+            if (btnViewAll && !btnViewAll.__hooked){
+              btnViewAll.__hooked = true;
+              btnViewAll.addEventListener('click', () => {
+                const target = document.querySelector('[data-tab-target="activities"]');
+                if (target) target.dispatchEvent(new Event('click', { bubbles: true }));
+              });
+            }
+          }catch(e){ /* no-op for stats */ }
+          // announce and apply any active filters
+          window.dispatchEvent(new CustomEvent('activities:loaded'));
+          if (typeof window.applyActivityFilters === 'function') window.applyActivityFilters();
+        } catch(e){
+          console.error('Failed to load activities.json', e);
+          grid.innerHTML = '<div class="no-results">Could not load activities. Please try again later.</div>';
+        }
+      }
+
+      window.addEventListener('DOMContentLoaded', loadActivities);
+    })();
+  </script>
+
+  <script>
+    // Tab switching
+    const screens = [...document.querySelectorAll('.screen')];
+    const tabsTop = [...document.querySelectorAll('.tab')];
+    const tabsBottom = [...document.querySelectorAll('[data-tab-target]')];
+    const topSearch = document.querySelector('.topbar .header .search');
+    const topFilterBtn = document.getElementById('btnFilter');
+
+    function setActive(id){
+      screens.forEach(s => s.classList.toggle('active', s.id === id));
+      tabsTop.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
+      tabsBottom.forEach(b => b.classList.toggle('active', b.dataset.tabTarget === id));
+      // Show topbar search only on Activities and Events; hide on Home (dashboard)
+      const showTopSearch = (id === 'activities' || id === 'events');
+      const isDashboard = (id === 'home');
+      
+      // Toggle search and filter button
+      if (topSearch) topSearch.classList.toggle('hidden', !showTopSearch);
+      if (topFilterBtn) topFilterBtn.classList.toggle('hidden', !showTopSearch);
+      
+      // Toggle brand title (show only on dashboard)
+      const brandTitle = document.getElementById('brandTitle');
+      if (brandTitle) brandTitle.classList.toggle('hidden', !isDashboard);
+    }
+    tabsTop.forEach(t => t.addEventListener('click', () => setActive(t.dataset.tab)));
+    tabsBottom.forEach(b => b.addEventListener('click', () => setActive(b.dataset.tabTarget)));
+    // Initialize visibility based on current active screen
+    const currentActive = (document.querySelector('.screen.active')||{}).id;
+    if (currentActive) setActive(currentActive);
+
+
+    document.body.addEventListener('keydown', e => {
+      if (e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
+</body>
+</html>

@@ -1,330 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Taiwan — Kid’s Atlas des Merveilles</title>
-  <link rel="icon" href="./favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root{
-      --bg:#0b1220; --card:#121a2c; --text:#e8eef7; --muted:#a9b6ca;
-      --accent:#00e1ff; --accent-2:#7df7ff; --border:#21304a; --chip:#0f172a;
-      --pill:#0f172a; --focus:#6ee7ff; --danger:#ef4444;
-      --tap:52px; --r-sm:12px; --r:16px; --shadow:0 8px 28px rgba(0,0,0,.35);
-      --container: 1120px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taiwan Kids Atlas des Merveilles</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fcf8f3; /* Replace with your brand color */
+            overflow: hidden;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      -webkit-font-smoothing: antialiased;
+      font-size: 12px;
+      line-height:1.5;
     }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f7f8fb; --card:#ffffff; --text:#111827; --muted:#5b6677;
-        --accent:#0ea5e9; --accent-2:#67e8f9; --border:#e6eaf1; --chip:#f1f5f9;
-        --pill:#f6f8fc; --focus:#38bdf8;
-      }
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
-    a{color:inherit}
-    img{display:block; max-width:100%}
+        .splash-screen {
+            text-align: center;
+        }
+        .logo {
+    max-width: 80%;
+    max-height: 80vh;
+    animation: fadeIn 2s ease-in;
+}
 
-    /* Top App Bar */
-    header{
-      position:sticky; top:0; z-index:40;
-      background:color-mix(in srgb, var(--bg) 90%, transparent);
-      backdrop-filter:blur(10px) saturate(140%);
-      border-bottom:1px solid var(--border);
-      padding:calc(env(safe-area-inset-top) + 8px) 16px 8px;
-    }
-    .bar{
-      max-width:var(--container); margin:0 auto;
-      display:flex; align-items:center; gap:12px;
-      min-height:44px;
-    }
-    .logo{height:28px; width:auto}
-    .brand{font-weight:600; letter-spacing:.2px}
-
-    .disclaimer{
-      max-width:var(--container); margin:8px auto 0;
-      font-size:13px; color:var(--muted);
-      background:color-mix(in srgb, var(--card) 84%, transparent);
-      border:1px solid var(--border); border-radius:12px; padding:10px 12px;
-    }
-
-    /* Main Container */
-    .wrap{max-width:var(--container); margin:0 auto; padding:10px 16px 24px}
-
-    /* Search Row */
-    .search-row{
-      display:grid; gap:10px; grid-template-columns:1fr;
-      margin-top:12px;
-    }
-    .searchbar{
-      display:flex; gap:8px; align-items:center;
-      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:8px;
-    }
-    .searchbar input[type="text"]{
-      flex:1; min-height:var(--tap); border:0; outline:0; background:transparent; color:var(--text);
-      padding:0 10px; border-radius:10px;
-    }
-    .input-chip{
-      display:inline-flex; align-items:center; gap:8px; padding:0 12px;
-      min-height:var(--tap); border-radius:12px; border:1px solid var(--border);
-      background:var(--pill); color:var(--text);
-    }
-    .input-chip select{
-      appearance:none; border:0; background:transparent; color:inherit; min-height:var(--tap);
-      padding-right:20px; font:inherit;
-    }
-    .input-chip:focus-within{outline:2px solid var(--focus); outline-offset:2px}
-
-    /* Sticky bottom actions (mobile) */
-    .dock{
-      position:sticky; bottom:0; z-index:35;
-      background:linear-gradient(180deg, color-mix(in srgb, var(--bg) 0%, transparent), var(--bg) 30%);
-      padding:8px 16px calc(env(safe-area-inset-bottom) + 8px);
-      border-top:1px solid var(--border);
-    }
-    .dock-inner{max-width:var(--container); margin:0 auto; display:flex; gap:10px}
-    .btn{
-      flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      height:var(--tap); border-radius:12px; cursor:pointer; font-weight:600;
-      border:1px solid var(--border); background:var(--chip); color:var(--text);
-    }
-    .btn.primary{background:linear-gradient(135deg,var(--accent), var(--accent-2)); color:#001018; border:none}
-    .btn:focus-visible{outline:2px solid var(--focus); outline-offset:2px}
-
-    /* Results bar */
-    .results{
-      margin:12px 0 10px; display:flex; align-items:center; justify-content:space-between; gap:10px;
-      color:var(--muted); font-size:14px;
-    }
-    .sorter{
-      display:inline-flex; align-items:center; gap:8px; background:var(--card);
-      border:1px solid var(--border); border-radius:12px; padding:0 8px; height:40px;
-    }
-    .sorter select{
-      border:0; background:transparent; color:inherit; height:100%; font:inherit; padding-right:20px;
-    }
-
-    /* Cards */
-    .cards{
-      display:grid; gap:12px; grid-template-columns:1fr; /* phones first */
-    }
-    @media (min-width:600px){ .cards{grid-template-columns:repeat(2,1fr);} }
-    @media (min-width:900px){ .cards{grid-template-columns:repeat(3,1fr);} }
-    @media (min-width:1200px){ .cards{grid-template-columns:repeat(4,1fr);} }
-
-    .card{
-      background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
-      display:flex; flex-direction:column;
-    }
-    .thumb{width:100%; aspect-ratio:16/9; object-fit:cover; background:#0f172a}
-    .card-body{padding:12px; display:flex; flex-direction:column; gap:10px}
-    h3{margin:0; font-size:16px; line-height:1.2}
-    .meta{display:flex; flex-wrap:wrap; gap:6px}
-    .pill{font-size:12px; border:1px solid var(--border); background:var(--pill); padding:4px 8px; border-radius:999px; color:var(--muted)}
-    .desc{font-size:14px; color:color-mix(in srgb, var(--text) 86%, transparent)}
-    .address{font-size:13px; color:var(--muted)}
-    .links{display:flex; flex-wrap:wrap; gap:12px}
-    .links a{color:var(--accent); text-decoration:none; font-weight:600}
-    .links a:hover{text-decoration:underline}
-
-    /* Filter Sheet (modal) */
-    dialog#filters{
-      width:100%; max-width:680px; border:0; padding:0; background:transparent;
-    }
-    .sheet{
-      margin:0 auto; width:100%; background:var(--card); border:1px solid var(--border);
-      border-radius:20px 20px 0 0; padding:14px; box-shadow:var(--shadow);
-      position:fixed; left:0; right:0; bottom:0;
-    }
-    .sheet-handle{width:44px; height:5px; border-radius:999px; background:var(--border); margin:6px auto 12px}
-    .sheet-grid{display:grid; gap:10px}
-    .field{background:var(--chip); border:1px solid var(--border); border-radius:12px; padding:10px}
-    .field label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px}
-    .checkline{display:flex; flex-wrap:wrap; gap:8px}
-    .chip{
-      display:inline-flex; align-items:center; gap:8px; padding:10px 12px; min-height:40px;
-      border:1px solid var(--border); background:var(--pill); border-radius:999px; font-size:13px;
-    }
-    .chip input{accent-color:var(--accent); width:18px; height:18px}
-    .actions{display:flex; gap:10px; position:sticky; bottom:0; background:var(--card); padding-top:8px}
-    .actions .btn{height:48px}
-
-    /* Skeletons */
-    .skeleton{
-      background:linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.12), rgba(255,255,255,0.06));
-      background-size:200% 100%; animation:shimmer 1.2s infinite;
-    }
-    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-    /* Accessibility & motion */
-    :focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:10px}
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
-    }
-  </style>
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+    </style>
 </head>
 <body>
-  <!-- Top App Bar -->
-  <header>
-    <div class="bar" role="banner">
-      <img class="logo" src="./assets/logo.png" alt="" />
-      <div class="brand" aria-label="Site title">Taiwan — Kid’s Atlas des Merveilles</div>
+    <div class="splash-screen">
+        <img src="assets/logo.png" alt="Logo" class="logo" height="120" >
+        <h1 style="font-size: 18px;">Taiwan <br>Kids Atlas des Merveilles</h1>
     </div>
-    <p class="disclaimer" role="note">
-      Drive times are approximate from <strong>Zhongli city center</strong>. Actual times vary.
-    </p>
-  </header>
 
-  <main class="wrap" id="main-content">
-    <!-- Search row (mobile-first) -->
-    <section class="search-row" role="search" aria-label="Search and quick filters">
-      <div class="searchbar">
-        <input id="q" type="text" inputmode="search" autocomplete="off"
-               placeholder="Search places, tags, descriptions…" aria-label="Search activities" />
-
-        <div class="input-chip">
-          <label class="sr-only" for="category">Category</label>
-          <select id="category" aria-label="Category">
-            <option value="">All categories</option>
-          </select>
-        </div>
-
-        <div class="input-chip">
-          <label class="sr-only" for="region">Region</label>
-          <select id="region" aria-label="Region">
-            <option value="">All regions</option>
-          </select>
-        </div>
-      </div>
-    </section>
-
-    <!-- Results bar -->
-    <section class="results" aria-live="polite">
-      <div><strong id="count">Loading…</strong></div>
-      <div class="sorter">
-        <label class="sr-only" for="sort">Sort</label>
-        <select id="sort">
-          <option value="name">Name (A→Z)</option>
-          <option value="drive">Drive time (short→long)</option>
-          <option value="price">Price (low→high)</option>
-        </select>
-      </div>
-    </section>
-
-    <!-- Cards -->
-    <section class="cards" id="cards" aria-label="Activities">
-      <!-- Skeleton on first paint -->
-      <article class="card">
-        <div class="thumb skeleton" style="aspect-ratio:16/9"></div>
-        <div class="card-body">
-          <div class="skeleton" style="height:18px; width:60%; border-radius:8px"></div>
-          <div class="skeleton" style="height:10px; width:95%; border-radius:8px; margin-top:8px"></div>
-          <div class="skeleton" style="height:10px; width:70%; border-radius:8px; margin-top:6px"></div>
-        </div>
-      </article>
-      <article class="card" aria-hidden="true">
-        <div class="thumb skeleton" style="aspect-ratio:16/9"></div>
-        <div class="card-body">
-          <div class="skeleton" style="height:18px; width:50%; border-radius:8px"></div>
-          <div class="skeleton" style="height:10px; width:85%; border-radius:8px; margin-top:8px"></div>
-          <div class="skeleton" style="height:10px; width:65%; border-radius:8px; margin-top:6px"></div>
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <!-- Sticky bottom actions (mobile): opens filter sheet -->
-  <div class="dock" role="region" aria-label="Actions">
-    <div class="dock-inner">
-      <button class="btn" id="resetBtn" type="button" aria-label="Reset filters">Reset</button>
-      <button class="btn primary" type="button" aria-haspopup="dialog" aria-controls="filters" onclick="document.getElementById('filters').showModal()">Filters</button>
-      <button class="btn" id="applyBtn" type="button" aria-label="Apply filters">Apply</button>
-    </div>
-  </div>
-
-  <!-- Filter Modal Sheet -->
-  <dialog id="filters" aria-label="Filter activities">
-    <form method="dialog" class="sheet" onsubmit="this.closest('dialog').close()">
-      <div class="sheet-handle" aria-hidden="true"></div>
-      <div class="sheet-grid">
-        <div class="field">
-          <label>Indoor / Outdoor</label>
-          <div class="checkline" role="group" aria-label="Indoor/Outdoor">
-            <label class="chip"><input type="checkbox" id="indoor"> Indoor</label>
-            <label class="chip"><input type="checkbox" id="outdoor"> Outdoor</label>
-            <label class="chip"><input type="checkbox" id="mixed"> Mixed</label>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Age range (kid)</label>
-          <div class="checkline" role="group" aria-label="Age range">
-            <input type="number" id="ageMin" min="0" max="18" value="0" class="input-chip" style="width:120px" aria-label="Min age">
-            <span style="align-self:center; color:var(--muted)">to</span>
-            <input type="number" id="ageMax" min="0" max="18" value="18" class="input-chip" style="width:120px" aria-label="Max age">
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Quick toggles</label>
-          <div class="checkline">
-            <label class="chip"><input type="checkbox" id="onlyFree"> Free only</label>
-            <label class="chip"><input type="checkbox" id="dogOnly"> Dog friendly only</label>
-            <label class="chip"><input type="checkbox" id="foodOnly"> Food nearby only</label>
-            <label class="chip"><input type="checkbox" id="seasonalOnly"> Seasonal</label>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="btn" type="button" onclick="document.getElementById('filters').close()">Close</button>
-          <button class="btn primary" id="applyBtn_sheet" type="button">Apply</button>
-        </div>
-      </div>
-    </form>
-  </dialog>
-
-  <footer style="padding:16px; text-align:center; color:var(--muted); border-top:1px solid var(--border)">
-    © Vivien Roggero LLC — 2025
-  </footer>
-
-  <!-- Visually hidden helper -->
-  <script>
-    (function(){
-      const style=document.createElement('style');
-      style.textContent=`.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`;
-      document.head.appendChild(style);
-    })();
-
-    // Wire the modal's "Apply" to the main Apply button action (keeps your app.js unchanged)
-    window.addEventListener('DOMContentLoaded', () => {
-      const applySheet = document.getElementById('applyBtn_sheet');
-      const applyMain  = document.getElementById('applyBtn');
-      if (applySheet && applyMain) {
-        applySheet.addEventListener('click', () => {
-          applyMain.click();
-          document.getElementById('filters')?.close();
-        });
-      }
-      // Close modal on backdrop click
-      const dlg = document.getElementById('filters');
-      if (dlg){
-        dlg.addEventListener('click', (e)=>{
-          const rect = dlg.querySelector('.sheet').getBoundingClientRect();
-          const inSheet = e.clientY >= rect.top && e.clientY <= rect.bottom && e.clientX >= rect.left && e.clientX <= rect.right;
-          if (!inSheet) dlg.close();
-        });
-      }
-    });
-  </script>
-  <script defer src="./assets/app.js"></script>
+    <script>
+        // Redirect to main app after 3 seconds
+        setTimeout(function() {
+            window.location.href = 'index2.html';
+        }, 3000);
+    </script>
 </body>
 </html>

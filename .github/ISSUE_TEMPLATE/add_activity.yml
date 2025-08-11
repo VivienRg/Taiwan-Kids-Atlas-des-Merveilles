@@ -44,6 +44,112 @@ body:
   - type: dropdown
     id: indoor_outdoor
     attributes:
+      label: "Indoor/Outdoor"
+      description: "Is this primarily an indoor, outdoor, or mixed activity?"
+      options: ["Indoor", "Outdoor", "Mixed"]
+    validations: { required: true }
+
+  - type: textarea
+    id: categories
+    attributes:
+      label: "Categories"
+      description: "Main categories (one per line, at least one required)"
+      placeholder: |
+        Aquarium
+        Science
+        Nature
+    validations: { required: true }
+
+  - type: textarea
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Descriptive tags (one per line, optional but recommended)"
+      placeholder: |
+        learning
+        nature
+        food
+        AC
+    validations: { required: false }
+
+  - type: input
+    id: cost_range
+    attributes:
+      label: "Cost Range"
+      description: "Approximate cost per person (e.g., 'Free', '100-200', '500+')"
+      placeholder: "600+"
+    validations: { required: true }
+
+  - type: input
+    id: age_min
+    attributes:
+      label: "Minimum Recommended Age"
+      description: "Youngest age that would enjoy this activity (0-18)"
+      placeholder: "3"
+    validations: { required: true, number: true }
+
+  - type: input
+    id: age_max
+    attributes:
+      label: "Maximum Recommended Age"
+      description: "Oldest age that would enjoy this activity (1-99)"
+      placeholder: "99"
+    validations: { required: true, number: true }
+
+  # Location Details
+  - type: textarea
+    id: desc
+    attributes:
+      label: "Description"
+      description: "Detailed description of the activity (5+ characters)"
+      placeholder: "A wonderful place for families with interactive exhibits..."
+    validations: { required: true }
+
+  - type: input
+    id: map_link
+    attributes:
+      label: "Google Maps Link"
+      description: "Full URL to the location on Google Maps"
+      placeholder: "https://goo.gl/maps/..."
+    validations: { required: true }
+
+  - type: input
+    id: address_en
+    attributes:
+      label: "English Address"
+      description: "Full address in English"
+      placeholder: "No. 105, Section 1, Xianfu Road, Zhongli District, Taoyuan City, 320"
+    validations: { required: true }
+
+  - type: input
+    id: address_query
+    attributes:
+      label: "Address Query"
+      description: "Simplified address for search (e.g., 'Xpark, Zhongli')"
+      placeholder: "Xpark, Zhongli"
+    validations: { required: true }
+
+  - type: input
+    id: drive_min
+    attributes:
+      label: "Driving Time (minutes)"
+      description: "Approximate driving time from central Taipei in minutes (0-300)"
+      placeholder: "40"
+    validations: { required: true, number: true }
+
+  # Additional Information
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Additional Notes"
+      description: "Any other important information (best times to visit, special requirements, etc.)"
+      placeholder: "Best visited on weekdays to avoid crowds. Stroller accessible."
+    validations: { required: false }
+
+  # Activity Details
+  - type: dropdown
+    id: indoor_outdoor
+    attributes:
       label: "Indoor / Outdoor"
       description: "Is this activity primarily indoor, outdoor, or mixed?"
       options: ["Indoor", "Outdoor", "Mixed"]
