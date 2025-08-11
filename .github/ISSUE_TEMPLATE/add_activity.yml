@@ -1,53 +1,63 @@
-name: "🛂 Add an activity"
-description: |
-  Propose a new kid-friendly activity for the map.
-  
-  **Note:** All fields are required unless marked as optional.
-  
-  **Tip:** Check existing activities to maintain consistency in formatting.
+name: "🛂 Add an Activity"
+description: "Propose a new kid-friendly activity for the map"
 labels: ["add-activity"]
+
 body:
-  # Basic Information
+  - type: markdown
+    attributes:
+      value: |
+        ### ℹ️ Please fill out this form to add a new activity
+        *All fields are required unless marked as optional.*
+        
+        **Tip:** Check existing activities to maintain consistent formatting.
+
   - type: input
     id: name
-    attributes: 
-      label: "Activity name"
+    attributes:
+      label: "Activity Name"
       description: "The official name of the location or activity"
       placeholder: "Xpark Aquarium (Qingpu)"
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: region
-    attributes: 
+    attributes:
       label: "Region/County"
       description: "Taiwan county/region (e.g., Taoyuan, Taipei, Hsinchu, Yilan)"
       placeholder: "Taoyuan"
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: city
-    attributes: 
+    attributes:
       label: "City"
       description: "City where the activity is located"
       placeholder: "Taoyuan"
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: district
-    attributes: 
+    attributes:
       label: "District/Area"
       description: "District or area within the city"
       placeholder: "Zhongli"
-    validations: { required: true }
+    validations:
+      required: true
 
-  # Activity Details
   - type: dropdown
     id: indoor_outdoor
     attributes:
       label: "Indoor/Outdoor"
       description: "Is this primarily an indoor, outdoor, or mixed activity?"
-      options: ["Indoor", "Outdoor", "Mixed"]
-    validations: { required: true }
+      options:
+        - "Indoor"
+        - "Outdoor"
+        - "Mixed"
+    validations:
+      required: true
 
   - type: textarea
     id: categories
@@ -58,19 +68,21 @@ body:
         Aquarium
         Science
         Nature
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: textarea
     id: tags
     attributes:
-      label: "Tags"
-      description: "Descriptive tags (one per line, optional but recommended)"
+      label: "Tags (Optional)"
+      description: "Descriptive tags (one per line)"
       placeholder: |
         learning
         nature
         food
         AC
-    validations: { required: false }
+    validations:
+      required: false
 
   - type: input
     id: cost_range
@@ -78,7 +90,8 @@ body:
       label: "Cost Range"
       description: "Approximate cost per person (e.g., 'Free', '100-200', '500+')"
       placeholder: "600+"
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: age_min
@@ -86,7 +99,8 @@ body:
       label: "Minimum Recommended Age"
       description: "Youngest age that would enjoy this activity (0-18)"
       placeholder: "3"
-    validations: { required: true, number: true }
+    validations:
+      required: true
 
   - type: input
     id: age_max
@@ -94,16 +108,17 @@ body:
       label: "Maximum Recommended Age"
       description: "Oldest age that would enjoy this activity (1-99)"
       placeholder: "99"
-    validations: { required: true, number: true }
+    validations:
+      required: true
 
-  # Location Details
   - type: textarea
     id: desc
     attributes:
       label: "Description"
-      description: "Detailed description of the activity (5+ characters)"
+      description: "Detailed description of the activity"
       placeholder: "A wonderful place for families with interactive exhibits..."
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: map_link
@@ -111,7 +126,8 @@ body:
       label: "Google Maps Link"
       description: "Full URL to the location on Google Maps"
       placeholder: "https://goo.gl/maps/..."
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: address_en
@@ -119,7 +135,8 @@ body:
       label: "English Address"
       description: "Full address in English"
       placeholder: "No. 105, Section 1, Xianfu Road, Zhongli District, Taoyuan City, 320"
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: address_query
@@ -127,7 +144,8 @@ body:
       label: "Address Query"
       description: "Simplified address for search (e.g., 'Xpark, Zhongli')"
       placeholder: "Xpark, Zhongli"
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: drive_min
@@ -135,25 +153,17 @@ body:
       label: "Driving Time (minutes)"
       description: "Approximate driving time from central Taipei in minutes (0-300)"
       placeholder: "40"
-    validations: { required: true, number: true }
+    validations:
+      required: true
 
-  # Additional Information
   - type: textarea
     id: notes
     attributes:
-      label: "Additional Notes"
+      label: "Additional Notes (Optional)"
       description: "Any other important information (best times to visit, special requirements, etc.)"
       placeholder: "Best visited on weekdays to avoid crowds. Stroller accessible."
-    validations: { required: false }
-
-  # Activity Details
-  - type: dropdown
-    id: indoor_outdoor
-    attributes:
-      label: "Indoor / Outdoor"
-      description: "Is this activity primarily indoor, outdoor, or mixed?"
-      options: ["Indoor", "Outdoor", "Mixed"]
-    validations: { required: true }
+    validations:
+      required: false
 
   - type: checkboxes
     id: categories
