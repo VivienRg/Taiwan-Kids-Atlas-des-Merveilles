@@ -11,6 +11,7 @@ body:
         
         **Tip:** Check existing activities to maintain consistent formatting.
 
+  # Basic Information
   - type: input
     id: name
     attributes:
@@ -59,112 +60,7 @@ body:
     validations:
       required: true
 
-  - type: textarea
-    id: categories
-    attributes:
-      label: "Categories"
-      description: "Main categories (one per line, at least one required)"
-      placeholder: |
-        Aquarium
-        Science
-        Nature
-    validations:
-      required: true
-
-  - type: textarea
-    id: tags
-    attributes:
-      label: "Tags (Optional)"
-      description: "Descriptive tags (one per line)"
-      placeholder: |
-        learning
-        nature
-        food
-        AC
-    validations:
-      required: false
-
-  - type: input
-    id: cost_range
-    attributes:
-      label: "Cost Range"
-      description: "Approximate cost per person (e.g., 'Free', '100-200', '500+')"
-      placeholder: "600+"
-    validations:
-      required: true
-
-  - type: input
-    id: age_min
-    attributes:
-      label: "Minimum Recommended Age"
-      description: "Youngest age that would enjoy this activity (0-18)"
-      placeholder: "3"
-    validations:
-      required: true
-
-  - type: input
-    id: age_max
-    attributes:
-      label: "Maximum Recommended Age"
-      description: "Oldest age that would enjoy this activity (1-99)"
-      placeholder: "99"
-    validations:
-      required: true
-
-  - type: textarea
-    id: desc
-    attributes:
-      label: "Description"
-      description: "Detailed description of the activity"
-      placeholder: "A wonderful place for families with interactive exhibits..."
-    validations:
-      required: true
-
-  - type: input
-    id: map_link
-    attributes:
-      label: "Google Maps Link"
-      description: "Full URL to the location on Google Maps"
-      placeholder: "https://goo.gl/maps/..."
-    validations:
-      required: true
-
-  - type: input
-    id: address_en
-    attributes:
-      label: "English Address"
-      description: "Full address in English"
-      placeholder: "No. 105, Section 1, Xianfu Road, Zhongli District, Taoyuan City, 320"
-    validations:
-      required: true
-
-  - type: input
-    id: address_query
-    attributes:
-      label: "Address Query"
-      description: "Simplified address for search (e.g., 'Xpark, Zhongli')"
-      placeholder: "Xpark, Zhongli"
-    validations:
-      required: true
-
-  - type: input
-    id: drive_min
-    attributes:
-      label: "Driving Time (minutes)"
-      description: "Approximate driving time from central Taipei in minutes (0-300)"
-      placeholder: "40"
-    validations:
-      required: true
-
-  - type: textarea
-    id: notes
-    attributes:
-      label: "Additional Notes (Optional)"
-      description: "Any other important information (best times to visit, special requirements, etc.)"
-      placeholder: "Best visited on weekdays to avoid crowds. Stroller accessible."
-    validations:
-      required: false
-
+  # Categories and Tags
   - type: checkboxes
     id: categories
     attributes:
@@ -191,8 +87,19 @@ body:
         - label: "Animals"
         - label: "Viewpoint"
         - label: "Boat"
-    validations: { required: true }
+    validations:
+      required: true
 
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags (comma separated)"
+      description: "Additional descriptive tags (e.g., 'learning, nature, food, AC, stroller')"
+      placeholder: "learning, nature, food, AC, stroller"
+    validations:
+      required: false
+
+  # Description
   - type: textarea
     id: desc
     attributes:
@@ -203,34 +110,38 @@ body:
         or tips for families visiting with children.
         
         Example: "Modern aquarium with immersive tanks, penguins, and shows—great A/C learning day."
-    validations: { required: true, minLength: 5 }
+    validations:
+      required: true
 
   # Cost and Age Information
   - type: input
     id: cost_range
-    attributes: 
+    attributes:
       label: "Cost Range (NTD)"
       description: "Use '0' for free, or a range like '100-300' or '600+'"
-      placeholder: "0", "100-300", "600+"
-    validations: { required: true }
+      placeholder: "600+"
+    validations:
+      required: true
 
   - type: input
     id: age_range_min
-    attributes: 
+    attributes:
       label: "Minimum Recommended Age"
       description: "Youngest appropriate age (0-18)"
       placeholder: "3"
-    validations: { required: true, minimum: 0, maximum: 18 }
+    validations:
+      required: true
 
   - type: input
     id: age_range_max
-    attributes: 
+    attributes:
       label: "Maximum Recommended Age"
       description: "Oldest appropriate age (1-99)"
       placeholder: "12"
-    validations: { required: true, minimum: 1, maximum: 99 }
+    validations:
+      required: true
 
-  # Features and Tags
+  # Features
   - type: checkboxes
     id: features
     attributes:
@@ -242,49 +153,58 @@ body:
         - label: "Seasonal"
         - label: "Natural attraction (not human-made)"
 
-  - type: input
-    id: tags
-    attributes: 
-      label: "Tags (comma separated)"
-      description: "Additional descriptive tags (e.g., 'learning, nature, food, AC, stroller')"
-      placeholder: "learning, nature, food, AC, stroller"
-
   # Location Information
   - type: input
     id: website
-    attributes: 
+    attributes:
       label: "Official Website (optional)"
       description: "Full URL to the official website"
       placeholder: "https://example.com"
+    validations:
+      required: false
 
   - type: input
     id: map_link
-    attributes: 
+    attributes:
       label: "Google Maps Link"
       description: "Full Google Maps URL to the exact location"
       placeholder: "https://maps.google.com/?q=..."
-    validations: { required: true }
+    validations:
+      required: true
 
   - type: input
     id: address_en
-    attributes: 
+    attributes:
       label: "Full Address (English)"
       description: "Complete address in English"
-      placeholder: "No. 105, Chunde Rd, Zhongli District, Taoyuan City, Taiwan 320"
-    validations: { required: true }
+      placeholder: "No. 105, Chende Rd, Zhongli District, Taoyuan City, Taiwan 320"
+    validations:
+      required: true
 
   - type: input
     id: address_query
-    attributes: 
+    attributes:
       label: "Map Search Query"
-      description: "Search query that best finds this location on maps (e.g., 'Xpark Aquarium, Zhongli, Taoyuan, Taiwan')"
-      placeholder: "Activity Name, District, City, Taiwan"
-    validations: { required: true }
+      description: "Search query that best finds this location on maps"
+      placeholder: "Xpark Aquarium, Zhongli, Taoyuan, Taiwan"
+    validations:
+      required: true
 
   - type: input
     id: drive_min
-    attributes: 
+    attributes:
       label: "Drive Time (minutes from Zhongli)"
       description: "Estimated driving time in minutes from Zhongli"
       placeholder: "25"
-    validations: { required: true, minimum: 0 }
+    validations:
+      required: true
+
+  # Additional Information
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Additional Notes (Optional)"
+      description: "Any other important information (best times to visit, special requirements, etc.)"
+      placeholder: "Best visited on weekdays to avoid crowds. Stroller accessible."
+    validations:
+      required: false
