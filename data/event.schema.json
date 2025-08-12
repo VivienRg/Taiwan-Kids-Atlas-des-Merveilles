@@ -1,61 +1,79 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Event",
+    "title": "Event (with Shows)",
     "type": "object",
     "required": [
+      "id",
       "name",
-      "starts_at",
       "timezone",
-      "region",
-      "city",
-      "district",
       "categories",
       "tags",
       "age_range",
       "desc",
-      "map_link",
-      "address_en",
-      "id",
-      "address_query",
       "source",
-      "language"
+      "language",
+      "shows"
     ],
     "properties": {
+      "id": { "type": "string", "pattern": "^([a-f0-9]{16}|[a-z0-9-]+)$" },
+      "external_ids": { "type": "object", "additionalProperties": { "type": "string" } },
+  
       "name": { "type": "string", "minLength": 1 },
-      "starts_at": { "type": "string", "format": "date-time" },
-      "ends_at": { "type": ["string","null"], "format": "date-time" },
+      "subtitle": { "type": ["string","null"] },
       "timezone": { "type": "string", "minLength": 1 },
   
-      "region": { "type": "string" },
-      "city": { "type": "string" },
-      "district": { "type": "string" },
-      "venue_name": { "type": ["string","null"] },
-  
-      "indoor_outdoor": { "type": "string", "enum": ["Indoor","Outdoor","Mixed"] },
       "categories": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
       "tags": { "type": "array", "items": { "type": "string" } },
-  
-      "cost_range": { "type": ["string","null"] },
-      "price_text": { "type": ["string","null"] },
-      "age_range": { "type": "array", "items": { "type": "integer", "minimum": 0 }, "minItems": 2, "maxItems": 2 },
+      "age_range": {
+        "type": "array",
+        "items": { "type": "integer", "minimum": 0 },
+        "minItems": 2,
+        "maxItems": 2
+      },
   
       "desc": { "type": "string", "minLength": 5 },
       "website": { "type": ["string","null"], "format": "uri" },
       "tickets_url": { "type": ["string","null"], "format": "uri" },
   
-      "map_link": { "type": "string", "format": "uri" },
-      "drive_min": { "type": ["integer","null"], "minimum": 0 },
-      "address_en": { "type": "string" },
-      "address_query": { "type": "string" },
-      "lat": { "type": ["number","null"] },
-      "lng": { "type": ["number","null"] },
-  
       "images": { "type": "array", "items": { "type": "string", "format": "uri" } },
-      "image_url": { "type": ["string","null"], "format": "uri", "description": "Primary/source image (usually images[0])." },
-      "thumbnail_url": { "type": ["string","null"], "format": "uri", "description": "Public thumbnail URL (1200×630 cover crop via image proxy)." },
+      "image_url": {
+        "type": ["string","null"],
+        "format": "uri",
+        "description": "Primary/source image (usually images[0])."
+      },
+      "thumbnail_url": {
+        "type": ["string","null"],
+        "format": "uri",
+        "description": "Public thumbnail URL (1200×630 cover crop via image proxy)."
+      },
   
       "language": { "type": "string", "enum": ["en"] },
       "status": { "type": "string", "enum": ["scheduled","postponed","cancelled","ended"] },
+      "indoor_outdoor": { "type": "string", "enum": ["Indoor","Outdoor","Mixed"] },
+  
+      "run_start": { "type": ["string","null"], "format": "date-time", "description": "Earliest show start (summary)." },
+      "run_end": { "type": ["string","null"], "format": "date-time", "description": "Latest show end (summary)." },
+      "shows_count": { "type": ["integer","null"], "minimum": 1 },
+  
+      "primary_venue": {
+        "type": ["object","null"],
+        "description": "Optional canonical venue for multi-show events.",
+        "required": ["region","city","district","address_en","address_query","map_link"],
+        "properties": {
+          "region": { "type": "string" },
+          "city": { "type": "string" },
+          "district": { "type": "string" },
+          "venue_name": { "type": ["string","null"] },
+          "map_link": { "type": "string", "format": "uri" },
+          "drive_min": { "type": ["integer","null"], "minimum": 0 },
+          "address_en": { "type": "string" },
+          "address_query": { "type": "string" },
+          "lat": { "type": ["number","null"] },
+          "lng": { "type": ["number","null"] },
+          "indoor_outdoor": { "type": "string", "enum": ["Indoor","Outdoor","Mixed"] }
+        },
+        "additionalProperties": false
+      },
   
       "source": {
         "type": "object",
@@ -67,14 +85,59 @@
         "additionalProperties": false
       },
   
-      "id": {
-        "type": "string",
-        "pattern": "^([a-f0-9]{16}|[a-z0-9-]+)$"
-      },
-  
-      "external_ids": {
+      "shows": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "$ref": "#/definitions/show" }
+      }
+    },
+    "definitions": {
+      "show": {
+        "title": "Show (Occurrence)",
         "type": "object",
-        "additionalProperties": { "type": "string" }
+        "required": [
+          "show_id",
+          "starts_at",
+          "status",
+          "region",
+          "city",
+          "district",
+          "address_en",
+          "address_query",
+          "map_link"
+        ],
+        "properties": {
+          "show_id": { "type": "string", "pattern": "^([a-f0-9]{16}|[a-z0-9-]+)$" },
+          "external_ids": { "type": "object", "additionalProperties": { "type": "string" } },
+  
+          "starts_at": { "type": "string", "format": "date-time" },
+          "ends_at": { "type": ["string","null"], "format": "date-time" },
+          "timezone": { "type": ["string","null"], "description": "Optional override; defaults to event.timezone." },
+  
+          "status": { "type": "string", "enum": ["scheduled","postponed","cancelled","ended"] },
+          "on_sale": { "type": ["boolean","null"], "description": "Mapped from source flags like Y/N." },
+  
+          "region": { "type": "string" },
+          "city": { "type": "string" },
+          "district": { "type": "string" },
+          "venue_name": { "type": ["string","null"] },
+  
+          "indoor_outdoor": { "type": "string", "enum": ["Indoor","Outdoor","Mixed"] },
+  
+          "price_text": { "type": ["string","null"] },
+          "cost_range": { "type": ["string","null"] },
+  
+          "website": { "type": ["string","null"], "format": "uri" },
+          "tickets_url": { "type": ["string","null"], "format": "uri" },
+  
+          "map_link": { "type": "string", "format": "uri" },
+          "drive_min": { "type": ["integer","null"], "minimum": 0 },
+          "address_en": { "type": "string" },
+          "address_query": { "type": "string" },
+          "lat": { "type": ["number","null"] },
+          "lng": { "type": ["number","null"] }
+        },
+        "additionalProperties": false
       }
     },
     "additionalProperties": false
