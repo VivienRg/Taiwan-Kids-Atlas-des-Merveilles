@@ -1,1 +1,14 @@
-{"sources":{"moc":{"seen":[{"fingerprint":"0b57dd96101ac69f","eventid":"21fccd00d2a847cd","eventStartDate":"2025-08-30T11:00:00","eventEndDate":"2025-08-30T11:50:00"}}}}
+{
+  "sources": {
+    "moc": {
+      "seen": [
+        {
+          "fingerprint": "0b57dd96101ac69f",
+          "eventid": "21fccd00d2a847cd",
+          "eventStartDate": "2025-08-30T11:00:00",
+          "eventEndDate": "2025-08-30T11:50:00"
+        }
+      ]
+    }
+  }
+}
