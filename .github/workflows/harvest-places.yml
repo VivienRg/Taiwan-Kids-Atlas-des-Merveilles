@@ -1,0 +1,54 @@
+name: Harvest Taiwan Places
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 18 * * 0'   # weekly, Sunday 18:00 UTC (Mon 02:00 Taiwan)
+
+permissions:
+  contents: write
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    env:
+      TDX_CLIENT_ID: ${{ secrets.TDX_CLIENT_ID }}
+      TDX_CLIENT_SECRET: ${{ secrets.TDX_CLIENT_SECRET }}
+      DATAGOV_RESOURCES: ${{ vars.DATAGOV_RESOURCES }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Harvest places (TDX + data.gov.tw)
+        run: node scripts/harvest/index.mjs
+
+      - name: Validate output against schema
+        run: |
+          npm i ajv >/dev/null 2>&1
+          node - <<'NODE'
+          const fs = require('fs');
+          const Ajv = require('ajv');
+          const schema = JSON.parse(fs.readFileSync('data/place.schema.json', 'utf8'));
+          const data = JSON.parse(fs.readFileSync('data/places.json', 'utf8'));
+          const ajv = new Ajv({ allErrors: true });
+          const validate = ajv.compile(schema);
+          let bad = 0;
+          for (const [i, rec] of data.entries()) {
+            if (!validate(rec)) { if (bad < 5) console.error('Invalid at', i, validate.errors); bad++; }
+          }
+          if (bad) { console.error(`${bad} invalid records`); process.exit(1); }
+          console.log(`All ${data.length} places valid ✅`);
+          NODE
+
+      - name: Commit updated dataset
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh harvested places dataset"
+          file_pattern: |
+            data/places.json
+            data/places.stats.json

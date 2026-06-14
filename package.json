@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "ids": "node scripts/add_ids.mjs",
-    "thumbs": "node scripts/fetch_thumbnails.mjs"
+    "thumbs": "node scripts/fetch_thumbnails.mjs",
+    "harvest": "node scripts/harvest/index.mjs"
   },
   "dependencies": {
     "node-fetch": "^3.3.2",

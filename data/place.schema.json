@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Place",
+  "description": "A public activity / point-of-interest harvested from Taiwan open-data APIs (TDX + data.gov.tw).",
+  "type": "object",
+  "required": ["id", "sources", "name", "type", "categories", "tags", "audience", "region", "harvested_at"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Stable slug id (source-prefixed)."
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["source", "source_id"],
+        "properties": {
+          "source": { "type": "string", "description": "e.g. tdx:scenicspot, tdx:activity, tdx:restaurant, datagov:<dataset>" },
+          "source_id": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "description": "All upstream records merged into this place (1+ after dedupe)."
+    },
+    "name": { "type": "string", "minLength": 1, "description": "Primary name (usually zh-Hant from source)." },
+    "name_en": { "type": "string", "description": "English name when available." },
+    "type": {
+      "type": "string",
+      "enum": ["scenic_spot", "activity", "restaurant", "other"],
+      "description": "Kind of place/record."
+    },
+    "categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Source category classes (Class1/2/3, Class, etc.)."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Derived descriptive tags (indoor/outdoor, nature, food, museum, ...)."
+    },
+    "audience": {
+      "type": "string",
+      "enum": ["kids", "adults", "all"],
+      "description": "Only 'kids' or 'adults' when the source explicitly indicates it; otherwise 'all'."
+    },
+    "age_range": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 0 },
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Only present when an explicit age range was found in the source text."
+    },
+    "description": { "type": "string" },
+    "address": { "type": "string" },
+    "region": { "type": "string", "description": "Taiwan county/city (administrative region)." },
+    "city": { "type": "string" },
+    "district": { "type": "string" },
+    "position": {
+      "type": "object",
+      "properties": {
+        "lat": { "type": "number" },
+        "lon": { "type": "number" },
+        "geohash": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "phone": { "type": "string" },
+    "website": { "type": "string" },
+    "map_link": { "type": "string" },
+    "open_time": { "type": "string" },
+    "ticket_info": { "type": "string" },
+    "charge": { "type": "string" },
+    "start_time": { "type": "string", "description": "For activities/events." },
+    "end_time": { "type": "string", "description": "For activities/events." },
+    "pictures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["url"],
+        "additionalProperties": false
+      }
+    },
+    "src_update_time": { "type": "string" },
+    "harvested_at": { "type": "string", "description": "ISO timestamp of the harvest run." }
+  },
+  "additionalProperties": false
+}
