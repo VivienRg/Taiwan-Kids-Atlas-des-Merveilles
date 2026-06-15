@@ -1,0 +1,63 @@
+name: iOS CI
+
+# Builds the SwiftUI app and runs unit tests on a macOS runner.
+# Triggers on pushes to working branches and on manual dispatch — no PR required.
+on:
+  push:
+    branches:
+      - "claude/**"
+      - "feature/**"
+    paths:
+      - "ios/**"
+      - ".github/workflows/ios-ci.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ios-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Build & test
+    runs-on: macos-14
+    defaults:
+      run:
+        working-directory: ios
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Xcode version
+        run: xcodebuild -version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Pick an available iOS Simulator
+        run: |
+          DEVICE=$(xcrun simctl list devices available \
+            | grep -E -m1 'iPhone' \
+            | sed -E 's/^[[:space:]]*//; s/ \(.*$//')
+          echo "Using simulator: $DEVICE"
+          echo "SIM_NAME=$DEVICE" >> "$GITHUB_ENV"
+
+      - name: Build & test
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project TaiwanKidsAtlas.xcodeproj \
+            -scheme TaiwanKidsAtlas \
+            -destination "platform=iOS Simulator,name=${SIM_NAME},OS=latest" \
+            -resultBundlePath TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-test-results
+          path: ios/TestResults.xcresult
+          if-no-files-found: ignore
