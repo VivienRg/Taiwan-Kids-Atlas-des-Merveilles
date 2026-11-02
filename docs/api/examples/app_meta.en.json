@@ -1,0 +1,90 @@
+{
+  "api_version": "1.0",
+  "generated_at": "2026-11-02T14:51:41.274953+00:00",
+  "content_languages": [
+    "zh-Hant",
+    "en",
+    "ja",
+    "ko",
+    "zh-Hans"
+  ],
+  "sources": [
+    {
+      "id": "curated",
+      "kind": "place",
+      "name": "Taiwan Kids Atlas curated activities",
+      "publisher": "Taiwan Kids Atlas des Merveilles contributors",
+      "license": "MIT",
+      "license_url": "https://opensource.org/licenses/MIT",
+      "dataset_url": "https://github.com/VivienRg/Taiwan-Kids-Atlas-des-Merveilles",
+      "attribution": "Curated by the Taiwan Kids Atlas des Merveilles community.",
+      "enabled": true,
+      "last_success_at": "2026-11-02T14:51:38.241248+00:00"
+    },
+    {
+      "id": "moc_kids_events",
+      "kind": "event",
+      "name": "Arts & culture events — Family category",
+      "publisher": "Ministry of Culture",
+      "license": "OGDL-Taiwan-1.0",
+      "license_url": "https://data.gov.tw/license",
+      "dataset_url": "https://data.gov.tw/dataset/10042",
+      "attribution": "Ministry of Culture — current arts events, Family category. Released under the Open Government Data License, version 1.0: https://data.gov.tw/license",
+      "enabled": true,
+      "last_success_at": "2026-11-02T14:51:40.210413+00:00"
+    },
+    {
+      "id": "taipei_travel_attractions",
+      "kind": "place",
+      "name": "Taipei Travel — Attractions",
+      "publisher": "Department of Information and Tourism, Taipei City Government",
+      "license": "OGDL-Taiwan-1.0",
+      "license_url": "https://data.gov.tw/license",
+      "dataset_url": "https://www.travel.taipei/open-api/swagger/ui/index#/Attractions/Attractions_All",
+      "attribution": "Department of Information and Tourism, Taipei City Government — Taipei Travel Open API, Attractions. Released under the Open Government Data License, version 1.0: https://data.gov.tw/license",
+      "enabled": false,
+      "last_success_at": null
+    },
+    {
+      "id": "taipei_travel_events",
+      "kind": "event",
+      "name": "Taipei Travel — Events",
+      "publisher": "Department of Information and Tourism, Taipei City Government",
+      "license": "OGDL-Taiwan-1.0",
+      "license_url": "https://data.gov.tw/license",
+      "dataset_url": "https://www.travel.taipei/open-api/swagger/ui/index#/Events/Events_Activity",
+      "attribution": "Department of Information and Tourism, Taipei City Government — Taipei Travel Open API, Events. Released under the Open Government Data License, version 1.0: https://data.gov.tw/license",
+      "enabled": false,
+      "last_success_at": null
+    },
+    {
+      "id": "tw_tourism_attractions",
+      "kind": "place",
+      "name": "Attractions — Tourism Information Database",
+      "publisher": "Tourism Administration, MOTC",
+      "license": "OGDL-Taiwan-1.0",
+      "license_url": "https://data.gov.tw/license",
+      "dataset_url": "https://data.gov.tw/dataset/7777",
+      "attribution": "Tourism Administration, MOTC — Attractions, Tourism Information Database (Tourism Data Standard V2.1). Released under the Open Government Data License, version 1.0: https://data.gov.tw/license",
+      "enabled": true,
+      "last_success_at": "2026-11-02T14:51:37.513809+00:00"
+    },
+    {
+      "id": "tw_tourism_events",
+      "kind": "event",
+      "name": "Events — Tourism Information Database",
+      "publisher": "Tourism Administration, MOTC",
+      "license": "OGDL-Taiwan-1.0",
+      "license_url": "https://data.gov.tw/license",
+      "dataset_url": "https://data.gov.tw/dataset/7778",
+      "attribution": "Tourism Administration, MOTC — Events, Tourism Information Database (Tourism Data Standard V2.1). Released under the Open Government Data License, version 1.0: https://data.gov.tw/license",
+      "enabled": true,
+      "last_success_at": "2026-11-02T14:51:39.884046+00:00"
+    }
+  ],
+  "counts": {
+    "places": 6005,
+    "kid_friendly_places": 875,
+    "upcoming_events": 208
+  }
+}

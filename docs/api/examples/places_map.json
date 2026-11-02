@@ -1,0 +1,35 @@
+[
+  {
+    "id": "0f233214-eff7-49d3-95b5-eb83b6a9c73e",
+    "name": "Window on China Theme Park",
+    "lat": 24.83195,
+    "lng": 121.18711,
+    "primary_category": "theme-park",
+    "icon": "🎢",
+    "kid_score": 100,
+    "is_kid_friendly": true,
+    "total_count": 109
+  },
+  {
+    "id": "25bc0bfd-e6cc-4810-bd19-673c5ddcb6f9",
+    "name": "金谷農場",
+    "lat": 24.8544502321704,
+    "lng": 121.105565108946,
+    "primary_category": "farm",
+    "icon": "🌾",
+    "kid_score": 100,
+    "is_kid_friendly": true,
+    "total_count": 109
+  },
+  {
+    "id": "47ee0f39-d19f-416a-8cc7-def9b4655223",
+    "name": "六福水樂園",
+    "lat": 24.8252349036845,
+    "lng": 121.180608836298,
+    "primary_category": "theme-park",
+    "icon": "🎢",
+    "kid_score": 100,
+    "is_kid_friendly": true,
+    "total_count": 109
+  }
+]

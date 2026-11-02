@@ -1,0 +1,34 @@
+{
+  "UpdateTime": "2026-11-02T14:30:17+08:00",
+  "UpdateInterval": 86400,
+  "Language": "Zh_tw",
+  "ProviderID": "A15010000H",
+  "AttractionFees": [
+    {
+      "AttractionID": "Attraction_376480000A_000020",
+      "AttractionName": "楓香巨木群公園",
+      "Fees": [
+        {
+          "Name": "免費",
+          "Price": 0,
+          "Description": null,
+          "URL": null
+        }
+      ],
+      "UpdateTime": "2023-06-30T17:30:00"
+    },
+    {
+      "AttractionID": "Attraction_376480000A_000078",
+      "AttractionName": "水雲橋",
+      "Fees": [
+        {
+          "Name": "免費",
+          "Price": 0,
+          "Description": null,
+          "URL": null
+        }
+      ],
+      "UpdateTime": "2023-06-30T17:30:00"
+    }
+  ]
+}

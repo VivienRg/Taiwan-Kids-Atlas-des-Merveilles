@@ -1,0 +1,135 @@
+[
+  {
+    "slug": "animals",
+    "name": "Zoos, aquariums & animals",
+    "icon": "🦁",
+    "sort": 10,
+    "item_count": 46
+  },
+  {
+    "slug": "playground",
+    "name": "Playgrounds & indoor play",
+    "icon": "🛝",
+    "sort": 20,
+    "item_count": 72
+  },
+  {
+    "slug": "theme-park",
+    "name": "Theme parks & rides",
+    "icon": "🎢",
+    "sort": 30,
+    "item_count": 36
+  },
+  {
+    "slug": "museum",
+    "name": "Museums & art",
+    "icon": "🏛️",
+    "sort": 40,
+    "item_count": 705
+  },
+  {
+    "slug": "science",
+    "name": "Science & learning",
+    "icon": "🔬",
+    "sort": 50,
+    "item_count": 49
+  },
+  {
+    "slug": "library",
+    "name": "Libraries & books",
+    "icon": "📚",
+    "sort": 60,
+    "item_count": 44
+  },
+  {
+    "slug": "park",
+    "name": "Parks & gardens",
+    "icon": "🌳",
+    "sort": 70,
+    "item_count": 1828
+  },
+  {
+    "slug": "nature",
+    "name": "Nature & scenery",
+    "icon": "⛰️",
+    "sort": 80,
+    "item_count": 1643
+  },
+  {
+    "slug": "trail",
+    "name": "Trails & bike paths",
+    "icon": "🚴",
+    "sort": 90,
+    "item_count": 697
+  },
+  {
+    "slug": "water",
+    "name": "Beaches & water play",
+    "icon": "🏖️",
+    "sort": 100,
+    "item_count": 174
+  },
+  {
+    "slug": "farm",
+    "name": "Farms & fruit picking",
+    "icon": "🌾",
+    "sort": 110,
+    "item_count": 343
+  },
+  {
+    "slug": "diy",
+    "name": "DIY & factory tours",
+    "icon": "🎨",
+    "sort": 120,
+    "item_count": 246
+  },
+  {
+    "slug": "culture",
+    "name": "Culture & history",
+    "icon": "🏮",
+    "sort": 130,
+    "item_count": 2176
+  },
+  {
+    "slug": "market",
+    "name": "Markets & old streets",
+    "icon": "🛍️",
+    "sort": 140,
+    "item_count": 331
+  },
+  {
+    "slug": "sports",
+    "name": "Sports & active fun",
+    "icon": "⚽",
+    "sort": 150,
+    "item_count": 281
+  },
+  {
+    "slug": "hot-spring",
+    "name": "Hot springs",
+    "icon": "♨️",
+    "sort": 160,
+    "item_count": 55
+  },
+  {
+    "slug": "temple",
+    "name": "Temples",
+    "icon": "🛕",
+    "sort": 170,
+    "item_count": 544
+  },
+  {
+    "slug": "transport",
+    "name": "Trains & stations",
+    "icon": "🚂",
+    "sort": 180,
+    "item_count": 172
+  },
+  {
+    "slug": "other",
+    "name": "Other",
+    "icon": "📍",
+    "sort": 999,
+    "item_count": 113
+  }
+]

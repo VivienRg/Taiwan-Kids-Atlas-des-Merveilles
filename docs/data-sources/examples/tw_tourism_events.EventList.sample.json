@@ -1,0 +1,67 @@
+{
+  "UpdateTime": "2026-11-02T14:30:18+08:00",
+  "UpdateInterval": 86400,
+  "Language": "Zh_tw",
+  "ProviderID": "A15010000H",
+  "Events": [
+    {
+      "EventID": "Event_371020000A_004197",
+      "EventName": "2026烈嶼親子童玩節",
+      "AlternateNames": [],
+      "Description": "「2026烈嶼親子童玩節」將於7月18日至7月19日，在烈嶼鄉習山湖公園熱鬧登場。活動連續兩天自下午1時至晚間8時30分舉行，規劃音樂演出、親子互動、特色市集、沙灘趣味競賽及摸彩活動，邀請大小朋友一起享受充滿歡笑的夏日時光。",
+      "PositionLat": 24.43586,
+      "PositionLon": 118.31705,
+      "Geometry": null,
+      "EventClasses": [
+        2
+      ],
+      "PostalAddress": {
+        "City": "金門縣",
+        "CityCode": "09020",
+        "Town": "烈嶼鄉",
+        "TownCode": "09020050",
+        "ZipCode": "894",
+        "StreetAddress": ""
+      },
+      "Telephones": [
+        {
+          "Tel": "(08)2318823"
+        }
+      ],
+      "Images": [
+        {
+          "Name": "2026烈嶼親子童玩節",
+          "Description": null,
+          "URL": "https://kinmen.travel/image/47295/640x480",
+          "Width": null,
+          "Height": null,
+          "Keywords": []
+        }
+      ],
+      "Organizations": [],
+      "TrafficInfo": "",
+      "ParkingInfo": "",
+      "Facilities": [],
+      "IsAccessibleForFree": 0,
+      "FeeInfo": "",
+      "PaymentMethods": [],
+      "LocatedCities": [],
+      "WebsiteURL": "",
+      "ReservationURLs": [],
+      "MapURLs": [],
+      "SameAsURLs": [],
+      "SocialMediaURLs": [],
+      "Participant": "",
+      "StartDateTime": "2026-07-17T16:00:00+08:00",
+      "EndDateTime": "2026-07-19T15:59:59+08:00",
+      "EventStatus": "EventScheduled",
+      "PreviousStartDates": [],
+      "CalendarURLs": [],
+      "SubEvents": [],
+      "SuperEvent": null,
+      "Tags": [],
+      "Remarks": "",
+      "UpdateTime": "2026-07-15T07:06:02+08:00"
+    }
+  ]
+}

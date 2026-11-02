@@ -1,0 +1,51 @@
+{
+  "source_id": "xpark-aquarium-qingpu",
+  "name": {
+    "en": "Xpark Aquarium (Qingpu)"
+  },
+  "alt_names": [],
+  "description": {
+    "en": "Modern aquarium with immersive tanks, penguins, and shows—great A/C learning day."
+  },
+  "address": {
+    "en": "No. 105, Chunde Rd, Zhongli District, Taoyuan City, Taiwan 320"
+  },
+  "city_name": "Taoyuan",
+  "district_name": "Zhongli",
+  "lat": null,
+  "lng": null,
+  "website_url": "https://xpark.com.tw/",
+  "source_categories": [
+    "Aquarium",
+    "Science"
+  ],
+  "tags": [
+    "learning",
+    "nature",
+    "food",
+    "AC"
+  ],
+  "kid_tags": [
+    "air_con",
+    "family",
+    "food",
+    "indoor",
+    "learning",
+    "nature"
+  ],
+  "kid_score": 100,
+  "age_min": 3,
+  "age_max": 12,
+  "indoor_outdoor": "indoor",
+  "is_free": false,
+  "price_level": 3,
+  "fee_text": {
+    "en": "NT$600+"
+  },
+  "images": [],
+  "service_status": "open",
+  "linked": {
+    "source": "tw_tourism_attractions",
+    "source_id": "Attraction_376430000A_001576"
+  }
+}

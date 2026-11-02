@@ -1,0 +1,46 @@
+# Live endpoint check — 2026-11-02T15:02:01Z from the dev host (curl). Headers trimmed.
+### TA attractions HEAD
+HTTP/1.1 200 OK
+Content-Length: 3152821
+Content-Type: application/x-zip-compressed
+Last-Modified: Mon, 02 Nov 2026 06:30:18 GMT
+ETag: "5580e9a0936add1:0"
+X-Content-Type-Options: nosniff
+Access-Control-Allow-Origin: *
+Date: Mon, 02 Nov 2026 15:01:50 GMT
+### conditional ("5580e9a0936add1:0")
+304
+### TA events HEAD
+HTTP/1.1 200 OK
+Content-Length: 504490
+Last-Modified: Mon, 02 Nov 2026 06:30:21 GMT
+ETag: "e37aba3936add1:0"
+### En variant
+404
+### MOC
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET
+X-Content-Type-Options: nosniff
+[58,213]
+### Taipei Travel
+HTTP/2 403 
+content-type: text/html; charset=UTF-8
+cf-mitigated: challenge
+server: cloudflare
+x-content-type-options: nosniff
+curl_exit=0
+<title>Just a moment...
+HTTP/2 403 
+content-type: text/html; charset=UTF-8
+cf-mitigated: challenge
+server: cloudflare
+x-content-type-options: nosniff
+curl_exit=0
+<title>Just a moment...
+### TDX
+HTTP/2 401 
+server: nginx
+Valid API Key Required
