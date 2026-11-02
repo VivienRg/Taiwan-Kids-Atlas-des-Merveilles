@@ -1,0 +1,15 @@
+# Taiwan Kids Atlas — Supabase CLI configuration
+# `supabase init` generated baseline, customized by the backend card.
+# Docs: docs/architecture.md §4, §6; docs/ingestion.md §7.
+
+[database]
+[auth]
+[functions.ingest]
+# The ingest Edge Function is invoked by pg_cron/pg_net with a shared secret,
+# not by end users, so JWT verification is off. INGEST_CRON_SECRET is checked
+# inside the function (constant-time comparison).
+verify_jwt = false
+
+[storage]
+[realtime]
+[analytics]

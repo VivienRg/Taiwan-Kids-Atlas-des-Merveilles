@@ -64,6 +64,24 @@ We welcome contributions from the community! Here's how you can help:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🖥️ Backend & data ingestion (Taiwan Kids Atlas)
+
+The Postgres/Supabase backend and the Taiwan open-data ingestion worker live under `supabase/`:
+
+- `supabase/migrations/` — atlas schema, idempotent ingestion SQL, public PostgREST API, RLS, opt-in pg_cron scheduling (7 migrations, apply in order).
+- `supabase/seed.sql` — development seed data (87 curated places).
+- `supabase/functions/_shared/ingest/` — Deno worker: fetchers for TA attractions/events (Taiwan Tourism Administration zip feeds), MOC 親子 events, and curated file-based sources; normalization, idempotent upserts keyed on (source, source_id), removal detection with guard limits.
+- `supabase/functions/_shared/ingest/__tests__/run_all.ts` — unit tests for normalizers/rules plus an integration test against local Postgres (`deno task test`).
+
+### Running locally
+
+1. Copy `supabase/functions/.env.example` to `supabase/functions/.env` and fill in values (real credentials are never committed; only `.env.example` is tracked).
+2. Start local PostGIS: `docker compose up -d` (listens on localhost:54330).
+3. Apply migrations in order, then load seed data:
+   `psql -h localhost -p 54330 -U postgres -d atlas_dev -v ON_ERROR_STOP=1 -f supabase/migrations/20261102000100_*.sql` (01–07), then `-f supabase/seed.sql`.
+4. Run ingestion: `cd supabase/functions && DATABASE_URL=postgresql://postgres:postgres@localhost:54330/atlas_dev deno task ingest --source tw_tourism_attractions` (use `--all` for every enabled source; `--dry-run` to preview without writes).
+5. Run the test suite: `deno task test`.
+
 ## 👤 Author
 
 **Vivien Roggero**  

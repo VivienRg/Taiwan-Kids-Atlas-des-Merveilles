@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "ingest": "deno run --allow-net --allow-env --allow-read --allow-sys _shared/ingest/cli.ts",
+    "test": "deno run --no-check --allow-all _shared/ingest/__tests__/run_all.ts"
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.224.0/"
+  },
+  "lock": false
+}

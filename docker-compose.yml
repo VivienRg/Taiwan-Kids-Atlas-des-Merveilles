@@ -1,0 +1,50 @@
+# Taiwan Kids Atlas — local backend stack (optional, vanilla Postgres)
+# Reproduces the dev DB target from docs/architecture.md §6:
+#   imresamu/postgis:17-3.5  (+ postgrest/postgrest:v12.2.3 optional)
+#
+#   docker compose up -d
+#   psql "postgresql://postgres:postgres@localhost:54330/atlas_dev" -f supabase/migrations/20261102000100_extensions_roles.sql
+#   ... apply the remaining migrations in order ...
+#   psql "..." -f supabase/seed.sql
+#   cd supabase/functions && deno task ingest --all
+#
+# The ingestion worker connects on DATABASE_URL (see supabase/functions/.env.example).
+# PostgREST (optional) reads the same DB at http://localhost:3000/rpc/places_search?...
+
+services:
+  db:
+    image: imresamu/postgis:17-3.5
+    container_name: tka-db
+    ports:
+      - "54330:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: atlas_dev
+    volumes:
+      - tka-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d atlas_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Optional: plain PostgREST against the same migrations (CI-style stack,
+  # docs/architecture.md §6 "Local dev (vanilla / CI)"). Not required for the
+  # Deno worker, which talks SQL directly.
+  # api:
+  #   image: postgrest/postgrest:v12.2.3
+  #   container_name: tka-api
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #   environment:
+  #     PGRST_DB_URI: postgres://postgres:postgres@db:5432/atlas_dev
+  #     PGRST_DB_ANON_ROLE: anon
+  #     PGRST_JWT_SECRET: insecure-do-not-use-in-production
+  #     PGRST_SERVER_PORT: "3000"
+
+volumes:
+  tka-db-data:
