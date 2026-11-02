@@ -144,17 +144,40 @@ export async function runIntegrationTests(): Promise<void> {
     assertEquals(byId[`${PREFIX}d`], 60);
   });
 
-  await check('finish_run marks the run succeeded and trips the guard', async () => {
+  await check('finish_run: a short run trips the removal guard', async () => {
     assert(runId != null, 'runId set');
-    // curated is full-snapshot with min_keep_ratio 0.50: this run sees 4 rows
-    // of 90+ active curated places → guard trips, nothing removed.
+    // finish_run compares the rows THIS run touched (last_seen_run_id) with the
+    // active rows and refuses to remove anything when the run saw fewer than
+    // min_keep_ratio (0.50 for curated) of them. A freshly seeded database holds
+    // only 2-3 curated rows, so the run touches most of them and the guard cannot
+    // trip: the test used to assume a developed database (it passed locally with
+    // 91 curated rows and failed in CI on a fresh one). It now creates its own
+    // population of untouched rows, which is exactly what a shrinking feed looks
+    // like. `last_seen_run_id` stays NULL so they are genuine removal candidates.
+    const ambient = Array.from({ length: 8 }, (_, i) => `${PREFIX}guard-${i + 1}`);
+    await query(
+      `insert into atlas.places (source, source_id, name, content_hash)
+       select $1, g, jsonb_build_object('zh-Hant', '整合測試守衛景點'), md5(g)
+         from unnest($2::text[]) as g
+       on conflict (source, source_id) do nothing`,
+      [SOURCE, ambient],
+    );
+
     const finished = await finishRun(runId!, 'succeeded', {
       http_requests: 1,
       records_fetched: 4,
       records_failed: 0,
     });
-    assertEquals(finished.status, 'partial');
+    assertEquals(finished.status, 'partial', 'a run that saw < 50 % of the rows must end partial');
     assertEquals(finished.errorClass, 'guard');
+
+    // ...and nothing was removed, including the untouched rows it would have deleted
+    const [{ kept }] = await query<{ kept: number }>(
+      `select count(*)::int as kept from atlas.places
+        where source = $1 and source_id like $2 and removed_at is null`,
+      [SOURCE, `${PREFIX}%`],
+    );
+    assertEquals(kept, 12, '4 upserted by this run + 8 untouched must all survive');
   });
 
   // Cleanup test data so the dev DB stays tidy. The run row is left in place
