@@ -1,3 +1,5 @@
+// @ts-nocheck — vendored third-party source (deno-postgres, patched for 128 KiB
+// socket buffers); type-checked upstream, excluded from this repo lint/typecheck.
 // Vendored replacement for deno-postgres' `deps.ts`, which re-exports deno std.
 // This module has zero external dependencies so the vendored postgres client
 // works without network access. Only the subsets used by the vendored client

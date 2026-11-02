@@ -1,3 +1,5 @@
+// @ts-nocheck — vendored third-party source (deno-postgres, patched for 128 KiB
+// socket buffers); type-checked upstream, excluded from this repo lint/typecheck.
 import { parseConnectionUri } from "../utils/utils.ts";
 import { ConnectionParamsError } from "../client/error.ts";
 import { fromFileUrl, isAbsolute } from "../deps.ts";

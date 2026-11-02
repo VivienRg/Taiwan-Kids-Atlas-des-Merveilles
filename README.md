@@ -68,8 +68,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 The Postgres/Supabase backend and the Taiwan open-data ingestion worker live under `supabase/`:
 
-- `supabase/migrations/` — atlas schema, idempotent ingestion SQL, public PostgREST API, RLS, opt-in pg_cron scheduling (7 migrations, apply in order).
-- `supabase/seed.sql` — development seed data (87 curated places).
+- `supabase/migrations/` — atlas schema, idempotent ingestion SQL, public PostgREST API, RLS, opt-in pg_cron scheduling (8 migrations, apply in order).
+- `supabase/seed.sql` — development seed data (3 curated sample places + 1 event, so the API has content before the first ingestion run).
 - `supabase/functions/_shared/ingest/` — Deno worker: fetchers for TA attractions/events (Taiwan Tourism Administration zip feeds), MOC 親子 events, and curated file-based sources; normalization, idempotent upserts keyed on (source, source_id), removal detection with guard limits.
 - `supabase/functions/_shared/ingest/__tests__/run_all.ts` — unit tests for normalizers/rules plus an integration test against local Postgres (`deno task test`).
 
@@ -81,6 +81,20 @@ The Postgres/Supabase backend and the Taiwan open-data ingestion worker live und
    `psql -h localhost -p 54330 -U postgres -d atlas_dev -v ON_ERROR_STOP=1 -f supabase/migrations/20261102000100_*.sql` (01–07), then `-f supabase/seed.sql`.
 4. Run ingestion: `cd supabase/functions && DATABASE_URL=postgresql://postgres:postgres@localhost:54330/atlas_dev deno task ingest --source tw_tourism_attractions` (use `--all` for every enabled source; `--dry-run` to preview without writes).
 5. Run the test suite: `deno task test`.
+
+## 🚀 CI, builds and release
+
+| | |
+|---|---|
+| **CI** (every PR + `main`) | `.github/workflows/ci.yml`: migrations on Postgres 17 + PostGIS, the executable RLS review, `deno lint`/`check`/tests, and for the app `eslint`/`tsc`/`jest`/Expo config resolution, plus a committed-secret scan. Details and local equivalents: [docs/ci-cd.md](docs/ci-cd.md) |
+| **Mobile builds** | `mobile/eas.json` profiles `development`, `preview`, `preview-device` (Android **APK** / iOS simulator) and `production` (Android **AAB** / iOS **IPA**), triggered from `.github/workflows/eas-build.yml` |
+| **Backend deploy** | `.github/workflows/supabase-deploy.yml` — plan / migrate / deploy the `ingest` function / push secrets / enable the pg_cron ingestion. Manual dispatch only, behind the `production` environment and a `confirm: APPLY` input |
+| **Runbook** | [docs/release.md](docs/release.md) — migrations → cron → EAS build → TestFlight / Play internal testing → rollback |
+| **Credentials** | [docs/release-credentials.md](docs/release-credentials.md) (accounts + signing) · [docs/secrets.md](docs/secrets.md) (where every value lives) |
+| **Monitoring** | [docs/observability.md](docs/observability.md) — daily `atlas.source_health` alert, crash-reporting recommendation |
+
+Nothing is deployed by CI itself: the hosted Supabase project and both stores are
+only touched by a human-started, human-approved workflow.
 
 ## 👤 Author
 

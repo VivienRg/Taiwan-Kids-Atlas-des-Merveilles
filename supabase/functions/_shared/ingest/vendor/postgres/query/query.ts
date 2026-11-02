@@ -1,3 +1,5 @@
+// @ts-nocheck — vendored third-party source (deno-postgres, patched for 128 KiB
+// socket buffers); type-checked upstream, excluded from this repo lint/typecheck.
 import { encodeArgument, type EncodedArg } from "./encode.ts";
 import { type Column, decode } from "./decode.ts";
 import { type Notice } from "../connection/message.ts";

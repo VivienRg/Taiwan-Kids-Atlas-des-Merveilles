@@ -12,6 +12,7 @@ Companion specs:
 | [api-contract.md](api-contract.md) | What the mobile app calls; response types and real example responses |
 | [ingestion.md](ingestion.md) | Cron, adapters, normalised row contract, retries, removals, monitoring |
 | [adr/](adr/) | 0001 mobile stack · 0002 backend · 0003 data sources · 0004 ingestion runtime |
+| [ci-cd.md](ci-cd.md) · [release.md](release.md) · [secrets.md](secrets.md) · [rls-review.md](rls-review.md) · [observability.md](observability.md) | DevOps. CI gates and how to reproduce them, the ship runbook, the credential inventory, the executable RLS review, alerting |
 | [`supabase/migrations/`](../supabase/migrations/) | Schema, reference data, ingestion functions, public API, security, scheduling. **Implemented and verified.** |
 
 ## 1. Decisions at a glance
@@ -141,7 +142,8 @@ It is published as a GitHub Pages site at `tw.kidsatlas.roggero.io` (`CNAME`).
                        ingestion/prototypes (reference jq normalisers); ingestion/normalized-examples
 /supabase              Supabase CLI project
   config.toml          created with `supabase init` (backend card); set [functions.ingest] verify_jwt = false
-  migrations/          7 migrations (this task) — the DB contract
+  migrations/          8 migrations — the DB contract (7 from the design card,
+                       0800 raises the pg_net client timeout; devops card)
   seed.sql             dev sample data (backend card)
   functions/           Edge Function `ingest` + shared Deno ingest core + tests (backend card)
 /data/curated_links.json   curated id → TA AttractionID links (backend card; start from docs/ingestion/prototypes/curated_links.sample.json)
@@ -299,5 +301,5 @@ frozen at v1.0, and changes must be additive.
 | R6 | Hot-linked third-party images may disappear | Placeholder by category; images refresh daily from the feed |
 | R7 | App identifier `com.taiwankidsatlas.app` cannot change after store publish | **Owner** confirms before first upload |
 | R8 | Supabase region choice (latency from Taiwan) | **Owner**: Tokyo or Singapore |
-| R9 | `validate-json.yml` references a missing `data/activities_seed.json` | Pre-existing. Out of scope; flag to the owner |
+| R9 | `validate-json.yml` references a missing `data/activities_seed.json` | **Fixed** (devops card): the workflow now validates `data/activities.json` against `data/activity.schema.json` via `scripts/ci/validate_data.mjs` |
 | R10 | README declares MIT and links a `LICENSE` file that does not exist; the `curated` source is labelled MIT | **Owner** adds `LICENSE` (or changes the declared licence and `atlas.sources.license` for `curated`) |

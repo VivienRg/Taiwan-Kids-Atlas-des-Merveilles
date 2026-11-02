@@ -63,7 +63,7 @@ function hostOf(url: string): string {
   }
 }
 
-async function sleep(ms: number) {
+function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -82,8 +82,18 @@ function retryAfterMs(headers: Headers): number | null {
 
 // curl fallback for environments where Deno's fetch cannot reach the host.
 // `curl -D -` emits headers followed by the body on stdout.
-async function curlFetch(url: string, headers: Headers, totalTimeoutMs: number): Promise<FetchResult> {
-  const args = ['-sS', '-D', '-', '--connect-timeout', '10', '--max-time', String(Math.ceil(totalTimeoutMs / 1000) || 10), url];
+async function curlFetch(
+  url: string,
+  headers: Headers,
+  totalTimeoutMs: number,
+  connectTimeoutMs: number,
+): Promise<FetchResult> {
+  const args = [
+    '-sS', '-D', '-',
+    '--connect-timeout', String(Math.ceil(connectTimeoutMs / 1000) || 10),
+    '--max-time', String(Math.ceil(totalTimeoutMs / 1000) || 10),
+    url,
+  ];
   for (const [name, value] of headers.entries()) args.push('-H', `${name}: ${value}`);
   const { stdout, code } = await new Deno.Command('curl', { args }).output();
   const sep = new TextEncoder().encode('\r\n\r\n');
@@ -176,7 +186,7 @@ export async function fetchWithRetry(
       // environments, TLS fingerprinting, etc.). curl is universally available
       // and has hard timeouts, so this also bounds hangs.
       try {
-        return await curlFetch(url, headers, totalTimeoutMs);
+        return await curlFetch(url, headers, totalTimeoutMs, connectTimeoutMs);
       } catch (curlErr) {
         lastErr = new FetchError(
           `${msg}; curl fallback: ${(curlErr as Error)?.message ?? curlErr}`,

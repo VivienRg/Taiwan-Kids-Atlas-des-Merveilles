@@ -1,5 +1,6 @@
 // Shared types for the ingestion core. Mirrors docs/ingestion.md §4
 // ("Normalised row contract") and docs/api-contract.md.
+import type { FetchResult } from './http.ts';
 
 export type Lang = 'zh-Hant' | 'en' | 'zh-Hans' | 'ja' | 'ko';
 
@@ -118,6 +119,42 @@ export interface UpsertStats {
   unchanged: number;
   restored: number;
   failed: number;
+}
+
+// ---------------------------------------------------------------------------
+// Worker interfaces (shared by the Edge Function, the CLI and the adapters in
+// _shared/ingest/adapters/). A source adapter is a module exporting: id, kind,
+// request(src, opts) -> FetchResult, parse(body, src) -> records,
+// normalize(records, src) -> { rows, rejected }.
+// ---------------------------------------------------------------------------
+
+/** What triggered a run; recorded in atlas.ingestion_runs.trigger. */
+export type Trigger = 'cron' | 'manual' | 'cli' | 'test';
+
+export interface RunOpts {
+  dryRun?: boolean;      // fetch + normalize, print stats, no DB writes (CLI only)
+  sourceFile?: string;   // offline zip/feed file (CLI only, TA sources)
+}
+
+/** A record that could not be normalised; stored in atlas.ingestion_errors. */
+export interface RejectedRecord {
+  stage: string;
+  sourceRecordId: string | null;
+  message: string;
+  context?: Record<string, unknown>;
+}
+
+export interface NormalizeResult<T = unknown> {
+  rows: T[];
+  rejected: RejectedRecord[];
+}
+
+export interface Adapter {
+  id: string;
+  kind: 'place' | 'event';
+  request: (src: SourceRow, opts?: RunOpts) => Promise<FetchResult>;
+  parse: (body: Uint8Array, src: SourceRow) => unknown[];
+  normalize: (records: unknown[], src: SourceRow) => NormalizeResult;
 }
 
 export interface SourceRow {

@@ -6,7 +6,7 @@
 // Endpoints (from the Swagger spec): GET /{lang}/Attractions/All?page={n}
 // (30 records per page; envelope shape unverified: { total, data: [...] }).
 import { fetchWithRetry, BlockedError, FetchResult } from '../http.ts';
-import type { Adapter, SourceRow } from '../types.ts';
+import type { SourceRow } from '../types.ts';
 
 export const id = 'taipei_travel_attractions';
 const PAGE_SIZE = 30;
@@ -70,7 +70,10 @@ export async function request(src: SourceRow): Promise<FetchResult> {
   const body = new TextEncoder().encode(
     JSON.stringify({ lang: langs, fetched, total, parts }),
   );
-  return { status: 200, etag: null, lastModified: null, body };
+  return {
+    status: 200, ok: true, etag: null, lastModified: null,
+    contentType: 'application/json', body, headers: new Headers(),
+  };
 }
 
 export function parse(body: Uint8Array, _src: SourceRow): unknown[] {

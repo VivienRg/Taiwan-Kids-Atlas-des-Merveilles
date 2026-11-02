@@ -3,10 +3,9 @@
 // Same zip/conditional-GET handling as attractions; each event = one occurrence.
 import { fetchWithRetry, FetchResult } from '../http.ts';
 import {
-  parseZip, stripBom, toI18n, textArray, daymap, serviceStatus, isHttpsUrl,
+  parseZip, stripBom, toI18n, textArray, isHttpsUrl,
 } from './_util.ts';
-import { computeKidScore } from '../rules/kidScore.ts';
-import type { Adapter, SourceRow, NormalizedEvent, RunOpts } from '../types.ts';
+import type { SourceRow, NormalizedEvent, RunOpts, EventStatus } from '../types.ts';
 
 export const id = 'tw_tourism_events';
 const EVENTS_KEY = 'Events';
@@ -16,7 +15,10 @@ const TOTAL_TIMEOUT_MS = 90000;
 export async function request(src: SourceRow, opts: RunOpts = {}): Promise<FetchResult> {
   if (opts.sourceFile) {
     const body = await Deno.readFile(opts.sourceFile);
-    return { status: 200, etag: null, lastModified: null, body };
+    return {
+      status: 200, ok: true, etag: null, lastModified: null,
+      contentType: 'application/zip', body, headers: new Headers(),
+    };
   }
   const url = String(src.config.url);
   return fetchWithRetry(url, {
@@ -61,7 +63,7 @@ export function parse(body: Uint8Array, src: SourceRow): RawEvent[] {
   return (envelope[EVENTS_KEY] ?? []) as RawEvent[];
 }
 
-const STATUS_MAP: Record<string, string> = {
+const STATUS_MAP: Record<string, EventStatus> = {
   EventScheduled: 'scheduled', EventCancelled: 'cancelled',
   EventPostponed: 'postponed', EventRescheduled: 'rescheduled',
 };
@@ -126,8 +128,8 @@ export function normalize(records: unknown[], _src: SourceRow): {
     }
 
     const images = (e.Images ?? [])
-      .filter((img) => isHttpsUrl(img.URL))
-      .map((img) => ({ url: img.URL, caption: toI18n(img.Name), credit: img.Description ?? null }));
+      .map((img) => ({ url: img.URL ?? '', caption: toI18n(img.Name), credit: img.Description ?? null }))
+      .filter((img) => isHttpsUrl(img.url));
 
     const organizer = e.Organizations?.map((o) => o.Name).filter(Boolean).join('、');
 
@@ -159,5 +161,5 @@ export function normalize(records: unknown[], _src: SourceRow): {
       raw: e,
     });
   }
-  return { rows, rejected: rejected as never };
+  return { rows, rejected };
 }

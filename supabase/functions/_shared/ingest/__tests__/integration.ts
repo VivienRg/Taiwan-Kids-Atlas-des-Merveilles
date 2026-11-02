@@ -11,10 +11,8 @@ import {
 } from '../db.ts';
 import { assert, assertEquals } from '../vendor/test_helpers.ts';
 
-const DSN =
-  Deno.env.get('DATABASE_URL') ??
-  'postgresql://postgres:postgres@localhost:54330/atlas_dev';
-
+// The DSN itself is resolved by db.ts from DATABASE_URL (or SUPABASE_DB_URL),
+// falling back to the docker-compose Postgres on 54330.
 const SOURCE = 'curated'; // full-snapshot source: removal guard protects seed data
 const PREFIX = 'integ-test-';
 
@@ -74,6 +72,7 @@ export async function runIntegrationTests(): Promise<void> {
   await check('source resolves', async () => {
     const src = await getSource(SOURCE);
     assert(src, 'curated source exists');
+    if (!src) throw new Error('curated source missing from atlas.sources');
     assertEquals(src.enabled, true);
     assertEquals(src.is_full_snapshot, true);
     assertEquals(src.kind, 'place');
@@ -130,7 +129,7 @@ export async function runIntegrationTests(): Promise<void> {
 
   await check('rows persist in atlas.places', async () => {
     assert(runId != null, 'runId set');
-    const rows = await query(
+    const rows = await query<{ source_id: string; kid_score: number }>(
       `select source_id, kid_score from atlas.places
        where source = $1 and source_id like $2
        order by source_id`,
@@ -149,7 +148,7 @@ export async function runIntegrationTests(): Promise<void> {
     assert(runId != null, 'runId set');
     // curated is full-snapshot with min_keep_ratio 0.50: this run sees 4 rows
     // of 90+ active curated places → guard trips, nothing removed.
-    const finished = await finishRun(runId, 'succeeded', {
+    const finished = await finishRun(runId!, 'succeeded', {
       http_requests: 1,
       records_fetched: 4,
       records_failed: 0,

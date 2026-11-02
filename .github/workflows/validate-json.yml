@@ -1,24 +1,43 @@
+# Validates the static site's data files against their JSON schemas.
+#
+# Fixed 2026-11-03 (devops card t_a4249ad3): this workflow read
+# data/activities_seed.json, which has never existed in the repository, so it
+# failed on every pull request (docs/architecture.md R9). It now validates
+# data/activities.json against data/activity.schema.json through the shared
+# script in scripts/ci/.
 name: Validate activities JSON
-on: [pull_request]
+
+on:
+  pull_request:
+    paths:
+      - 'data/**.json'
+      - 'scripts/ci/validate_data.mjs'
+      - '.github/workflows/validate-json.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/**.json'
+      - 'scripts/ci/validate_data.mjs'
+      - '.github/workflows/validate-json.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
   validate:
+    name: Schema check
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
-        with: { node-version: '20' }
-      - run: npm init -y && npm i ajv
-      - name: Validate each record
-        run: |
-          node - <<'NODE'
-          const fs=require('fs');const Ajv=require('ajv');
-          const schema=JSON.parse(fs.readFileSync('data/activity.schema.json','utf8'));
-          const data=JSON.parse(fs.readFileSync('data/activities_seed.json','utf8'));
-          const ajv=new Ajv({allErrors:true});
-          const val=ajv.compile(schema);
-          for (const [i,rec] of data.entries()){
-            const ok=val(rec);
-            if(!ok){ console.error('Invalid at index', i, val.errors); process.exit(1); }
-          }
-          console.log('All good ✅');
-          NODE
+        with:
+          node-version: '22'
+
+      - name: Install ajv
+        run: npm i ajv --no-save --no-fund --no-audit
+
+      - name: Validate data files
+        run: node scripts/ci/validate_data.mjs

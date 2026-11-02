@@ -1,0 +1,130 @@
+# Taiwan Kids Atlas — continuous integration.
+#
+# Gate for every PR and for main:
+#   1. backend   — apply the Supabase migrations on Postgres 17 + PostGIS, run the
+#                  RLS/privilege review, then deno lint + typecheck + tests
+#                  (the integration test runs against that database).
+#   2. mobile    — eslint, tsc --noEmit, jest, and an Expo config evaluation.
+#   3. no-secrets— fail if a likely-real credential is committed (docs/secrets.md).
+#
+# Nothing here deploys anything: migrations are applied to a throwaway CI
+# container only. Prod changes go through docs/release.md, step by step, and
+# require explicit human approval.
+#
+# Formatting (`deno fmt --check`) is deliberately NOT a gate: the backend was
+# hand-formatted before a formatter config existed. `deno task fmt` is available
+# for a future whole-tree reformat commit.
+#
+# Docs: docs/ci-cd.md
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend — migrations, RLS, lint, typecheck, tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    services:
+      db:
+        # Same image family as docs/architecture.md §6 (arm64-safe postgis).
+        image: imresamu/postgis:17-3.5
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: atlas_dev
+        ports:
+          - 54330:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d atlas_dev"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+
+    env:
+      PGHOST: localhost
+      PGPORT: "54330"
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: atlas_dev
+      DATABASE_URL: postgresql://postgres:postgres@localhost:54330/atlas_dev
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply the Supabase migrations in order
+        run: |
+          set -euo pipefail
+          for f in supabase/migrations/*.sql; do
+            echo "── applying $f"
+            psql -v ON_ERROR_STOP=1 -q -f "$f"
+          done
+
+      - name: Load the development seed
+        run: psql -v ON_ERROR_STOP=1 -q -f supabase/seed.sql
+
+      - name: RLS and privilege review (docs/rls-review.md)
+        run: psql -v ON_ERROR_STOP=1 -f scripts/ci/rls_check.sql
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: deno lint + typecheck + tests
+        working-directory: supabase/functions
+        run: deno task check
+
+  mobile:
+    name: Mobile — lint, typecheck, tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    defaults:
+      run:
+        working-directory: mobile
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: TypeScript
+        run: npm run typecheck
+
+      - name: Jest
+        run: npm test -- --ci
+
+      - name: Expo config resolves (app.json + app.config.ts)
+        run: npx expo config --type public --json > /dev/null
+
+  no-secrets:
+    name: No committed secrets
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan tracked files for credentials
+        run: python3 scripts/ci/secret_scan.py

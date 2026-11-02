@@ -1,0 +1,57 @@
+# Taiwan Kids Atlas — scheduled ingestion health check (observability).
+#
+# Runs scripts/ops/ingest_health.sql against the hosted database once a day and
+# fails the job when an enabled source breaches a threshold (no success for 36 h,
+# 2+ consecutive failed/partial runs, a blocked feed, an enabled source that has
+# never succeeded, or a >20 % drop in active rows). A failed scheduled workflow
+# emails the repository owner — that is the alert channel; docs/observability.md
+# describes the Slack/webhook alternative.
+#
+# It is inert until the owner provisions the credentials: without the
+# SUPABASE_DB_URL secret the step warns and exits 0 instead of failing every
+# night. Nothing here writes to the database.
+#
+# Docs: docs/observability.md, docs/release.md §5, docs/secrets.md §3.
+
+name: Ingestion health
+
+on:
+  schedule:
+    # Daily at 03:30 UTC = 11:30 Asia/Taipei (after the 16:15/22:15 Taipei runs).
+    - cron: '30 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    name: atlas.source_health
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the connection string is provisioned
+        id: guard
+        env:
+          DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          if [ -z "${DATABASE_URL:-}" ]; then
+            echo "::warning::SUPABASE_DB_URL is not set yet (docs/secrets.md §3) — skipping the health check"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install psql
+        if: steps.guard.outputs.skip == 'false'
+        run: command -v psql || (sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client)
+
+      - name: Query the source health and fail on a breach
+        if: steps.guard.outputs.skip == 'false'
+        env:
+          DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
+          PGCONNECT_TIMEOUT: '20'
+        run: |
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f scripts/ops/ingest_health.sql

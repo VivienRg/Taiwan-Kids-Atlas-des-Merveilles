@@ -1,4 +1,4 @@
-import { assertEquals, assert, assertThrows } from '../vendor/test_helpers.ts';
+import { assertEquals } from '../vendor/test_helpers.ts';
 import { computeKidScore } from '../rules/kidScore.ts';
 import { keywordCodes } from '../rules/keywords.ts';
 

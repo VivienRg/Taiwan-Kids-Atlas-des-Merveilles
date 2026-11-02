@@ -13,6 +13,8 @@ pnpm-lock.yaml
 # Env & local overrides
 .env
 .env.*
+# ...but keep the committed placeholder (real values never land in git)
+!.env.example
 *.local
 
 # Expo

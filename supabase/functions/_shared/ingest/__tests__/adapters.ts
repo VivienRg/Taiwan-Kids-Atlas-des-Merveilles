@@ -3,10 +3,9 @@ import { zipSync, strToU8 } from '../vendor/fflate.mjs';
 import {
   parse as parseAttractions, normalize as normAttractions,
 } from '../adapters/ta_attractions.ts';
-import {
-  parse as parseEvents, normalize as normEvents,
-} from '../adapters/ta_events.ts';
+import { normalize as normEvents } from '../adapters/ta_events.ts';
 import { parse as parseMoc, normalize as normMoc } from '../adapters/moc_events.ts';
+import { normalize as normCurated } from '../adapters/curated.ts';
 import type { SourceRow } from '../types.ts';
 
 function fixture(name: string): unknown {
@@ -15,12 +14,6 @@ function fixture(name: string): unknown {
 
 function golden(name: string): unknown {
   return JSON.parse(Deno.readTextFileSync(`../../docs/ingestion/normalized-examples/${name}`));
-}
-
-function stripRaw(row: unknown): unknown {
-  const r = { ...(row as Record<string, unknown>) };
-  delete r.raw;
-  return r;
 }
 
 const SRC_ATT: SourceRow = {
@@ -112,6 +105,7 @@ export function runAdapterTests(): void {
     eq(byId.get('Attraction_379000000A_000351'), golden('place.tw_tourism_attractions.json'));
 
     const r3450 = byId.get('Attraction_345040000G_000001');
+    if (!r3450) throw new Error('expected Attraction_345040000G_000001');
     assertEquals(r3450.kid_score, 30);
     assertEquals(r3450.kid_tags, ['animals', 'nature']);
     assertEquals(r3450.source_categories, ['16']);
@@ -122,8 +116,8 @@ export function runAdapterTests(): void {
       label: { 'zh-Hant': '平日（星期一~星期五）及寒假期間平日' },
       valid_from: null, valid_to: null,
     });
-    assertEquals(r3450.images.length, 2);
-    assertEquals(r3450.images[0].url.startsWith('https://'), true);
+    assertEquals(r3450.images?.length, 2);
+    assertEquals(r3450.images?.[0].url.startsWith('https://'), true);
   }
 
   // normalize: rejects rows without id or name
@@ -181,6 +175,30 @@ export function runAdapterTests(): void {
   // moc_kids_events.parse: rejects non-array payload
   {
     assertThrows(() => parseMoc(new TextEncoder().encode(JSON.stringify({ not: 'an array' })), SRC_OTHER));
+  }
+
+  // curated.normalize: trailing "(中文)" becomes name['zh-Hant'] (ingestion.md §4.3).
+  // Regression guard: the JS regex needs both the u flag and the Script= prefix,
+  // otherwise 36 of the 87 curated names kept the Chinese inside their English name.
+  {
+    const SRC_CURATED = { id: 'curated', kind: 'place', config: {} } as unknown as SourceRow;
+    const activity = (id: string, name: string) => ({
+      id, name, region: 'north', city: 'Taoyuan', district: 'Taoyuan',
+      indoor_outdoor: 'outdoor', categories: ['Park'], tags: [], cost_range: '0',
+      age_range: [3, 12], natural: true, desc: 'x', website: '', map_link: '',
+      drive_min: 10, address_en: 'addr', address_query: 'q',
+    });
+    const { rows } = normCurated([
+      activity('t-split', 'Hutoushan Park (虎頭山)'),
+      activity('t-nosplit', 'Xpark Aquarium (Qingpu)'),
+      activity('t-mid', 'Lalashan (拉拉山) Forest Drive viewpoint'),
+    ], SRC_CURATED);
+    assertEquals(rows.length, 3);
+    const nameById = new Map(rows.map((r) => [r.source_id, r.name]));
+    assertEquals(nameById.get('t-split'), { en: 'Hutoushan Park', 'zh-Hant': '虎頭山' });
+    assertEquals(nameById.get('t-nosplit'), { en: 'Xpark Aquarium (Qingpu)' });
+    // Only a trailing parenthesised group is split (jq reference behaviour).
+    assertEquals(nameById.get('t-mid'), { en: 'Lalashan (拉拉山) Forest Drive viewpoint' });
   }
 
   console.log('ok  adapter tests');

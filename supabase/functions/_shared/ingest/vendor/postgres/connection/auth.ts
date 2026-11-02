@@ -1,3 +1,5 @@
+// @ts-nocheck — vendored third-party source (deno-postgres, patched for 128 KiB
+// socket buffers); type-checked upstream, excluded from this repo lint/typecheck.
 import { crypto, hex } from "../deps.ts";
 
 const encoder = new TextEncoder();

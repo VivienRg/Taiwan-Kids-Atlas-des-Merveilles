@@ -53,7 +53,7 @@ async function main() {
       exitCode = 1;
       continue;
     }
-    console.log(JSON.stringify({ source: sourceId, ...result }));
+    console.log(JSON.stringify(result));
     if (result.status === 'failed') exitCode = 1;
   }
   Deno.exit(exitCode);

@@ -473,3 +473,15 @@ Against `imresamu/postgis:17-3.5` (PostGIS in `extensions`, and separately in `p
 | supabase/postgres: Vault secrets → `sync_cron_schedules()` → jobs `atlas_ingest_{tw_tourism_attractions,tw_tourism_events,moc_kids_events}` + `atlas_purge`; `invoke_ingest('moc_kids_events')` queues 1 pg_net request; `unschedule_all()` → 4, 0 remaining | OK |
 | supabase/postgres smoke: 500-row upsert twice in one run, `places_search` as anon (Yilan, 30 km: 115 results), `source_health` | OK |
 | PostgREST v12.2.3 serves the RPCs with GET array params; tables and ingest functions are not exposed | OK |
+
+**Addendum (devops card, 2026-11-03, verified on the Supabase CLI stack,
+`supabase/postgres:17.11.0.011` + edge-runtime 1.77.9):** the migrations above are
+still exactly as verified; one migration was added —
+`20261102000800_invoke_ingest_timeout.sql`. It only raises the pg_net client
+timeout in `atlas.invoke_ingest` from 10 s to 180 s, because a client timeout is
+not a no-op: pg_net giving up made the edge runtime log `WorkerRequestCancelled`
+and the run stayed in `running`. The Edge Function entrypoint was also realigned
+with §7 of this document: it now answers `202` as soon as `start_run` has created
+the run row and finishes the work in `EdgeRuntime.waitUntil`, instead of holding
+the HTTP response open for the whole run (measured: a synchronous response got a
+`504` from the Supabase gateway, and pg_net's 10 s timeout cancelled the worker).

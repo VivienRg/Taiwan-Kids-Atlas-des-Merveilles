@@ -1,6 +1,7 @@
 // Shared helpers for adapters.
 import { unzipSync } from '../vendor/fflate.mjs';
 import { keywordCodes } from '../rules/keywords.ts';
+import type { ServiceStatus } from '../types.ts';
 
 export function stripBom(text: string): string {
   return text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
@@ -33,11 +34,11 @@ export function daymap(serviceDay: string): string {
   return m[serviceDay] ?? serviceDay;
 }
 
-export const SERVICE_STATUS_MAP: Record<number, string> = {
+export const SERVICE_STATUS_MAP: Record<number, ServiceStatus> = {
   0: 'permanently_closed', 1: 'open', 2: 'open', 3: 'temporarily_closed', 9: 'unknown',
 };
 
-export function serviceStatus(code: number | null | undefined): string {
+export function serviceStatus(code: number | null | undefined): ServiceStatus {
   return SERVICE_STATUS_MAP[code ?? 9] ?? 'unknown';
 }
 
@@ -48,7 +49,8 @@ export function priceLevel(maxPrice: number): 0 | 1 | 2 | 3 | null {
   return 3;
 }
 
-export function isHttpsUrl(value: string | null | undefined): boolean {
+/** Type guard: narrows to a non-null string starting with https://. */
+export function isHttpsUrl(value: unknown): value is string {
   return typeof value === 'string' && value.startsWith('https://');
 }
 

@@ -1,3 +1,5 @@
+// @ts-nocheck — vendored third-party source (deno-postgres, patched for 128 KiB
+// socket buffers); type-checked upstream, excluded from this repo lint/typecheck.
 import { base64 } from "../deps.ts";
 
 /** Number of random bytes used to generate a nonce */

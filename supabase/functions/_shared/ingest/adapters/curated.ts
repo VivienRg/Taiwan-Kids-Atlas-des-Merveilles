@@ -1,7 +1,8 @@
 // Adapter: curated — original project data/activities.json (file-based import,
 // CLI only, no schedule). Docs: docs/data-sources.md §7, docs/ingestion.md §4.3.
-import { toI18n, textArray } from './_util.ts';
-import type { Adapter, SourceRow, NormalizedPlace } from '../types.ts';
+import { textArray } from './_util.ts';
+import type { FetchResult } from '../http.ts';
+import type { SourceRow, NormalizedPlace, IndoorOutdoor } from '../types.ts';
 
 export const id = 'curated';
 
@@ -18,17 +19,14 @@ const PRICE_LEVEL: Record<string, 0 | 1 | 2 | 3 | null> = {
   '0': 0, '1–200': 1, '200–600': 2, '600+': 3,
 };
 
+const INDOOR_OUTDOOR = new Set<IndoorOutdoor>(['indoor', 'outdoor', 'mixed']);
+
 interface RawActivity {
   id: string; name: string; region?: string; city: string; district: string;
   indoor_outdoor: string; categories: string[]; tags: string[];
   cost_range: string; age_range: [number, number] | null; natural: boolean;
   desc: string; website: string; map_link: string; drive_min: number;
   address_en: string; address_query: string;
-}
-
-async function readJson(path: string): Promise<unknown> {
-  const text = await Deno.readTextFile(repoPath(path));
-  return JSON.parse(text);
 }
 
 // Repository-root-relative path resolution. Source config paths like
@@ -41,22 +39,27 @@ function repoPath(p: string): string {
   return new URL(p, REPO_ROOT).pathname;
 }
 
-export async function request(src: SourceRow): Promise<{
-  status: number; etag: null; lastModified: null; body: Uint8Array;
-}> {
+export async function request(src: SourceRow): Promise<FetchResult> {
   const path = repoPath(String(src.config.path ?? '../../data/activities.json'));
   const text = await Deno.readTextFile(path);
   const activities = JSON.parse(text) as RawActivity[];
   const body = new TextEncoder().encode(JSON.stringify(activities));
-  return { status: 200, etag: null, lastModified: null, body };
+  return {
+    status: 200, ok: true, etag: null, lastModified: null,
+    contentType: 'application/json', body, headers: new Headers(),
+  };
 }
 
 export function parse(body: Uint8Array, _src: SourceRow): RawActivity[] {
   return JSON.parse(new TextDecoder().decode(body)) as RawActivity[];
 }
 
+// "Hutoushan Park (虎頭山)" -> { en: "Hutoushan Park", zh: "虎頭山" }.
+// JS regex property escapes need the u flag AND the Script= prefix (a bare
+// \p{Han} is an invalid property name in V8, and without u the pattern was
+// parsed as a literal, so no curated name was ever split).
 function splitName(name: string): { en: string; zh?: string } {
-  const m = /^(?<en>.*?)\s*\((?<zh>[^)]*\p{Han}[^)]*)\)\s*$/.exec(name);
+  const m = /^(?<en>.*?)\s*\((?<zh>[^)]*\p{Script=Han}[^)]*)\)\s*$/u.exec(name);
   if (!m || !m.groups) return { en: name.trim(), zh: undefined };
   const en = m.groups.en.trim();
   const zh = m.groups.zh.trim();
@@ -135,7 +138,7 @@ export function normalize(records: unknown[], src: SourceRow): {
       kid_score: 100,
       age_min: a.age_range?.[0] ?? null,
       age_max: a.age_range?.[1] ?? null,
-      indoor_outdoor: io || null,
+      indoor_outdoor: INDOOR_OUTDOOR.has(io as IndoorOutdoor) ? (io as IndoorOutdoor) : null,
       is_free: isFree,
       price_level: PRICE_LEVEL[a.cost_range] ?? null,
       fee_text: feeText,
@@ -152,5 +155,5 @@ export function normalize(records: unknown[], src: SourceRow): {
     });
   }
 
-  return { rows, rejected: rejected as never };
+  return { rows, rejected };
 }

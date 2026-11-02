@@ -7,7 +7,7 @@ import {
   priceLevel, isHttpsUrl, keywordCodes,
 } from './_util.ts';
 import { computeKidScore } from '../rules/kidScore.ts';
-import type { Adapter, SourceRow, NormalizedPlace, RunOpts } from '../types.ts';
+import type { SourceRow, NormalizedPlace, RunOpts } from '../types.ts';
 
 export const id = 'tw_tourism_attractions';
 const LIST_KEY = 'Attractions';
@@ -17,7 +17,10 @@ const TOTAL_TIMEOUT_MS = 90000; // zip download
 export async function request(src: SourceRow, opts: RunOpts = {}): Promise<FetchResult> {
   if (opts.sourceFile) {
     const body = await Deno.readFile(opts.sourceFile);
-    return { status: 200, etag: null, lastModified: null, body };
+    return {
+      status: 200, ok: true, etag: null, lastModified: null,
+      contentType: 'application/zip', body, headers: new Headers(),
+    };
   }
   const url = String(src.config.url);
   return fetchWithRetry(url, {
@@ -97,7 +100,7 @@ export function parse(body: Uint8Array, src: SourceRow): RawAttraction[] {
   return records;
 }
 
-export function normalize(records: unknown[], src: SourceRow): {
+export function normalize(records: unknown[], _src: SourceRow): {
   rows: NormalizedPlace[];
   rejected: Array<{ stage: string; sourceRecordId: string | null; message: string; context?: Record<string, unknown> }>;
 } {
@@ -121,9 +124,9 @@ export function normalize(records: unknown[], src: SourceRow): {
     const kw = keywordCodes(name);
     const sourceCategories = [...classes, ...kw];
     const tags = textArray(a.Tags);
-    const txt = `${name} ${a.Description ?? ''} ${tags.join(' ')}`;
     const facilities = textArray(a.Facilities);
-    const fees: Array<{ Price: number }> = Array.isArray(a.Fees) ? a.Fees : [];
+    const fees: Array<{ Name?: string | null; Price?: number | null }> =
+      Array.isArray(a.Fees) ? a.Fees : [];
 
     const { score, kidTags: kidTagsFromRules } = computeKidScore({
       classes, name, description: a.Description, tags, facilities,
@@ -151,12 +154,12 @@ export function normalize(records: unknown[], src: SourceRow): {
       a.PostalAddress?.StreetAddress ?? '',
     ].join('');
     const images = (a.Images ?? [])
-      .filter((img) => isHttpsUrl(img.URL))
       .map((img) => ({
-        url: img.URL,
+        url: img.URL ?? '',
         caption: toI18n(img.Name),
         credit: img.Description ?? null,
-      }));
+      }))
+      .filter((img) => isHttpsUrl(img.url));
 
     const openingHours = a.ServiceTimes
       ? {
@@ -212,5 +215,5 @@ export function normalize(records: unknown[], src: SourceRow): {
     rows.push(row);
   }
 
-  return { rows, rejected: rejected as never };
+  return { rows, rejected };
 }

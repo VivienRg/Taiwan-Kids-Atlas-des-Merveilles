@@ -11,7 +11,7 @@ import {
   getSource, startRun, upsertPlaces, upsertEvents, logIngestionError,
   finishRun, end,
 } from './db.ts';
-import type { SourceRow, NormalizedPlace, NormalizedEvent, UpsertStats } from './types.ts';
+import type { SourceRow, Adapter, RunOpts, Trigger } from './types.ts';
 import * as taAttractions from './adapters/ta_attractions.ts';
 import * as taEvents from './adapters/ta_events.ts';
 import * as mocEvents from './adapters/moc_events.ts';
@@ -21,13 +21,6 @@ import * as taipeiTravel from './adapters/taipei_travel.ts';
 export const CODE_VERSION = Deno.env.get('INGEST_CODE_VERSION') ?? '1.0.0';
 const DEADLINE_MS =
   Number.parseInt(Deno.env.get('INGEST_DEADLINE_MS') ?? '600000', 10) || 600000;
-
-type Trigger = 'cron' | 'manual' | 'cli' | 'test';
-
-interface RunOpts {
-  dryRun?: boolean;      // fetch + normalize, print stats, no DB writes (CLI only)
-  sourceFile?: string;   // offline zip/feed file (CLI only, TA sources)
-}
 
 interface RunOutcome {
   source: string;
@@ -40,27 +33,15 @@ interface RunOutcome {
   errorMessage?: string;
 }
 
-interface Adapter {
-  id: string;
-  kind: 'place' | 'event';
-  request: (src: SourceRow, opts: RunOpts) => Promise<{ status: number; etag?: string | null; lastModified?: string | null; body: Uint8Array }>;
-  parse: (body: Uint8Array) => unknown[];
-  normalize: (records: unknown[], src: SourceRow) => { rows: unknown[]; rejected: Array<{ stage: string; sourceRecordId: string | null; message: string; context?: Record<string, unknown> }> };
-}
-
+// One entry per source id; each adapter module exports the Adapter shape
+// (id, request, parse, normalize) — see types.ts.
 const ADAPTERS: Record<string, Adapter> = {
-  [taAttractions.id]: { id: taAttractions.id, kind: 'place' as const, ...taAttractions } as Adapter,
-  [taEvents.id]: { id: taEvents.id, kind: 'event' as const, ...taEvents } as Adapter,
-  [mocEvents.id]: { id: mocEvents.id, kind: 'event' as const, ...mocEvents } as Adapter,
-  [curated.id]: { id: curated.id, kind: 'place' as const, ...curated } as Adapter,
-  [taipeiTravel.id]: { id: taipeiTravel.id, kind: 'place' as const, ...taipeiTravel } as Adapter,
+  [taAttractions.id]: { ...taAttractions, kind: 'place' },
+  [taEvents.id]: { ...taEvents, kind: 'event' },
+  [mocEvents.id]: { ...mocEvents, kind: 'event' },
+  [curated.id]: { ...curated, kind: 'place' },
+  [taipeiTravel.id]: { ...taipeiTravel, kind: 'place' },
 };
-
-function chunk<T>(array: T[], size: number): T[][] {
-  const out: T[][] = [];
-  for (let i = 0; i < array.length; i += size) out.push(array.slice(i, i + size));
-  return out;
-}
 
 function deadlineExceeded(deadline: number): boolean {
   return Date.now() >= deadline;
@@ -224,7 +205,7 @@ export async function ingestRun(
       records_failed: recordsFailed,
     } as Record<string, unknown>, errorClass, errorMessage, details);
 
-    log(sourceId, runId, 'finish', 'done', {
+    log(sourceId, runId, 'finish', 'done', 'finished', {
       inserted, updated, unchanged, restored, took_ms: Date.now() - startWall,
     });
 

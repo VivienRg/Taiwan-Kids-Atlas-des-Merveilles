@@ -24,7 +24,7 @@ export interface KidScoreInput {
   tags?: string[];
   facilities: string[];       // FacilityEnum codes as strings
   isAccessibleForFree: number | null;
-  fees: Array<{ Price: number }>;
+  fees: Array<{ Price?: number | null }>;
   serviceStatus: number | null;
 }
 

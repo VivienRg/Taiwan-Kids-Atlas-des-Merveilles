@@ -3,13 +3,13 @@
 // Plain JSON array, no ETag, one request per run.
 import { fetchWithRetry, FetchResult } from '../http.ts';
 import { toI18n, textArray, isHttpsUrl } from './_util.ts';
-import type { Adapter, SourceRow, NormalizedEvent } from '../types.ts';
+import type { SourceRow, NormalizedEvent } from '../types.ts';
 
 export const id = 'moc_kids_events';
 const CONNECT_TIMEOUT_MS = 10000;
 const TOTAL_TIMEOUT_MS = 30000;
 
-export async function request(src: SourceRow): Promise<FetchResult> {
+export function request(src: SourceRow): Promise<FetchResult> {
   const url = String(src.config.url);
   return fetchWithRetry(url, {
     minIntervalMs: 1000,
@@ -157,5 +157,5 @@ export function normalize(records: unknown[], _src: SourceRow): {
     });
   }
 
-  return { rows, rejected: rejected as never };
+  return { rows, rejected };
 }
