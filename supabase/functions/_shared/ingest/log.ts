@@ -4,8 +4,9 @@
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
 const LEVELS: Record<LogLevel, number> = { debug: 0, info: 1, warn: 2, error: 3 };
-let level: LogLevel =
-  ((Deno.env.get('INGEST_LOG_LEVEL') ?? 'info') as LogLevel) ?? 'info';
+// `?? 'info'` already guarantees a string, so no second fallback is needed
+// (a newer TypeScript flags the redundant one as TS2869).
+let level: LogLevel = (Deno.env.get('INGEST_LOG_LEVEL') ?? 'info') as LogLevel;
 
 export function setLevel(l: LogLevel) {
   level = l;
