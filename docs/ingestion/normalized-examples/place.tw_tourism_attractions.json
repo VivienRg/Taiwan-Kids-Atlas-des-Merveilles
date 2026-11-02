@@ -1,0 +1,57 @@
+{
+  "source_id": "Attraction_379000000A_000351",
+  "name": {
+    "zh-Hant": "臺北市立兒童新樂園"
+  },
+  "alt_names": [],
+  "description": {
+    "zh-Hant": "臺北市立兒童新樂園位於士林區，是臺北都會區代表性的親子主題樂園。園內擁有 13 項大型遊樂設施、免費遊戲區與多元親子體驗，深受家庭與學齡兒童歡迎。主打不同年齡分區規劃，並設有主題表演、季節限定水樂園與完善餐飲服務，一站即可滿足家庭旅遊所需。園內採悠遊卡及一卡通用系統，持卡即可入園、搭乘遊樂設施並於指定商店消費，搭配加值設備使用更加便利。交通方面臨近捷運及多條公車路線，周邊也串聯科學教育館與天文館，是臺北親子旅遊的熱門選擇。摩天輪為園內視覺亮點，建議登上高處俯瞰園區與士林地區景觀，黃昏燈光亮起時更具觀賞價值。園內亦設有哺乳室、無障礙動線與休憩座椅等貼心設施，使推車與長者同行也能輕鬆移動。餐飲與購物選擇齊全，美食街、便利商店與紀念品店配置完善，可即時補給所需。臺北市立兒童新樂園結合歷史延續、多樣遊樂設施與便捷地理優勢，不僅是一座遊樂場，更是提供城市家庭共享快樂與陪伴的重要場域，無論平日放電或假日出遊都相當適合造訪。"
+  },
+  "address": {
+    "zh-Hant": "臺北市士林區"
+  },
+  "postal_code": "111",
+  "city_code": "63000",
+  "city_name": "臺北市",
+  "district_code": "63000110",
+  "district_name": "士林區",
+  "lat": 25.097239,
+  "lng": 121.514947,
+  "phone": "(02)28333823",
+  "website_url": null,
+  "booking_url": null,
+  "source_url": null,
+  "source_categories": [
+    "6",
+    "12",
+    "20",
+    "27",
+    "kw:theme-park"
+  ],
+  "tags": [],
+  "kid_tags": [
+    "diy",
+    "family",
+    "learning",
+    "playground",
+    "rides"
+  ],
+  "kid_score": 100,
+  "is_free": null,
+  "price_level": null,
+  "fee_text": {},
+  "opening_hours": null,
+  "opening_hours_text": {},
+  "facilities": [],
+  "images": [
+    {
+      "url": "https://www.travel.taipei/content/images/attractions/573409/640x480_attractions-image-j5qokmrqwkevd5tcgnx48g.jpg",
+      "caption": {
+        "zh-Hant": "遊樂設施：海盜船"
+      },
+      "credit": null
+    }
+  ],
+  "service_status": "open",
+  "source_updated_at": "2026-06-10T16:15:22+08:00"
+}

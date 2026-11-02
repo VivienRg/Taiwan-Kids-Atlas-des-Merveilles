@@ -1,0 +1,106 @@
+# Taiwan Kids Atlas — run the ingestion worker from CI (manual).
+#
+# Two uses:
+#   1. "run the ingestion now" — the same work the pg_cron schedule does, on
+#      demand (a first baseline, a retry after an upstream outage, or the
+#      `curated` import, which has no schedule).
+#   2. the documented fallback of ADR-0004 if the Edge runtime turns out to be
+#      too small for the 16 MB attractions feed: add a `schedule:` trigger to
+#      this workflow and it becomes the cron instead of pg_cron. No code change.
+#
+# It runs the exact same CLI the developer runs (supabase/functions/_shared/ingest/cli.ts),
+# against the hosted database, with a least-privilege login role
+# (`ingest_writer`, docs/architecture.md §8.3) rather than the owner DSN —
+# see docs/secrets.md §3.
+#
+# Gated by manual dispatch + the `production` GitHub Environment. No `confirm`
+# input: this is idempotent by design (upserts keyed on (source, source_id), a
+# removal guard, and one run per source at a time), i.e. exactly what the enabled
+# cron already does unattended.
+#
+# Docs: docs/release.md §4, docs/observability.md, docs/ci-cd.md §5.
+
+name: Ingest now (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: Which source to run
+        type: choice
+        required: true
+        default: all
+        options:
+          - all
+          - curated
+          - tw_tourism_attractions
+          - tw_tourism_events
+          - moc_kids_events
+      dry_run:
+        description: Fetch and normalise only, print the stats, write nothing
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  # Never two ingestion runs at once (the database enforces this too, per source).
+  group: ingest-run
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    name: deno task ingest
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the connection string is provisioned
+        env:
+          DATABASE_URL: ${{ secrets.INGEST_DATABASE_URL }}
+        run: |
+          if [ -z "${DATABASE_URL:-}" ]; then
+            echo "::error::INGEST_DATABASE_URL is not set — create the ingest_writer role (docs/secrets.md §3)"; exit 1
+          fi
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install psql (for the post-run summary)
+        run: command -v psql || (sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client)
+
+      - name: Run the worker
+        env:
+          DATABASE_URL: ${{ secrets.INGEST_DATABASE_URL }}
+          SOURCE: ${{ inputs.source }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          INGEST_LOG_LEVEL: info
+          INGEST_DEADLINE_MS: '600000'
+        working-directory: supabase/functions
+        run: |
+          set -euo pipefail
+          # The boolean input arrives as the string 'true' / 'false', so it must be
+          # compared, not tested for emptiness (${DRY_RUN:+…} would be non-empty
+          # for "false" too and silently turn every run into a dry run).
+          args=()
+          if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+          if [ "$SOURCE" = "all" ]; then
+            deno task ingest --all ${args[@]+"${args[@]}"}
+          else
+            deno task ingest --source "$SOURCE" ${args[@]+"${args[@]}"}
+          fi
+
+      - name: Summary (last runs, from the audit tables)
+        if: ${{ inputs.dry_run == false }}
+        env:
+          DATABASE_URL: ${{ secrets.INGEST_DATABASE_URL }}
+        run: |
+          psql "$DATABASE_URL" -c "select id, source, trigger, status, records_fetched,
+                                          records_inserted, records_updated, records_unchanged,
+                                          records_removed, error_class
+                                     from atlas.ingestion_runs order by id desc limit 10;"

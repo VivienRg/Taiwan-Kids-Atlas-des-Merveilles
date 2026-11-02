@@ -1,0 +1,87 @@
+{
+  "id": "5d6dffc7-8684-40d9-a726-7626ec074b0f",
+  "source": "moc_kids_events",
+  "source_id": "6ad1a67beb43ead9f13aebca",
+  "name": "做伙來踅菜市仔—台語兒童繪本圖文手作工作坊／希希媽咪識童繪",
+  "name_lang": "zh-Hant",
+  "names": {
+    "zh-Hant": "做伙來踅菜市仔—台語兒童繪本圖文手作工作坊／希希媽咪識童繪"
+  },
+  "description": null,
+  "description_lang": null,
+  "status": "scheduled",
+  "categories": [
+    {
+      "slug": "kids",
+      "name": "Family & kids shows",
+      "icon": "🧸"
+    },
+    {
+      "slug": "workshop",
+      "name": "Workshops & talks",
+      "icon": "✏️"
+    }
+  ],
+  "kid_tags": [
+    "family"
+  ],
+  "kid_score": 80,
+  "is_kid_friendly": true,
+  "age_min": null,
+  "age_max": null,
+  "starts_at": "2026-11-07T05:00:00+00:00",
+  "ends_at": "2026-11-07T09:00:00+00:00",
+  "is_free": true,
+  "price_text": "活動地點｜桃園文學館 4 樓多功能空間（桃園市桃園區忠孝街11號）\r\n活動對象｜國小低年級、中年級學童\r\n活動費用｜免費\r\n活動名額｜每場限額20名，額滿為止",
+  "organizer": null,
+  "website_url": "https://www.accupass.com/event/2610010350371993342605",
+  "ticket_url": "https://www.accupass.com/event/2610010350371993342605",
+  "source_url": null,
+  "place_id": null,
+  "images": [],
+  "occurrences": [
+    {
+      "starts_at": "2026-11-07T05:00:00+00:00",
+      "ends_at": "2026-11-07T07:00:00+00:00",
+      "venue_name": "厝內的水果味—台語兒童繪本圖文手作工作坊",
+      "address": "桃園文學館（桃園市桃園區忠孝街11號）",
+      "city": {
+        "code": "68000",
+        "name": "Taoyuan City"
+      },
+      "district": {
+        "code": "68000010",
+        "name": "Taoyuan District"
+      },
+      "location": null,
+      "price_text": "活動地點｜桃園文學館 4 樓多功能空間（桃園市桃園區忠孝街11號）\n活動對象｜國小低年級、中年級學童\n活動費用｜免費\n活動名額｜每場限額20名，額滿為止",
+      "ticket_url": null
+    },
+    {
+      "starts_at": "2026-11-07T07:00:00+00:00",
+      "ends_at": "2026-11-07T09:00:00+00:00",
+      "venue_name": "厝內的水果味—台語兒童繪本圖文手作工作坊",
+      "address": "桃園文學館（桃園市桃園區忠孝街11號）",
+      "city": {
+        "code": "68000",
+        "name": "Taoyuan City"
+      },
+      "district": {
+        "code": "68000010",
+        "name": "Taoyuan District"
+      },
+      "location": null,
+      "price_text": "活動地點｜桃園文學館 4 樓多功能空間（桃園市桃園區忠孝街11號）\n活動對象｜國小低年級、中年級學童\n活動費用｜免費\n活動名額｜每場限額20名，額滿為止",
+      "ticket_url": null
+    }
+  ],
+  "updated_at": "2026-11-02T14:51:31.875867+00:00",
+  "attribution": {
+    "source_name": "Arts & culture events — Family category",
+    "publisher": "Ministry of Culture",
+    "license": "OGDL-Taiwan-1.0",
+    "license_url": "https://data.gov.tw/license",
+    "dataset_url": "https://data.gov.tw/dataset/10042",
+    "text": "Ministry of Culture — current arts events, Family category. Released under the Open Government Data License, version 1.0: https://data.gov.tw/license"
+  }
+}

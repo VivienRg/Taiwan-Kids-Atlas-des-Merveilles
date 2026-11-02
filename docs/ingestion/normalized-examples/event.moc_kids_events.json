@@ -1,0 +1,65 @@
+{
+  "source_id": "6ad1a67beb43ead9f13aebca",
+  "name": {
+    "zh-Hant": "做伙來踅菜市仔—台語兒童繪本圖文手作工作坊／希希媽咪識童繪"
+  },
+  "description": {},
+  "source_categories": [
+    "4",
+    "7"
+  ],
+  "tags": [],
+  "kid_tags": [
+    "family"
+  ],
+  "kid_score": 80,
+  "status": "scheduled",
+  "is_free": true,
+  "price_text": {
+    "zh-Hant": "活動地點｜桃園文學館 4 樓多功能空間（桃園市桃園區忠孝街11號）\r\n活動對象｜國小低年級、中年級學童\r\n活動費用｜免費\r\n活動名額｜每場限額20名，額滿為止"
+  },
+  "organizer": {},
+  "website_url": "https://www.accupass.com/event/2610010350371993342605",
+  "ticket_url": "https://www.accupass.com/event/2610010350371993342605",
+  "source_url": null,
+  "images": [],
+  "source_updated_at": "2026-10-19T15:26:40+08:00",
+  "occurrences": [
+    {
+      "starts_at": "2026-11-07T13:00:00+08:00",
+      "ends_at": "2026-11-07T15:00:00+08:00",
+      "venue_name": {
+        "zh-Hant": "厝內的水果味—台語兒童繪本圖文手作工作坊"
+      },
+      "address": {
+        "zh-Hant": "桃園文學館（桃園市桃園區忠孝街11號）"
+      },
+      "city_name": "桃園市",
+      "district_name": "桃園區",
+      "lat": null,
+      "lng": null,
+      "price_text": {
+        "zh-Hant": "活動地點｜桃園文學館 4 樓多功能空間（桃園市桃園區忠孝街11號）\n活動對象｜國小低年級、中年級學童\n活動費用｜免費\n活動名額｜每場限額20名，額滿為止"
+      },
+      "ticket_url": null
+    },
+    {
+      "starts_at": "2026-11-07T15:00:00+08:00",
+      "ends_at": "2026-11-07T17:00:00+08:00",
+      "venue_name": {
+        "zh-Hant": "厝內的水果味—台語兒童繪本圖文手作工作坊"
+      },
+      "address": {
+        "zh-Hant": "桃園文學館（桃園市桃園區忠孝街11號）"
+      },
+      "city_name": "桃園市",
+      "district_name": "桃園區",
+      "lat": null,
+      "lng": null,
+      "price_text": {
+        "zh-Hant": "活動地點｜桃園文學館 4 樓多功能空間（桃園市桃園區忠孝街11號）\n活動對象｜國小低年級、中年級學童\n活動費用｜免費\n活動名額｜每場限額20名，額滿為止"
+      },
+      "ticket_url": null
+    }
+  ]
+}

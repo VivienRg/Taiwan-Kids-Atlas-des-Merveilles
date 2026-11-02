@@ -1,0 +1,92 @@
+[
+  {
+    "id": "224c06da-8fd8-4756-adc2-5fcf6c2b4495",
+    "source": "moc_kids_events",
+    "name": "文山劇場2026年《親子玩藝》活動系列",
+    "name_lang": "zh-Hant",
+    "status": "scheduled",
+    "category_slugs": [
+      "kids"
+    ],
+    "primary_category": "kids",
+    "kid_tags": [
+      "family"
+    ],
+    "kid_score": 80,
+    "is_kid_friendly": true,
+    "is_free": null,
+    "next_starts_at": "2026-11-07T02:00:00+00:00",
+    "next_ends_at": "2026-11-07T03:40:00+00:00",
+    "occurrence_count": 8,
+    "venue_name": "文山劇場",
+    "city_code": "63000",
+    "city_name": "Taipei City",
+    "district_code": "63000080",
+    "district_name": "Wenshan District",
+    "lat": 24.9920754,
+    "lng": 121.5411678,
+    "distance_m": null,
+    "thumbnail_url": null,
+    "total_count": 14
+  },
+  {
+    "id": "241ba1cd-3bea-454f-8018-3994436ae865",
+    "source": "moc_kids_events",
+    "name": "《看不見》親子繪本說故事",
+    "name_lang": "zh-Hant",
+    "status": "scheduled",
+    "category_slugs": [
+      "kids"
+    ],
+    "primary_category": "kids",
+    "kid_tags": [
+      "family"
+    ],
+    "kid_score": 80,
+    "is_kid_friendly": true,
+    "is_free": null,
+    "next_starts_at": "2026-11-07T02:00:00+00:00",
+    "next_ends_at": "2026-11-07T02:50:00+00:00",
+    "occurrence_count": 10,
+    "venue_name": "國家兩廳院表演藝術圖書館",
+    "city_code": "63000",
+    "city_name": "Taipei City",
+    "district_code": "63000050",
+    "district_name": "Zhongzheng District",
+    "lat": 25.034753768266633,
+    "lng": 121.51787631065513,
+    "distance_m": null,
+    "thumbnail_url": null,
+    "total_count": 14
+  },
+  {
+    "id": "78af5eda-0b21-402a-b8f9-d7ff7e7bc46f",
+    "source": "moc_kids_events",
+    "name": "《小小音樂大師課》孩子們的秋季交響樂・臺北",
+    "name_lang": "zh-Hant",
+    "status": "scheduled",
+    "category_slugs": [
+      "kids"
+    ],
+    "primary_category": "kids",
+    "kid_tags": [
+      "family"
+    ],
+    "kid_score": 80,
+    "is_kid_friendly": true,
+    "is_free": null,
+    "next_starts_at": "2026-11-07T03:00:00+00:00",
+    "next_ends_at": "2026-11-07T03:50:00+00:00",
+    "occurrence_count": 16,
+    "venue_name": "1980室內樂集",
+    "city_code": "63000",
+    "city_name": "Taipei City",
+    "district_code": "63000050",
+    "district_name": "Zhongzheng District",
+    "lat": 25.0455782,
+    "lng": 121.5264457,
+    "distance_m": null,
+    "thumbnail_url": null,
+    "total_count": 14
+  }
+]

@@ -1,0 +1,207 @@
+# Taiwan Kids Atlas — EAS builds and store submission (manual only).
+#
+# Nothing here runs on a push or a PR: a build costs EAS credits and a store
+# upload is irreversible. Both are started by hand from the Actions tab.
+#
+#   profile          output                                  credentials needed
+#   development      dev-client APK + iOS simulator app      EXPO_TOKEN
+#   preview          APK + iOS simulator app (.app)          EXPO_TOKEN
+#   preview-device   APK + ad-hoc IPA (registered devices)   EXPO_TOKEN + Apple Developer
+#   production       AAB + store IPA                         EXPO_TOKEN + Apple Developer + Play Console
+#
+# `action: submit` uploads the most recent production build to TestFlight and to
+# the Play *internal* track. It is the only step that leaves the build system and
+# it is gated three times: manual dispatch, `confirm: APPLY`, and the `production`
+# GitHub Environment (add required reviewers to it — docs/release.md §0).
+#
+# The whole workflow is inert until EXPO_TOKEN exists: without it the guard step
+# warns and exits 0 instead of failing on every attempt.
+#
+# Docs: docs/release.md §4, docs/release-credentials.md, docs/secrets.md §4.
+
+name: EAS build / submit (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Build, or submit the latest production build
+        type: choice
+        required: true
+        default: build
+        options:
+          - build
+          - submit
+      platform:
+        description: Target platform
+        type: choice
+        required: true
+        default: all
+        options:
+          - all
+          - android
+          - ios
+      profile:
+        description: EAS build profile (ignored by submit, which always uses production)
+        type: choice
+        required: true
+        default: preview
+        options:
+          - development
+          - preview
+          - preview-device
+          - production
+      confirm:
+        description: Type "APPLY" for a production build or any submit
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eas-${{ inputs.action }}-${{ inputs.profile }}
+  cancel-in-progress: false
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Development / preview builds: no store credentials, safe to trigger.
+  # ---------------------------------------------------------------------------
+  build-preview:
+    name: EAS build (${{ inputs.profile }})
+    if: ${{ inputs.action == 'build' && inputs.profile != 'production' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the Expo token is provisioned
+        id: guard
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [ -z "${EXPO_TOKEN:-}" ]; then
+            echo "::warning::EXPO_TOKEN is not set (docs/secrets.md §4) — the build cannot start"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.guard.outputs.skip == 'false'
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install dependencies
+        if: steps.guard.outputs.skip == 'false'
+        run: npm ci
+
+      - name: eas build
+        if: steps.guard.outputs.skip == 'false'
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          PLATFORM: ${{ inputs.platform }}
+          PROFILE: ${{ inputs.profile }}
+        run: |
+          # --non-interactive never prompts (it also guarantees this cannot hang
+          # waiting for a credential answer nobody is there to give).
+          npx eas-cli@latest build \
+            --platform "$PLATFORM" \
+            --profile "$PROFILE" \
+            --non-interactive
+
+  # ---------------------------------------------------------------------------
+  # Production build or store submission: GitHub Environment approval + APPLY.
+  # ---------------------------------------------------------------------------
+  build-production:
+    name: EAS production build
+    if: ${{ inputs.action == 'build' && inputs.profile == 'production' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    environment: production
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Require explicit confirmation
+        env:
+          CONFIRM: ${{ inputs.confirm }}
+        run: |
+          if [ "$CONFIRM" != "APPLY" ]; then
+            echo "::error::refusing to build for the stores: set the confirm input to APPLY"; exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: eas build (production profile → AAB + IPA)
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          PLATFORM: ${{ inputs.platform }}
+        run: |
+          if [ -z "${EXPO_TOKEN:-}" ]; then
+            echo "::error::EXPO_TOKEN is not set (docs/secrets.md §4)"; exit 1
+          fi
+          npx eas-cli@latest build \
+            --platform "$PLATFORM" \
+            --profile production \
+            --non-interactive
+
+  submit:
+    name: EAS submit (TestFlight + Play internal)
+    if: ${{ inputs.action == 'submit' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment: production
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Require explicit confirmation
+        env:
+          CONFIRM: ${{ inputs.confirm }}
+        run: |
+          if [ "$CONFIRM" != "APPLY" ]; then
+            echo "::error::refusing to submit to the stores: set the confirm input to APPLY"; exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: eas submit (latest production build)
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          PLATFORM: ${{ inputs.platform }}
+        run: |
+          if [ -z "${EXPO_TOKEN:-}" ]; then
+            echo "::error::EXPO_TOKEN is not set (docs/secrets.md §4)"; exit 1
+          fi
+          # Store credentials must already live on EAS servers (eas credentials)
+          # or in EAS environment variables — docs/release-credentials.md.
+          npx eas-cli@latest submit \
+            --platform "$PLATFORM" \
+            --profile production \
+            --latest \
+            --non-interactive

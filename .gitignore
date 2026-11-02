@@ -13,12 +13,17 @@ pnpm-lock.yaml
 # Env & local overrides
 .env
 .env.*
+!*.env.example
 *.local
 
 # Builds / caches
 dist/
 .cache/
 .tmp/
+
+# Supabase CLI local state (written by `supabase start` / `supabase link`)
+supabase/.temp/
+supabase/.branches/
 
 # Optional: uncomment if you decide NOT to track generated thumbnails
 # thumbnails/

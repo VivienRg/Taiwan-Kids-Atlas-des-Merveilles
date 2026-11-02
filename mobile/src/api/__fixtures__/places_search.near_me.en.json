@@ -1,0 +1,96 @@
+[
+  {
+    "id": "a8d92386-d518-4ac4-8fdc-2ffbf86b5a2b",
+    "source": "tw_tourism_attractions",
+    "name": "葡萄王健康活力能量館",
+    "name_lang": "zh-Hant",
+    "city_code": "68000",
+    "city_name": "Taoyuan City",
+    "district_code": "68000100",
+    "district_name": "Pingzhen District",
+    "primary_category": "diy",
+    "category_slugs": [
+      "diy"
+    ],
+    "kid_tags": [
+      "diy",
+      "learning"
+    ],
+    "kid_score": 60,
+    "is_kid_friendly": true,
+    "age_min": null,
+    "age_max": null,
+    "indoor_outdoor": null,
+    "is_free": null,
+    "price_level": null,
+    "lat": 24.93401,
+    "lng": 121.22531,
+    "distance_m": 2181,
+    "thumbnail_url": "https://travel.tycg.gov.tw/image/22270/640x480",
+    "updated_at": "2026-11-02T14:51:21.551307+00:00",
+    "total_count": 47
+  },
+  {
+    "id": "9cb68704-ee74-477e-bce8-07a51ff84cbe",
+    "source": "tw_tourism_attractions",
+    "name": "養樂多工廠",
+    "name_lang": "zh-Hant",
+    "city_code": "68000",
+    "city_name": "Taoyuan City",
+    "district_code": "68000020",
+    "district_name": "Zhongli District",
+    "primary_category": "diy",
+    "category_slugs": [
+      "diy"
+    ],
+    "kid_tags": [
+      "learning"
+    ],
+    "kid_score": 50,
+    "is_kid_friendly": true,
+    "age_min": null,
+    "age_max": null,
+    "indoor_outdoor": null,
+    "is_free": null,
+    "price_level": null,
+    "lat": 24.96944,
+    "lng": 121.24452,
+    "distance_m": 2587,
+    "thumbnail_url": "https://travel.tycg.gov.tw/image/21633/640x480",
+    "updated_at": "2026-11-02T14:51:21.551307+00:00",
+    "total_count": 47
+  },
+  {
+    "id": "7c8dd411-ea87-4988-b09d-20af8a229b2e",
+    "source": "tw_tourism_attractions",
+    "name": "羊世界牧場",
+    "name_lang": "zh-Hant",
+    "city_code": "68000",
+    "city_name": "Taoyuan City",
+    "district_code": "68000020",
+    "district_name": "Zhongli District",
+    "primary_category": "animals",
+    "category_slugs": [
+      "animals",
+      "farm"
+    ],
+    "kid_tags": [
+      "animals",
+      "diy",
+      "family"
+    ],
+    "kid_score": 100,
+    "is_kid_friendly": true,
+    "age_min": null,
+    "age_max": null,
+    "indoor_outdoor": null,
+    "is_free": null,
+    "price_level": null,
+    "lat": 24.98201,
+    "lng": 121.21029,
+    "distance_m": 3496,
+    "thumbnail_url": "https://travel.tycg.gov.tw/image/77165/640x480",
+    "updated_at": "2026-11-02T14:51:21.245592+00:00",
+    "total_count": 47
+  }
+]

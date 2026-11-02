@@ -1,0 +1,187 @@
+{
+  "UpdateTime": "2026-11-02T14:30:03+08:00",
+  "UpdateInterval": 86400,
+  "Language": "Zh_tw",
+  "ProviderID": "A15010000H",
+  "Attractions": [
+    {
+      "AttractionID": "Attraction_345040000G_000001",
+      "AttractionName": "太平山國家森林遊樂區",
+      "AlternateNames": [],
+      "Description": "蹦蹦車、溫泉、高山湖泊、巨木森林與國寶山毛櫸，鋪成了太平山國家森林遊樂區超過百年歷史的綿長軌跡。  太平山舊稱「眠腦」，是泰雅族語「鬱鬱蒼蒼」之意。1914年，日本人先做了資源調查，1915年決議開發。《台灣日日新報》在1936年7月28日報導：「太平山之名乃由現在事務所轉移前，當時主任技師中里氏，將蕃語直譯者。且佐久間總督五年討伐告終，天下歸於太平之意」。所以，「天下太平」才是太平山地名真正的由來，命名者正是踏查先鋒中里正。  海拔2000公尺的太平山，是僅次於阿里山的林業傳奇，1915年日本人開始這裡的伐木事業，後來由國民政府接手，成為台灣最大的林場，最後在1983年轉型為遊樂區，留下見晴鐵道、蹦蹦車等珍貴的遺跡。  人們可以漫步在鎮安宮後的原始林間，讓思緒翱翔在過往巨木滿山的年代。沿著時常遇見台灣獼猴、帝雉等動物的翠峰景觀道路行駛，終點是台灣面積最大高山湖泊，海拔1840公尺的翠峰湖，對岸是國寶台灣山毛櫸的家，秋天可以沿著4公里的步道欣賞滿山金黃耀眼。  收費站不遠處的鳩之澤溫泉，是聞名遐邇的碳酸泉，也是這裏的一大特色。太平山國家森林遊樂區，絕對是喜歡大自然的您，拜訪宜蘭的第一選擇。",
+      "PositionLat": 24.5574676798311,
+      "PositionLon": 121.49949962026885,
+      "Geometry": null,
+      "AttractionClasses": [
+        16
+      ],
+      "PostalAddress": {
+        "City": "宜蘭縣",
+        "CityCode": "10002",
+        "Town": "大同鄉",
+        "TownCode": "10002110",
+        "ZipCode": "267",
+        "StreetAddress": "太平巷58之1號"
+      },
+      "Telephones": [
+        {
+          "Tel": "(03)9770766"
+        },
+        {
+          "Tel": "(03)9809619"
+        },
+        {
+          "Tel": "(03)9809806"
+        },
+        {
+          "Tel": "(03)9809812"
+        },
+        {
+          "Tel": "(03)9809875"
+        },
+        {
+          "Tel": "0910935132"
+        },
+        {
+          "Tel": "0963357199"
+        }
+      ],
+      "Images": [
+        {
+          "Name": "翠峰湖日出",
+          "Description": "照片提供｜宜蘭分署",
+          "URL": "https://recreation.forest.gov.tw/Files/Forest/RA/photo/album/0100001/01_%E5%A4%AA%E5%B9%B3%E5%B1%B1%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80.jpg",
+          "Width": null,
+          "Height": null,
+          "Keywords": []
+        },
+        {
+          "Name": "雲海",
+          "Description": "照片提供｜宜蘭分署",
+          "URL": "https://recreation.forest.gov.tw/Files/Forest/RA/photo/album/0100001/02_BASE_01.jpg",
+          "Width": null,
+          "Height": null,
+          "Keywords": []
+        }
+      ],
+      "Organizations": [],
+      "ServiceTimeInfo": "",
+      "TrafficInfo": "［開車前往］從台北出發（經宜蘭交流道）：台北→國道5號→宜蘭(交流道)→省道台7線→省道台7甲線(3.7K)→宜專1線→土場→鳩之澤→太平山。［開車前往］從台北出發（經羅東交流道）：台北→國道5號→羅東(交流道)→省道台7丙線→省道台7線→省道台7甲線(3.7K)→宜專1線→土場→鳩之澤→太平山。［開車前往］從台北出發（經省道台9線(北宜公路)）：台北→省道台9線(北宜公路)→頭城鎮→宜蘭市→省道台7線→省道台7甲線(3.7K)→宜專1線→土場→鳩之澤→太平山［開車前往］從基隆出發：基隆→省道台2線(濱海公路) →壯圍→省道台7線→省道台7甲線(3.7K)→宜專1線→土場→鳩之澤→太平山。［開車前往］從桃園出發：桃園→大溪→省道台7線(北橫公路)→省道台7甲線(3.7K)→宜專1線→土場→鳩之澤→太平山。［開車前往］從花蓮出發：花蓮→省道台9線(蘇花公路)→省道台7丙線→省道台7線→省道台7甲線(3.7K)→宜專1線→土場→鳩之澤→太平山。［大眾運輸］搭乘國光客運：每日行駛(平日:1750 假日:1750A)。旅程時間：約2時30分鐘。電話：宜蘭站03-9384171、羅東站03-9567505。網址：http://www.kingbus.com.tw。購票方式：國光客運臨櫃購票、網路購票及三大超商(7-11、全家及萊爾富)購票。預定當日起15天內車票(含回程訂位) ◎去程(發車時間)：宜蘭07:40、羅東08:00(宜蘭+20分鐘為羅東發車時間) ；抵達太平山10:30。 ◎回程(發車時間)：太平山14:30；鳩之澤16:10，抵達羅東17:30、宜蘭17:50。［大眾運輸］搭乘觀光局台灣觀光巴士：搭乘觀光局台灣觀巴-宜蘭太平山自然之旅一日遊，四人即可成行（提供英、日外語導覽） https://www.taiwantourbus.com.tw/C/tour/tw/yilan-taipingshan-nature-tour［大眾運輸］參加太平山策略聯盟夥伴套裝行程：太平山國家森林遊樂區生態旅遊策略聯盟夥伴，有4家旅行社夥伴，可提供接駁及套裝行程。說明網址：http://goo.gl/BP1YdE",
+      "ParkingInfo": "大型車：100元。小型車：100元。機車：20元。",
+      "Facilities": [],
+      "ServiceStatus": 1,
+      "IsPublicAccess": 1,
+      "IsAccessibleForFree": null,
+      "FeeInfo": "",
+      "PaymentMethods": [],
+      "LocatedCities": [],
+      "WebsiteURL": "https://recreation.forest.gov.tw/Forest/RA?typ_id=0100001",
+      "ReservationURLs": [
+        "https://forestpass.welcometw.com/tour/listAll?category=p8b"
+      ],
+      "MapURLs": [],
+      "SameAsURLs": [],
+      "SocialMediaURLs": [
+        {
+          "Name": "太平山國家森林遊樂區",
+          "Description": null,
+          "URL": "https://www.facebook.com/tps100.forest",
+          "Keywords": [],
+          "Tags": []
+        },
+        {
+          "Name": "太平山國家森林遊樂區",
+          "Description": null,
+          "URL": "https://www.instagram.com/taipingshan100/",
+          "Keywords": [],
+          "Tags": []
+        },
+        {
+          "Name": "雲煙森林畫太平－太平山國家森林遊樂區",
+          "Description": null,
+          "URL": "https://youtu.be/MzUk6FJKQYE",
+          "Keywords": [],
+          "Tags": []
+        }
+      ],
+      "VisitDuration": null,
+      "AssetsClass": null,
+      "SubAttractions": [],
+      "PartOfAttraction": null,
+      "Tags": [
+        "賞楓",
+        "雲海",
+        "檜木原始林",
+        "溫泉",
+        "台灣山毛櫸",
+        "太平山俱樂部",
+        "翠峰湖",
+        "太平山",
+        "蹦蹦車"
+      ],
+      "Remarks": "",
+      "UpdateTime": "2026-11-02T12:20:21+08:00"
+    },
+    {
+      "AttractionID": "Attraction_379000000A_000351",
+      "AttractionName": "臺北市立兒童新樂園",
+      "AlternateNames": [],
+      "Description": "臺北市立兒童新樂園位於士林區，是臺北都會區代表性的親子主題樂園。園內擁有 13 項大型遊樂設施、免費遊戲區與多元親子體驗，深受家庭與學齡兒童歡迎。主打不同年齡分區規劃，並設有主題表演、季節限定水樂園與完善餐飲服務，一站即可滿足家庭旅遊所需。園內採悠遊卡及一卡通用系統，持卡即可入園、搭乘遊樂設施並於指定商店消費，搭配加值設備使用更加便利。交通方面臨近捷運及多條公車路線，周邊也串聯科學教育館與天文館，是臺北親子旅遊的熱門選擇。摩天輪為園內視覺亮點，建議登上高處俯瞰園區與士林地區景觀，黃昏燈光亮起時更具觀賞價值。園內亦設有哺乳室、無障礙動線與休憩座椅等貼心設施，使推車與長者同行也能輕鬆移動。餐飲與購物選擇齊全，美食街、便利商店與紀念品店配置完善，可即時補給所需。臺北市立兒童新樂園結合歷史延續、多樣遊樂設施與便捷地理優勢，不僅是一座遊樂場，更是提供城市家庭共享快樂與陪伴的重要場域，無論平日放電或假日出遊都相當適合造訪。",
+      "PositionLat": 25.097239,
+      "PositionLon": 121.514947,
+      "Geometry": null,
+      "AttractionClasses": [
+        6,
+        12,
+        20,
+        27
+      ],
+      "PostalAddress": {
+        "City": "臺北市",
+        "CityCode": "63000",
+        "Town": "士林區",
+        "TownCode": "63000110",
+        "ZipCode": "111",
+        "StreetAddress": null
+      },
+      "Telephones": [
+        {
+          "Tel": "(02)28333823"
+        }
+      ],
+      "Images": [
+        {
+          "Name": "遊樂設施：海盜船",
+          "Description": null,
+          "URL": "https://www.travel.taipei/content/images/attractions/573409/640x480_attractions-image-j5qokmrqwkevd5tcgnx48g.jpg",
+          "Width": null,
+          "Height": null,
+          "Keywords": []
+        }
+      ],
+      "Organizations": [],
+      "ServiceTimeInfo": "",
+      "TrafficInfo": "",
+      "ParkingInfo": "",
+      "Facilities": [],
+      "ServiceStatus": 1,
+      "IsPublicAccess": 1,
+      "IsAccessibleForFree": null,
+      "FeeInfo": "",
+      "PaymentMethods": [],
+      "LocatedCities": [],
+      "WebsiteURL": "",
+      "ReservationURLs": [],
+      "MapURLs": [],
+      "SameAsURLs": [],
+      "SocialMediaURLs": [],
+      "VisitDuration": null,
+      "AssetsClass": null,
+      "SubAttractions": [],
+      "PartOfAttraction": null,
+      "Tags": [],
+      "Remarks": "",
+      "UpdateTime": "2026-06-10T16:15:22+08:00"
+    }
+  ]
+}

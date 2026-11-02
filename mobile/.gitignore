@@ -1,0 +1,33 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Node / tooling
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Env & local overrides
+.env
+.env.*
+# ...but keep the committed placeholder (real values never land in git)
+!.env.example
+*.local
+
+# Expo
+.expo/
+.expo-shared/
+.webkit-*
+
+# Builds / caches
+dist/
+build/
+.cache/
+.tmp/
+.electron/
+
+# Logs
+*.log

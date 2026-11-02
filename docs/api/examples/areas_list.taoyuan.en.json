@@ -1,0 +1,106 @@
+[
+  {
+    "code": "68000010",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Taoyuan District",
+    "name_lang": "en",
+    "place_count": 26
+  },
+  {
+    "code": "68000020",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Zhongli District",
+    "name_lang": "en",
+    "place_count": 47
+  },
+  {
+    "code": "68000030",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Daxi District",
+    "name_lang": "en",
+    "place_count": 51
+  },
+  {
+    "code": "68000040",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Yangmei District",
+    "name_lang": "en",
+    "place_count": 13
+  },
+  {
+    "code": "68000050",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Luzhu District",
+    "name_lang": "en",
+    "place_count": 24
+  },
+  {
+    "code": "68000060",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Dayuan District",
+    "name_lang": "en",
+    "place_count": 12
+  },
+  {
+    "code": "68000070",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Guishan District",
+    "name_lang": "en",
+    "place_count": 14
+  },
+  {
+    "code": "68000080",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Bade District",
+    "name_lang": "en",
+    "place_count": 13
+  },
+  {
+    "code": "68000090",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Longtan District",
+    "name_lang": "en",
+    "place_count": 26
+  },
+  {
+    "code": "68000100",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Pingzhen District",
+    "name_lang": "en",
+    "place_count": 14
+  },
+  {
+    "code": "68000110",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Xinwu District",
+    "name_lang": "en",
+    "place_count": 19
+  },
+  {
+    "code": "68000120",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Guanyin District",
+    "name_lang": "en",
+    "place_count": 12
+  },
+  {
+    "code": "68000130",
+    "level": "district",
+    "parent_code": "68000",
+    "name": "Fuxing District",
+    "name_lang": "en",
+    "place_count": 30
+  }
+]

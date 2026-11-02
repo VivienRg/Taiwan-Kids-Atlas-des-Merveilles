@@ -1,0 +1,42 @@
+{
+  "UpdateTime": "2026-11-02T14:30:16+08:00",
+  "UpdateInterval": 86400,
+  "Language": "Zh_tw",
+  "ProviderID": "A15010000H",
+  "AttractionServiceTimes": [
+    {
+      "AttractionID": "Attraction_345040000G_000001",
+      "AttractionName": "太平山國家森林遊樂區",
+      "ServiceTimes": [
+        {
+          "Name": "平日（星期一~星期五）及寒假期間平日",
+          "Description": null,
+          "ServiceDays": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "StartTime": "06:00:00",
+          "EndTime": "20:00:00",
+          "EffectiveDate": null,
+          "ExpireDate": null
+        },
+        {
+          "Name": "假日（星期六、星期日）、國定例假日及暑假",
+          "Description": null,
+          "ServiceDays": [
+            "Saturday",
+            "Sunday"
+          ],
+          "StartTime": "04:00:00",
+          "EndTime": "20:00:00",
+          "EffectiveDate": null,
+          "ExpireDate": null
+        }
+      ],
+      "UpdateTime": "2023-11-30T00:00:00"
+    }
+  ]
+}

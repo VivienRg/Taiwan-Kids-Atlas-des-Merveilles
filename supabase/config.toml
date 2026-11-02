@@ -1,0 +1,76 @@
+# Taiwan Kids Atlas — Supabase CLI configuration
+# `supabase init` baseline, customized by the backend and devops cards.
+# Docs: docs/architecture.md §4/§6/§8, docs/ingestion.md §7, docs/release.md §2.
+#
+# This file is configuration-as-code for the CLI *and* the local stack. It must
+# never contain a secret: every value below is either a local-only default or a
+# name that is resolved from an environment variable. Real credentials live in
+# GitHub Actions secrets (deploy) and in the Supabase dashboard (runtime), see
+# docs/secrets.md.
+
+# Stable project id used for the local stack and as the folder/CLI identity.
+# The hosted project itself is addressed by its project ref (SUPABASE_PROJECT_REF,
+# a GitHub Actions secret) — never committed.
+project_id = "taiwan-kids-atlas"
+
+[api]
+enabled = true
+port = 54321
+# PostgREST exposes `public` only; the data lives in the unexposed `atlas` schema
+# and is reached through the 8 SECURITY INVOKER functions (docs/api-contract.md).
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+# Must match docs/architecture.md §6 (Postgres 17 + PostGIS) and CI.
+major_version = 17
+shadow_port = 54320
+
+[db.pooler]
+enabled = false
+
+[realtime]
+enabled = false
+
+[studio]
+enabled = true
+port = 54323
+
+[local_smtp]
+# No auth, no sign-up, no email: the app is anonymous and read-only.
+# (CLI 3.x renamed the old [inbucket] section to [local_smtp].)
+enabled = false
+
+[storage]
+# Images are hot-linked from the upstream feeds, never uploaded.
+enabled = false
+
+[auth]
+enabled = true
+# The client only ever uses the publishable (anon) key. Nothing in the app signs
+# a user in, so no auth provider is configured here.
+site_url = "http://127.0.0.1:8081"
+
+[analytics]
+enabled = false
+
+[edge_runtime]
+policy = "per_worker"
+inspector_port = 8083
+
+[functions.ingest]
+# The ingest Edge Function is triggered by pg_cron -> pg_net with a shared secret,
+# not by end users, so JWT verification is off. The function itself checks
+# INGEST_CRON_SECRET with a constant-time comparison (docs/ingestion.md §7).
+verify_jwt = false
+
+# Function runtime variables are NOT set here on purpose. The CLI only accepts
+# `NAME = "env(NAME)"` indirection in [functions.<name>.env], which would resolve
+# from whatever environment happens to run the deploy. Instead:
+#   local : supabase/functions/.env (git-ignored, from .env.example), passed with
+#           `supabase functions serve ingest --env-file supabase/functions/.env`
+#   prod  : `supabase secrets set` (docs/release.md §3, and the `secrets` action
+#           of .github/workflows/supabase-deploy.yml)
+# INGEST_LOG_LEVEL defaults to info and INGEST_DEADLINE_MS to 120000 in prod.

@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "kids",
+    "name": "親子活動",
+    "icon": "🧸",
+    "sort": 5,
+    "item_count": 58
+  },
+  {
+    "slug": "culture",
+    "name": "文化歷史",
+    "icon": "🏮",
+    "sort": 130,
+    "item_count": 112
+  },
+  {
+    "slug": "market",
+    "name": "老街與市集",
+    "icon": "🛍️",
+    "sort": 140,
+    "item_count": 0
+  },
+  {
+    "slug": "sports",
+    "name": "運動體能",
+    "icon": "⚽",
+    "sort": 150,
+    "item_count": 0
+  },
+  {
+    "slug": "performance",
+    "name": "表演與音樂會",
+    "icon": "🎭",
+    "sort": 210,
+    "item_count": 2
+  },
+  {
+    "slug": "exhibition",
+    "name": "展覽",
+    "icon": "🖼️",
+    "sort": 220,
+    "item_count": 10
+  },
+  {
+    "slug": "workshop",
+    "name": "工作坊與講座",
+    "icon": "✏️",
+    "sort": 230,
+    "item_count": 4
+  },
+  {
+    "slug": "festival",
+    "name": "節慶活動",
+    "icon": "🎉",
+    "sort": 240,
+    "item_count": 35
+  },
+  {
+    "slug": "movie",
+    "name": "電影",
+    "icon": "🎬",
+    "sort": 250,
+    "item_count": 0
+  },
+  {
+    "slug": "other",
+    "name": "其他",
+    "icon": "📍",
+    "sort": 999,
+    "item_count": 4
+  }
+]
