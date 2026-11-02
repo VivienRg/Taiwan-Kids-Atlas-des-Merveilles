@@ -1,0 +1,178 @@
+[
+  {
+    "code": "10017",
+    "level": "city",
+    "parent_code": null,
+    "name": "Keelung City",
+    "name_lang": "en",
+    "place_count": 116
+  },
+  {
+    "code": "63000",
+    "level": "city",
+    "parent_code": null,
+    "name": "Taipei City",
+    "name_lang": "en",
+    "place_count": 385
+  },
+  {
+    "code": "65000",
+    "level": "city",
+    "parent_code": null,
+    "name": "New Taipei City",
+    "name_lang": "en",
+    "place_count": 638
+  },
+  {
+    "code": "68000",
+    "level": "city",
+    "parent_code": null,
+    "name": "Taoyuan City",
+    "name_lang": "en",
+    "place_count": 303
+  },
+  {
+    "code": "10018",
+    "level": "city",
+    "parent_code": null,
+    "name": "Hsinchu City",
+    "name_lang": "en",
+    "place_count": 64
+  },
+  {
+    "code": "10004",
+    "level": "city",
+    "parent_code": null,
+    "name": "Hsinchu County",
+    "name_lang": "en",
+    "place_count": 499
+  },
+  {
+    "code": "10005",
+    "level": "city",
+    "parent_code": null,
+    "name": "Miaoli County",
+    "name_lang": "en",
+    "place_count": 209
+  },
+  {
+    "code": "66000",
+    "level": "city",
+    "parent_code": null,
+    "name": "Taichung City",
+    "name_lang": "en",
+    "place_count": 495
+  },
+  {
+    "code": "10007",
+    "level": "city",
+    "parent_code": null,
+    "name": "Changhua County",
+    "name_lang": "en",
+    "place_count": 296
+  },
+  {
+    "code": "10008",
+    "level": "city",
+    "parent_code": null,
+    "name": "Nantou County",
+    "name_lang": "en",
+    "place_count": 168
+  },
+  {
+    "code": "10009",
+    "level": "city",
+    "parent_code": null,
+    "name": "Yunlin County",
+    "name_lang": "en",
+    "place_count": 356
+  },
+  {
+    "code": "10020",
+    "level": "city",
+    "parent_code": null,
+    "name": "Chiayi City",
+    "name_lang": "en",
+    "place_count": 77
+  },
+  {
+    "code": "10010",
+    "level": "city",
+    "parent_code": null,
+    "name": "Chiayi County",
+    "name_lang": "en",
+    "place_count": 164
+  },
+  {
+    "code": "67000",
+    "level": "city",
+    "parent_code": null,
+    "name": "Tainan City",
+    "name_lang": "en",
+    "place_count": 512
+  },
+  {
+    "code": "64000",
+    "level": "city",
+    "parent_code": null,
+    "name": "Kaohsiung City",
+    "name_lang": "en",
+    "place_count": 323
+  },
+  {
+    "code": "10013",
+    "level": "city",
+    "parent_code": null,
+    "name": "Pingtung County",
+    "name_lang": "en",
+    "place_count": 124
+  },
+  {
+    "code": "10002",
+    "level": "city",
+    "parent_code": null,
+    "name": "Yilan County",
+    "name_lang": "en",
+    "place_count": 167
+  },
+  {
+    "code": "10015",
+    "level": "city",
+    "parent_code": null,
+    "name": "Hualien County",
+    "name_lang": "en",
+    "place_count": 297
+  },
+  {
+    "code": "10014",
+    "level": "city",
+    "parent_code": null,
+    "name": "Taitung County",
+    "name_lang": "en",
+    "place_count": 264
+  },
+  {
+    "code": "10016",
+    "level": "city",
+    "parent_code": null,
+    "name": "Penghu County",
+    "name_lang": "en",
+    "place_count": 142
+  },
+  {
+    "code": "09020",
+    "level": "city",
+    "parent_code": null,
+    "name": "Kinmen County",
+    "name_lang": "en",
+    "place_count": 224
+  },
+  {
+    "code": "09007",
+    "level": "city",
+    "parent_code": null,
+    "name": "Lienchiang County",
+    "name_lang": "en",
+    "place_count": 84
+  }
+]

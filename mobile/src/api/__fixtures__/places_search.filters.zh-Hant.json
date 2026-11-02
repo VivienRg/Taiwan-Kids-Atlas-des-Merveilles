@@ -1,0 +1,101 @@
+[
+  {
+    "id": "0f233214-eff7-49d3-95b5-eb83b6a9c73e",
+    "source": "curated",
+    "name": "小人國",
+    "name_lang": "zh-Hant",
+    "city_code": "68000",
+    "city_name": "桃園市",
+    "district_code": "68000090",
+    "district_name": "龍潭區",
+    "primary_category": "theme-park",
+    "category_slugs": [
+      "theme-park",
+      "water"
+    ],
+    "kid_tags": [
+      "active",
+      "family",
+      "food",
+      "rides",
+      "seasonal"
+    ],
+    "kid_score": 100,
+    "is_kid_friendly": true,
+    "age_min": 4,
+    "age_max": 14,
+    "indoor_outdoor": "mixed",
+    "is_free": false,
+    "price_level": 2,
+    "lat": 24.83195,
+    "lng": 121.18711,
+    "distance_m": null,
+    "thumbnail_url": "https://travel.tycg.gov.tw/image/101747/640x480",
+    "updated_at": "2026-11-02T14:51:27.829334+00:00",
+    "total_count": 11
+  },
+  {
+    "id": "3009c389-2122-45a5-9d26-c6f9c6c7b593",
+    "source": "curated",
+    "name": "i-Ride Taoyuan (motion cinema)",
+    "name_lang": "en",
+    "city_code": "68000",
+    "city_name": "桃園市",
+    "district_code": "68000020",
+    "district_name": "中壢區",
+    "primary_category": "theme-park",
+    "category_slugs": [
+      "diy",
+      "theme-park"
+    ],
+    "kid_tags": [
+      "air_con",
+      "family",
+      "indoor"
+    ],
+    "kid_score": 100,
+    "is_kid_friendly": true,
+    "age_min": 6,
+    "age_max": 14,
+    "indoor_outdoor": "indoor",
+    "is_free": false,
+    "price_level": 2,
+    "lat": null,
+    "lng": null,
+    "distance_m": null,
+    "thumbnail_url": null,
+    "updated_at": "2026-11-02T14:51:27.829334+00:00",
+    "total_count": 11
+  },
+  {
+    "id": "6d0a6f03-ad7e-48d5-bac3-3ebee76aa2b1",
+    "source": "tw_tourism_attractions",
+    "name": "耀輝牧場",
+    "name_lang": "zh-Hant",
+    "city_code": "68000",
+    "city_name": "桃園市",
+    "district_code": "68000040",
+    "district_name": "楊梅區",
+    "primary_category": "animals",
+    "category_slugs": [
+      "animals",
+      "farm"
+    ],
+    "kid_tags": [
+      "family"
+    ],
+    "kid_score": 100,
+    "is_kid_friendly": true,
+    "age_min": null,
+    "age_max": null,
+    "indoor_outdoor": null,
+    "is_free": null,
+    "price_level": null,
+    "lat": 24.9173,
+    "lng": 121.12281,
+    "distance_m": null,
+    "thumbnail_url": "https://travel.tycg.gov.tw/image/35532/640x480",
+    "updated_at": "2026-11-02T14:51:21.551307+00:00",
+    "total_count": 11
+  }
+]

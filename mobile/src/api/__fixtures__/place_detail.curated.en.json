@@ -1,0 +1,83 @@
+{
+  "id": "8462b311-aa38-4dd7-bf1f-d9c06ffdf85e",
+  "canonical_id": "8462b311-aa38-4dd7-bf1f-d9c06ffdf85e",
+  "source": "curated",
+  "source_id": "xpark-aquarium-qingpu",
+  "name": "Xpark Aquarium (Qingpu)",
+  "name_lang": "en",
+  "names": {
+    "en": "Xpark Aquarium (Qingpu)",
+    "zh-Hant": "Xpark 八景島水族館"
+  },
+  "alt_names": [],
+  "description": "Modern aquarium with immersive tanks, penguins, and shows—great A/C learning day.",
+  "description_lang": "en",
+  "address": "No. 105, Chunde Rd, Zhongli District, Taoyuan City, Taiwan 320",
+  "postal_code": null,
+  "city": {
+    "code": "68000",
+    "name": "Taoyuan City"
+  },
+  "district": {
+    "code": "68000020",
+    "name": "Zhongli District"
+  },
+  "location": {
+    "lat": 25.01723,
+    "lng": 121.21427
+  },
+  "phone": "(03)2875000",
+  "website_url": "https://xpark.com.tw/",
+  "booking_url": null,
+  "categories": [
+    {
+      "slug": "animals",
+      "name": "Zoos, aquariums & animals",
+      "icon": "🦁"
+    },
+    {
+      "slug": "science",
+      "name": "Science & learning",
+      "icon": "🔬"
+    }
+  ],
+  "kid_tags": [
+    "air_con",
+    "family",
+    "food",
+    "indoor",
+    "learning",
+    "nature"
+  ],
+  "kid_score": 100,
+  "is_kid_friendly": true,
+  "age_min": 3,
+  "age_max": 12,
+  "indoor_outdoor": "indoor",
+  "is_free": false,
+  "price_level": 3,
+  "fee_text": "NT$600+",
+  "opening_hours": null,
+  "opening_hours_text": null,
+  "facilities": [],
+  "images": [
+    {
+      "url": "https://travel.tycg.gov.tw/image/99413/640x480",
+      "caption": "Xpark 八景島水族館",
+      "credit": null
+    }
+  ],
+  "service_status": "open",
+  "source_url": null,
+  "source_updated_at": null,
+  "updated_at": "2026-11-02T14:51:27.829334+00:00",
+  "attribution": {
+    "source_name": "Taiwan Kids Atlas curated activities",
+    "publisher": "Taiwan Kids Atlas des Merveilles contributors",
+    "license": "MIT",
+    "license_url": "https://opensource.org/licenses/MIT",
+    "dataset_url": "https://github.com/VivienRg/Taiwan-Kids-Atlas-des-Merveilles",
+    "text": "Curated by the Taiwan Kids Atlas des Merveilles community."
+  },
+  "upcoming_events": []
+}
